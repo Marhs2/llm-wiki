@@ -10,6 +10,7 @@
     "ingest": "node scripts/llm-wiki.mjs ingest",
     "query": "node scripts/llm-wiki.mjs query",
     "search": "node scripts/llm-wiki.mjs search",
+    "graph": "node scripts/llm-wiki.mjs graph",
     "lint": "node scripts/llm-wiki.mjs lint",
     "repair": "node scripts/llm-wiki.mjs repair",
     "test": "node --test tests/*.test.mjs",

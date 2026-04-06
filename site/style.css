@@ -372,11 +372,16 @@ small,
 }
 
 .toc a {
-  display: block;
+  display: grid;
+  gap: 4px;
   padding: 8px 10px;
   border-radius: 12px;
   border: 1px solid transparent;
   background: rgba(255,255,255,0.03);
+}
+
+.toc a small {
+  color: var(--muted);
 }
 
 .toc a:hover {

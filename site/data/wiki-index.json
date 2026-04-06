@@ -1,6 +1,94 @@
 {
-  "generatedAt": "2026-04-06T13:45:10.322Z",
+  "generatedAt": "2026-04-06T14:07:14.135Z",
   "pageCount": 54,
+  "edgeCount": 78,
+  "graphSummary": {
+    "pageCount": 54,
+    "connectedPages": 54,
+    "isolatedPages": [],
+    "topHubPages": [
+      {
+        "path": "wiki/index.md",
+        "title": "LLM Wiki Index",
+        "type": "index",
+        "hubScore": 52,
+        "backlinks": 1,
+        "outgoingLinks": 51
+      },
+      {
+        "path": "wiki/sources/2026-04-06-karpathy-llm-wiki-gist.md",
+        "title": "Karpathy LLM Wiki Gist",
+        "type": "source",
+        "hubScore": 7,
+        "backlinks": 4,
+        "outgoingLinks": 3
+      },
+      {
+        "path": "wiki/sources/2026-04-06-llm-wiki-agent-guide.md",
+        "title": "LLM Wiki Agent Guide",
+        "type": "source",
+        "hubScore": 7,
+        "backlinks": 4,
+        "outgoingLinks": 3
+      },
+      {
+        "path": "wiki/sources/2026-04-06-llm-wiki-launch-roadmap.md",
+        "title": "LLM Wiki Launch Roadmap",
+        "type": "source",
+        "hubScore": 7,
+        "backlinks": 4,
+        "outgoingLinks": 3
+      },
+      {
+        "path": "wiki/sources/2026-04-06-llm-wiki-readme.md",
+        "title": "LLM Wiki README",
+        "type": "source",
+        "hubScore": 7,
+        "backlinks": 4,
+        "outgoingLinks": 3
+      },
+      {
+        "path": "wiki/topics/knowledge.md",
+        "title": "knowledge",
+        "type": "topic",
+        "hubScore": 7,
+        "backlinks": 4,
+        "outgoingLinks": 3
+      },
+      {
+        "path": "wiki/answers/2026-04-06-what-are-the-core-layers-and-workflows-of-the-llm-wiki-patte.md",
+        "title": "Answer: What are the core layers and workflows of the llm wiki pattern?",
+        "type": "answer",
+        "hubScore": 6,
+        "backlinks": 1,
+        "outgoingLinks": 5
+      },
+      {
+        "path": "wiki/concepts/knowledge-base.md",
+        "title": "knowledge base",
+        "type": "concept",
+        "hubScore": 5,
+        "backlinks": 3,
+        "outgoingLinks": 2
+      },
+      {
+        "path": "wiki/concepts/persistent-wiki.md",
+        "title": "persistent wiki",
+        "type": "concept",
+        "hubScore": 5,
+        "backlinks": 3,
+        "outgoingLinks": 2
+      },
+      {
+        "path": "wiki/entities/llm-wiki.md",
+        "title": "llm-wiki",
+        "type": "entity",
+        "hubScore": 3,
+        "backlinks": 3,
+        "outgoingLinks": 0
+      }
+    ]
+  },
   "pages": [
     {
       "path": "wiki/about.md",
@@ -19,7 +107,10 @@
         "index",
         "log"
       ],
-      "linkCount": 2
+      "linkCount": 2,
+      "backlinks": [],
+      "backlinkCount": 0,
+      "hubScore": 2
     },
     {
       "path": "wiki/answers/2026-04-06-what-are-the-core-layers-and-workflows-of-the-llm-wiki-patte.md",
@@ -49,7 +140,12 @@
         "sources/2026-04-06-llm-wiki-readme",
         "entities/llm-wiki"
       ],
-      "linkCount": 5
+      "linkCount": 5,
+      "backlinks": [
+        "wiki/index.md"
+      ],
+      "backlinkCount": 1,
+      "hubScore": 6
     },
     {
       "path": "wiki/concepts/compounding-artifact.md",
@@ -66,7 +162,12 @@
       "updated": "2026-04-06",
       "text": "compounding artifact Summary Concept collected from Karpathy LLM Wiki Gist. References None yet. Related concepts None yet. Sources None yet.",
       "links": [],
-      "linkCount": 0
+      "linkCount": 0,
+      "backlinks": [
+        "wiki/index.md"
+      ],
+      "backlinkCount": 1,
+      "hubScore": 1
     },
     {
       "path": "wiki/concepts/cross-references.md",
@@ -83,7 +184,12 @@
       "updated": "2026-04-06",
       "text": "cross-references Summary Concept collected from Karpathy LLM Wiki Gist. References None yet. Related concepts None yet. Sources None yet.",
       "links": [],
-      "linkCount": 0
+      "linkCount": 0,
+      "backlinks": [
+        "wiki/index.md"
+      ],
+      "backlinkCount": 1,
+      "hubScore": 1
     },
     {
       "path": "wiki/concepts/graph-view.md",
@@ -100,7 +206,12 @@
       "updated": "2026-04-06",
       "text": "graph view Summary Concept collected from Karpathy LLM Wiki Gist. References None yet. Related concepts None yet. Sources None yet.",
       "links": [],
-      "linkCount": 0
+      "linkCount": 0,
+      "backlinks": [
+        "wiki/index.md"
+      ],
+      "backlinkCount": 1,
+      "hubScore": 1
     },
     {
       "path": "wiki/concepts/knowledge-base.md",
@@ -120,7 +231,14 @@
         "sources/2026-04-06-llm-wiki-launch-roadmap",
         "sources/2026-04-06-llm-wiki-readme"
       ],
-      "linkCount": 2
+      "linkCount": 2,
+      "backlinks": [
+        "wiki/index.md",
+        "wiki/sources/2026-04-06-llm-wiki-launch-roadmap.md",
+        "wiki/sources/2026-04-06-llm-wiki-readme.md"
+      ],
+      "backlinkCount": 3,
+      "hubScore": 5
     },
     {
       "path": "wiki/concepts/knowledge.md",
@@ -137,7 +255,12 @@
       "updated": "2026-04-06",
       "text": "knowledge Summary Concept collected from LLM Wiki Launch Roadmap. References None yet. Related concepts None yet. Sources None yet.",
       "links": [],
-      "linkCount": 0
+      "linkCount": 0,
+      "backlinks": [
+        "wiki/index.md"
+      ],
+      "backlinkCount": 1,
+      "hubScore": 1
     },
     {
       "path": "wiki/concepts/markdown.md",
@@ -154,7 +277,12 @@
       "updated": "2026-04-06",
       "text": "markdown Summary Concept collected from LLM Wiki Launch Roadmap. References None yet. Related concepts None yet. Sources None yet.",
       "links": [],
-      "linkCount": 0
+      "linkCount": 0,
+      "backlinks": [
+        "wiki/index.md"
+      ],
+      "backlinkCount": 1,
+      "hubScore": 1
     },
     {
       "path": "wiki/concepts/obsidian.md",
@@ -171,7 +299,12 @@
       "updated": "2026-04-06",
       "text": "obsidian Summary Concept collected from LLM Wiki Agent Guide. References None yet. Related concepts None yet. Sources None yet.",
       "links": [],
-      "linkCount": 0
+      "linkCount": 0,
+      "backlinks": [
+        "wiki/index.md"
+      ],
+      "backlinkCount": 1,
+      "hubScore": 1
     },
     {
       "path": "wiki/concepts/openai.md",
@@ -188,7 +321,12 @@
       "updated": "2026-04-06",
       "text": "openai Summary Concept collected from LLM Wiki Agent Guide. References None yet. Related concepts None yet. Sources None yet.",
       "links": [],
-      "linkCount": 0
+      "linkCount": 0,
+      "backlinks": [
+        "wiki/index.md"
+      ],
+      "backlinkCount": 1,
+      "hubScore": 1
     },
     {
       "path": "wiki/concepts/persistent-wiki.md",
@@ -208,7 +346,14 @@
         "sources/2026-04-06-karpathy-llm-wiki-gist",
         "sources/2026-04-06-llm-wiki-agent-guide"
       ],
-      "linkCount": 2
+      "linkCount": 2,
+      "backlinks": [
+        "wiki/index.md",
+        "wiki/sources/2026-04-06-karpathy-llm-wiki-gist.md",
+        "wiki/sources/2026-04-06-llm-wiki-agent-guide.md"
+      ],
+      "backlinkCount": 3,
+      "hubScore": 5
     },
     {
       "path": "wiki/concepts/raw-sources.md",
@@ -225,7 +370,12 @@
       "updated": "2026-04-06",
       "text": "Raw sources Summary Concept collected from Karpathy LLM Wiki Gist. References None yet. Related concepts None yet. Sources None yet.",
       "links": [],
-      "linkCount": 0
+      "linkCount": 0,
+      "backlinks": [
+        "wiki/index.md"
+      ],
+      "backlinkCount": 1,
+      "hubScore": 1
     },
     {
       "path": "wiki/concepts/source-of-truth.md",
@@ -242,7 +392,12 @@
       "updated": "2026-04-06",
       "text": "source-of-truth Summary Concept collected from Karpathy LLM Wiki Gist. References None yet. Related concepts None yet. Sources None yet.",
       "links": [],
-      "linkCount": 0
+      "linkCount": 0,
+      "backlinks": [
+        "wiki/index.md"
+      ],
+      "backlinkCount": 1,
+      "hubScore": 1
     },
     {
       "path": "wiki/concepts/synthesis.md",
@@ -259,7 +414,12 @@
       "updated": "2026-04-06",
       "text": "synthesis Summary Concept collected from Karpathy LLM Wiki Gist. References None yet. Related concepts None yet. Sources None yet.",
       "links": [],
-      "linkCount": 0
+      "linkCount": 0,
+      "backlinks": [
+        "wiki/index.md"
+      ],
+      "backlinkCount": 1,
+      "hubScore": 1
     },
     {
       "path": "wiki/concepts/workflow.md",
@@ -276,7 +436,12 @@
       "updated": "2026-04-06",
       "text": "workflow Summary Concept collected from LLM Wiki Launch Roadmap. References None yet. Related concepts None yet. Sources None yet.",
       "links": [],
-      "linkCount": 0
+      "linkCount": 0,
+      "backlinks": [
+        "wiki/index.md"
+      ],
+      "backlinkCount": 1,
+      "hubScore": 1
     },
     {
       "path": "wiki/entities/append.md",
@@ -292,7 +457,13 @@
       "updated": "2026-04-06",
       "text": "append Summary Detected heuristically in LLM Wiki Agent Guide. Mentions None yet. Sources None yet.",
       "links": [],
-      "linkCount": 0
+      "linkCount": 0,
+      "backlinks": [
+        "wiki/index.md",
+        "wiki/sources/2026-04-06-llm-wiki-agent-guide.md"
+      ],
+      "backlinkCount": 2,
+      "hubScore": 2
     },
     {
       "path": "wiki/entities/automate.md",
@@ -308,7 +479,12 @@
       "updated": "2026-04-06",
       "text": "automate Summary Detected heuristically in LLM Wiki Launch Roadmap. Mentions None yet. Sources None yet.",
       "links": [],
-      "linkCount": 0
+      "linkCount": 0,
+      "backlinks": [
+        "wiki/index.md"
+      ],
+      "backlinkCount": 1,
+      "hubScore": 1
     },
     {
       "path": "wiki/entities/chatgpt.md",
@@ -324,7 +500,12 @@
       "updated": "2026-04-06",
       "text": "ChatGPT Summary Detected heuristically in Karpathy LLM Wiki Gist. Mentions None yet. Sources None yet.",
       "links": [],
-      "linkCount": 0
+      "linkCount": 0,
+      "backlinks": [
+        "wiki/index.md"
+      ],
+      "backlinkCount": 1,
+      "hubScore": 1
     },
     {
       "path": "wiki/entities/claude-code.md",
@@ -340,7 +521,12 @@
       "updated": "2026-04-06",
       "text": "Claude Code Summary Detected heuristically in Karpathy LLM Wiki Gist. Mentions None yet. Sources None yet.",
       "links": [],
-      "linkCount": 0
+      "linkCount": 0,
+      "backlinks": [
+        "wiki/index.md"
+      ],
+      "backlinkCount": 1,
+      "hubScore": 1
     },
     {
       "path": "wiki/entities/codex-cli.md",
@@ -356,7 +542,13 @@
       "updated": "2026-04-06",
       "text": "codex-cli Summary Detected heuristically in LLM Wiki Agent Guide. Mentions None yet. Sources None yet.",
       "links": [],
-      "linkCount": 0
+      "linkCount": 0,
+      "backlinks": [
+        "wiki/index.md",
+        "wiki/sources/2026-04-06-llm-wiki-readme.md"
+      ],
+      "backlinkCount": 2,
+      "hubScore": 2
     },
     {
       "path": "wiki/entities/codex.md",
@@ -372,7 +564,12 @@
       "updated": "2026-04-06",
       "text": "Codex Summary Detected heuristically in Karpathy LLM Wiki Gist. Mentions None yet. Sources None yet.",
       "links": [],
-      "linkCount": 0
+      "linkCount": 0,
+      "backlinks": [
+        "wiki/index.md"
+      ],
+      "backlinkCount": 1,
+      "hubScore": 1
     },
     {
       "path": "wiki/entities/connect.md",
@@ -388,7 +585,12 @@
       "updated": "2026-04-06",
       "text": "connect Summary Detected heuristically in LLM Wiki Launch Roadmap. Mentions None yet. Sources None yet.",
       "links": [],
-      "linkCount": 0
+      "linkCount": 0,
+      "backlinks": [
+        "wiki/index.md"
+      ],
+      "backlinkCount": 1,
+      "hubScore": 1
     },
     {
       "path": "wiki/entities/if-codex.md",
@@ -404,7 +606,12 @@
       "updated": "2026-04-06",
       "text": "if-codex Summary Detected heuristically in LLM Wiki README. Mentions None yet. Sources None yet.",
       "links": [],
-      "linkCount": 0
+      "linkCount": 0,
+      "backlinks": [
+        "wiki/index.md"
+      ],
+      "backlinkCount": 1,
+      "hubScore": 1
     },
     {
       "path": "wiki/entities/json.md",
@@ -420,7 +627,12 @@
       "updated": "2026-04-06",
       "text": "json Summary Detected heuristically in LLM Wiki Launch Roadmap. Mentions None yet. Sources None yet.",
       "links": [],
-      "linkCount": 0
+      "linkCount": 0,
+      "backlinks": [
+        "wiki/index.md"
+      ],
+      "backlinkCount": 1,
+      "hubScore": 1
     },
     {
       "path": "wiki/entities/llm-agent.md",
@@ -436,7 +648,12 @@
       "updated": "2026-04-06",
       "text": "llm-agent Summary Detected heuristically in Karpathy LLM Wiki Gist. Mentions None yet. Sources None yet.",
       "links": [],
-      "linkCount": 0
+      "linkCount": 0,
+      "backlinks": [
+        "wiki/index.md"
+      ],
+      "backlinkCount": 1,
+      "hubScore": 1
     },
     {
       "path": "wiki/entities/llm-wiki.md",
@@ -452,7 +669,14 @@
       "updated": "2026-04-06",
       "text": "llm-wiki Summary Detected heuristically in LLM Wiki Launch Roadmap. Mentions None yet. Sources None yet.",
       "links": [],
-      "linkCount": 0
+      "linkCount": 0,
+      "backlinks": [
+        "wiki/answers/2026-04-06-what-are-the-core-layers-and-workflows-of-the-llm-wiki-patte.md",
+        "wiki/index.md",
+        "wiki/sources/2026-04-06-llm-wiki-launch-roadmap.md"
+      ],
+      "backlinkCount": 3,
+      "hubScore": 3
     },
     {
       "path": "wiki/entities/node-cli.md",
@@ -468,7 +692,12 @@
       "updated": "2026-04-06",
       "text": "node-cli Summary Detected heuristically in LLM Wiki README. Mentions None yet. Sources None yet.",
       "links": [],
-      "linkCount": 0
+      "linkCount": 0,
+      "backlinks": [
+        "wiki/index.md"
+      ],
+      "backlinkCount": 1,
+      "hubScore": 1
     },
     {
       "path": "wiki/entities/notebooklm.md",
@@ -484,7 +713,12 @@
       "updated": "2026-04-06",
       "text": "NotebookLM Summary Detected heuristically in Karpathy LLM Wiki Gist. Mentions None yet. Sources None yet.",
       "links": [],
-      "linkCount": 0
+      "linkCount": 0,
+      "backlinks": [
+        "wiki/index.md"
+      ],
+      "backlinkCount": 1,
+      "hubScore": 1
     },
     {
       "path": "wiki/entities/obsidian.md",
@@ -500,7 +734,12 @@
       "updated": "2026-04-06",
       "text": "Obsidian Summary Detected heuristically in Karpathy LLM Wiki Gist. Mentions None yet. Sources None yet.",
       "links": [],
-      "linkCount": 0
+      "linkCount": 0,
+      "backlinks": [
+        "wiki/index.md"
+      ],
+      "backlinkCount": 1,
+      "hubScore": 1
     },
     {
       "path": "wiki/entities/openai.md",
@@ -516,7 +755,13 @@
       "updated": "2026-04-06",
       "text": "OpenAI Summary Detected heuristically in Karpathy LLM Wiki Gist. Mentions None yet. Sources None yet.",
       "links": [],
-      "linkCount": 0
+      "linkCount": 0,
+      "backlinks": [
+        "wiki/index.md",
+        "wiki/sources/2026-04-06-karpathy-llm-wiki-gist.md"
+      ],
+      "backlinkCount": 2,
+      "hubScore": 2
     },
     {
       "path": "wiki/entities/opencode.md",
@@ -532,7 +777,12 @@
       "updated": "2026-04-06",
       "text": "OpenCode Summary Detected heuristically in Karpathy LLM Wiki Gist. Mentions None yet. Sources None yet.",
       "links": [],
-      "linkCount": 0
+      "linkCount": 0,
+      "backlinks": [
+        "wiki/index.md"
+      ],
+      "backlinkCount": 1,
+      "hubScore": 1
     },
     {
       "path": "wiki/entities/optional.md",
@@ -548,7 +798,12 @@
       "updated": "2026-04-06",
       "text": "optional Summary Detected heuristically in LLM Wiki README. Mentions None yet. Sources None yet.",
       "links": [],
-      "linkCount": 0
+      "linkCount": 0,
+      "backlinks": [
+        "wiki/index.md"
+      ],
+      "backlinkCount": 1,
+      "hubScore": 1
     },
     {
       "path": "wiki/entities/prefer.md",
@@ -564,7 +819,12 @@
       "updated": "2026-04-06",
       "text": "prefer Summary Detected heuristically in LLM Wiki Agent Guide. Mentions None yet. Sources None yet.",
       "links": [],
-      "linkCount": 0
+      "linkCount": 0,
+      "backlinks": [
+        "wiki/index.md"
+      ],
+      "backlinkCount": 1,
+      "hubScore": 1
     },
     {
       "path": "wiki/entities/primary.md",
@@ -580,7 +840,12 @@
       "updated": "2026-04-06",
       "text": "primary Summary Detected heuristically in LLM Wiki Agent Guide. Mentions None yet. Sources None yet.",
       "links": [],
-      "linkCount": 0
+      "linkCount": 0,
+      "backlinks": [
+        "wiki/index.md"
+      ],
+      "backlinkCount": 1,
+      "hubScore": 1
     },
     {
       "path": "wiki/entities/rag.md",
@@ -596,7 +861,12 @@
       "updated": "2026-04-06",
       "text": "RAG Summary Detected heuristically in Karpathy LLM Wiki Gist. Mentions None yet. Sources None yet.",
       "links": [],
-      "linkCount": 0
+      "linkCount": 0,
+      "backlinks": [
+        "wiki/index.md"
+      ],
+      "backlinkCount": 1,
+      "hubScore": 1
     },
     {
       "path": "wiki/entities/search.md",
@@ -612,7 +882,12 @@
       "updated": "2026-04-06",
       "text": "search Summary Detected heuristically in LLM Wiki Launch Roadmap. Mentions None yet. Sources None yet.",
       "links": [],
-      "linkCount": 0
+      "linkCount": 0,
+      "backlinks": [
+        "wiki/index.md"
+      ],
+      "backlinkCount": 1,
+      "hubScore": 1
     },
     {
       "path": "wiki/entities/upgrade.md",
@@ -628,7 +903,12 @@
       "updated": "2026-04-06",
       "text": "upgrade Summary Detected heuristically in LLM Wiki Launch Roadmap. Mentions None yet. Sources None yet.",
       "links": [],
-      "linkCount": 0
+      "linkCount": 0,
+      "backlinks": [
+        "wiki/index.md"
+      ],
+      "backlinkCount": 1,
+      "hubScore": 1
     },
     {
       "path": "wiki/entities/vercel.md",
@@ -644,7 +924,12 @@
       "updated": "2026-04-06",
       "text": "vercel Summary Detected heuristically in LLM Wiki Launch Roadmap. Mentions None yet. Sources None yet.",
       "links": [],
-      "linkCount": 0
+      "linkCount": 0,
+      "backlinks": [
+        "wiki/index.md"
+      ],
+      "backlinkCount": 1,
+      "hubScore": 1
     },
     {
       "path": "wiki/index.md",
@@ -714,7 +999,12 @@
         "topics/workflow",
         "answers/2026-04-06-what-are-the-core-layers-and-workflows-of-the-llm-wiki-patte"
       ],
-      "linkCount": 51
+      "linkCount": 51,
+      "backlinks": [
+        "wiki/about.md"
+      ],
+      "backlinkCount": 1,
+      "hubScore": 52
     },
     {
       "path": "wiki/log.md",
@@ -751,7 +1041,12 @@
       "updated": "2026-04-06",
       "text": "LLM Wiki Log [2026-04-06] init | vault scaffold Created the initial wiki scaffold. [2026-04-06] ingest | Karpathy LLM Wiki Gist raw: ../raw/sources/2026-04-06-karpathy-llm-wiki-gist.md wiki: sources/2026-04-06-karpathy-llm-wiki-gist.md backend: heuristic model: gpt-4.1-mini [2026-04-06] ingest | LLM Wiki README raw: ../raw/sources/2026-04-06-llm-wiki-readme.md wiki: sources/2026-04-06-llm-wiki-readme.md backend: heuristic model: gpt-4.1-mini [2026-04-06] ingest | LLM Wiki Agent Guide raw: ../raw/sources/2026-04-06-llm-wiki-agent-guide.md wiki: sources/2026-04-06-llm-wiki-agent-guide.md backend: heuristic model: gpt-4.1-mini [2026-04-06] ingest | LLM Wiki Launch Roadmap raw: ../raw/sources/2026-04-06-llm-wiki-launch-roadmap.md wiki: sources/2026-04-06-llm-wiki-launch-roadmap.md backend: heuristic model: gpt-4.1-mini [2026-04-06] repair | vault repaired sources: 4 entities: 30 concepts: 12 topics: 8 answers: 0 [2026-04-06] query | What are the core layers and workflows of the llm wiki pattern? answer: answers/2026-04-06-what-are-the-core-layers-and-workflows-of-the-llm-wiki-patte.md sources: 0 [2026-04-06] query | What are the core layers and workflows of the llm wiki pattern? answer: answers/2026-04-06-what-are-the-core-layers-and-workflows-of-the-llm-wiki-patte.md sources: 6 [2026-04-06] ingest | Karpathy LLM Wiki Gist raw: ../raw/sources/2026-04-06-karpathy-llm-wiki-gist.md wiki: sources/2026-04-06-karpathy-llm-wiki-gist.md backend: heuristic model: gpt-4.1-mini [2026-04-06] repair | vault repaired sources: 4 entities: 35 concepts: 13 topics: 10 answers: 1 [2026-04-06] query | What are the core layers and workflows of the llm wiki pattern? answer: answers/2026-04-06-what-are-the-core-layers-and-workflows-of-the-llm-wiki-patte.md sources: 6 [2026-04-06] repair | vault repaired sources: 4 entities: 35 concepts: 13 topics: 10 answers: 1 [2026-04-06] query | What are the core layers and workflows of the llm wiki pattern? answer: answers/2026-04-06-what-are-the-core-layers-and-workflows-of-the-llm-wiki-patte.md sources: 5 [2026-04-06] query | What are the core layers and workflows of the llm wiki pattern? answer: answers/2026-04-06-what-are-the-core-layers-and-workflows-of-the-llm-wiki-patte.md sources: 5 [2026-04-06] repair | vault repaired sources: 4 entities: 35 concepts: 13 topics: 10 answers: 1 [2026-04-06] ingest | Karpathy LLM Wiki Gist raw: ../raw/sources/2026-04-06-karpathy-llm-wiki-gist.md wiki: sources/2026-04-06-karpathy-llm-wiki-gist.md backend: heuristic model: gpt-4.1-mini [2026-04-06] repair | vault repaired sources: 4 entities: 23 concepts: 13 topics: 10 answers: 1 [2026-04-06] ingest | Karpathy LLM Wiki Gist raw: ../raw/sources/2026-04-06-karpathy-llm-wiki-gist.md wiki: sources/2026-04-06-karpathy-llm-wiki-gist.md backend: heuristic model: gpt-4.1-mini [2026-04-06] repair | vault repaired sources: 4 entities: 23 concepts: 13 topics: 10 answers: 1 [2026-04-06] repair | vault repaired sources: 4 entities: 23 concepts: 13 topics: 10 answers: 1 [2026-04-06] repair | vault repaired sources: 4 entities: 23 concepts: 13 topics: 10 answers: 1 [2026-04-06] repair | vault repaired sources: 4 entities: 23 concepts: 13 topics: 10 answers: 1 [2026-04-06] query | What are the core layers and workflows of the llm wiki pattern? answer: answers/2026-04-06-what-are-the-core-layers-and-workflows-of-the-llm-wiki-patte.md sources: 5 [2026-04-06] repair | vault repaired sources: 4 entities: 23 concepts: 13 topics: 10 answers: 1",
       "links": [],
-      "linkCount": 0
+      "linkCount": 0,
+      "backlinks": [
+        "wiki/about.md"
+      ],
+      "backlinkCount": 1,
+      "hubScore": 1
     },
     {
       "path": "wiki/sources/2026-04-06-karpathy-llm-wiki-gist.md",
@@ -776,7 +1071,15 @@
         "concepts/persistent-wiki",
         "topics/knowledge"
       ],
-      "linkCount": 3
+      "linkCount": 3,
+      "backlinks": [
+        "wiki/answers/2026-04-06-what-are-the-core-layers-and-workflows-of-the-llm-wiki-patte.md",
+        "wiki/concepts/persistent-wiki.md",
+        "wiki/index.md",
+        "wiki/topics/knowledge.md"
+      ],
+      "backlinkCount": 4,
+      "hubScore": 7
     },
     {
       "path": "wiki/sources/2026-04-06-llm-wiki-agent-guide.md",
@@ -801,7 +1104,15 @@
         "concepts/persistent-wiki",
         "topics/markdown"
       ],
-      "linkCount": 3
+      "linkCount": 3,
+      "backlinks": [
+        "wiki/answers/2026-04-06-what-are-the-core-layers-and-workflows-of-the-llm-wiki-patte.md",
+        "wiki/concepts/persistent-wiki.md",
+        "wiki/index.md",
+        "wiki/topics/markdown.md"
+      ],
+      "backlinkCount": 4,
+      "hubScore": 7
     },
     {
       "path": "wiki/sources/2026-04-06-llm-wiki-launch-roadmap.md",
@@ -826,7 +1137,15 @@
         "concepts/knowledge-base",
         "topics/knowledge"
       ],
-      "linkCount": 3
+      "linkCount": 3,
+      "backlinks": [
+        "wiki/answers/2026-04-06-what-are-the-core-layers-and-workflows-of-the-llm-wiki-patte.md",
+        "wiki/concepts/knowledge-base.md",
+        "wiki/index.md",
+        "wiki/topics/knowledge.md"
+      ],
+      "backlinkCount": 4,
+      "hubScore": 7
     },
     {
       "path": "wiki/sources/2026-04-06-llm-wiki-readme.md",
@@ -851,7 +1170,15 @@
         "concepts/knowledge-base",
         "topics/knowledge"
       ],
-      "linkCount": 3
+      "linkCount": 3,
+      "backlinks": [
+        "wiki/answers/2026-04-06-what-are-the-core-layers-and-workflows-of-the-llm-wiki-patte.md",
+        "wiki/concepts/knowledge-base.md",
+        "wiki/index.md",
+        "wiki/topics/knowledge.md"
+      ],
+      "backlinkCount": 4,
+      "hubScore": 7
     },
     {
       "path": "wiki/topics/agent.md",
@@ -867,7 +1194,12 @@
       "updated": "2026-04-06",
       "text": "agent Summary Topic collected from Karpathy LLM Wiki Gist. References None yet. Sources None yet.",
       "links": [],
-      "linkCount": 0
+      "linkCount": 0,
+      "backlinks": [
+        "wiki/index.md"
+      ],
+      "backlinkCount": 1,
+      "hubScore": 1
     },
     {
       "path": "wiki/topics/codex.md",
@@ -883,7 +1215,12 @@
       "updated": "2026-04-06",
       "text": "codex Summary Topic collected from Karpathy LLM Wiki Gist. References None yet. Sources None yet.",
       "links": [],
-      "linkCount": 0
+      "linkCount": 0,
+      "backlinks": [
+        "wiki/index.md"
+      ],
+      "backlinkCount": 1,
+      "hubScore": 1
     },
     {
       "path": "wiki/topics/index.md",
@@ -899,7 +1236,12 @@
       "updated": "2026-04-06",
       "text": "index Summary Topic collected from Karpathy LLM Wiki Gist. References None yet. Sources None yet.",
       "links": [],
-      "linkCount": 0
+      "linkCount": 0,
+      "backlinks": [
+        "wiki/index.md"
+      ],
+      "backlinkCount": 1,
+      "hubScore": 1
     },
     {
       "path": "wiki/topics/knowledge.md",
@@ -919,7 +1261,15 @@
         "sources/2026-04-06-llm-wiki-launch-roadmap",
         "sources/2026-04-06-llm-wiki-readme"
       ],
-      "linkCount": 3
+      "linkCount": 3,
+      "backlinks": [
+        "wiki/index.md",
+        "wiki/sources/2026-04-06-karpathy-llm-wiki-gist.md",
+        "wiki/sources/2026-04-06-llm-wiki-launch-roadmap.md",
+        "wiki/sources/2026-04-06-llm-wiki-readme.md"
+      ],
+      "backlinkCount": 4,
+      "hubScore": 7
     },
     {
       "path": "wiki/topics/markdown.md",
@@ -937,7 +1287,13 @@
       "links": [
         "sources/2026-04-06-llm-wiki-agent-guide"
       ],
-      "linkCount": 1
+      "linkCount": 1,
+      "backlinks": [
+        "wiki/index.md",
+        "wiki/sources/2026-04-06-llm-wiki-agent-guide.md"
+      ],
+      "backlinkCount": 2,
+      "hubScore": 3
     },
     {
       "path": "wiki/topics/oauth.md",
@@ -953,7 +1309,12 @@
       "updated": "2026-04-06",
       "text": "oauth Summary Topic collected from LLM Wiki Agent Guide. References None yet. Sources None yet.",
       "links": [],
-      "linkCount": 0
+      "linkCount": 0,
+      "backlinks": [
+        "wiki/index.md"
+      ],
+      "backlinkCount": 1,
+      "hubScore": 1
     },
     {
       "path": "wiki/topics/obsidian.md",
@@ -969,7 +1330,12 @@
       "updated": "2026-04-06",
       "text": "obsidian Summary Topic collected from Karpathy LLM Wiki Gist. References None yet. Sources None yet.",
       "links": [],
-      "linkCount": 0
+      "linkCount": 0,
+      "backlinks": [
+        "wiki/index.md"
+      ],
+      "backlinkCount": 1,
+      "hubScore": 1
     },
     {
       "path": "wiki/topics/openai.md",
@@ -985,7 +1351,12 @@
       "updated": "2026-04-06",
       "text": "openai Summary Topic collected from Karpathy LLM Wiki Gist. References None yet. Sources None yet.",
       "links": [],
-      "linkCount": 0
+      "linkCount": 0,
+      "backlinks": [
+        "wiki/index.md"
+      ],
+      "backlinkCount": 1,
+      "hubScore": 1
     },
     {
       "path": "wiki/topics/query.md",
@@ -1001,7 +1372,12 @@
       "updated": "2026-04-06",
       "text": "query Summary Topic collected from Karpathy LLM Wiki Gist. References None yet. Sources None yet.",
       "links": [],
-      "linkCount": 0
+      "linkCount": 0,
+      "backlinks": [
+        "wiki/index.md"
+      ],
+      "backlinkCount": 1,
+      "hubScore": 1
     },
     {
       "path": "wiki/topics/workflow.md",
@@ -1017,7 +1393,12 @@
       "updated": "2026-04-06",
       "text": "workflow Summary Topic collected from LLM Wiki Launch Roadmap. References None yet. Sources None yet.",
       "links": [],
-      "linkCount": 0
+      "linkCount": 0,
+      "backlinks": [
+        "wiki/index.md"
+      ],
+      "backlinkCount": 1,
+      "hubScore": 1
     }
   ]
 }

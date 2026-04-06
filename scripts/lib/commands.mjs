@@ -41,6 +41,7 @@ import {
 } from './vault.mjs';
 import { analyzeSource } from './analysis.mjs';
 import { authImport, authLogin, authSetToken, authStatus, clearOAuthRecord, readOAuthRecord } from './auth.mjs';
+import { buildGraphMetrics, summarizeGraph } from './graph.mjs';
 
 export function usage() {
   console.log(`
@@ -56,6 +57,7 @@ Usage:
   node scripts/llm-wiki.mjs ingest --source PATH [--title TITLE] [--kind KIND] [--vault PATH] [--model MODEL] [--backend BACKEND]
   node scripts/llm-wiki.mjs query --question TEXT [--vault PATH] [--limit N] [--write]
   node scripts/llm-wiki.mjs search --query TEXT [--vault PATH] [--limit N]
+  node scripts/llm-wiki.mjs graph [--vault PATH] [--limit N]
   node scripts/llm-wiki.mjs lint [--vault PATH]
   node scripts/llm-wiki.mjs repair [--vault PATH] [--dry-run]
   node scripts/llm-wiki.mjs build-site [--vault PATH] [--site PATH]
@@ -390,6 +392,33 @@ export async function queryWiki(vault, { question, limit = 6, write = false } = 
   return { question, matches: pages.map((page) => ({ path: page.path, title: page.title, summary: page.summary })), answer: answerBody, answerPage };
 }
 
+export async function graphWiki(vault, { limit = 8 } = {}) {
+  await initVault(vault);
+  const wikiRoot = path.join(vault, 'wiki');
+  const files = await collectMarkdownFiles(wikiRoot);
+  const pages = [];
+
+  for (const file of files) {
+    const rel = path.relative(vault, file).replace(/\\/g, '/');
+    const text = await fs.readFile(file, 'utf8');
+    const links = extractWikiLinks(text);
+    pages.push({
+      path: rel,
+      title: parseFrontmatterTitle(text) || path.basename(file, '.md'),
+      type: inferPageType(rel, text),
+      summary: getPageSummary(text),
+      links,
+      linkCount: links.length,
+    });
+  }
+
+  const graph = buildGraphMetrics(pages);
+  return {
+    ...summarizeGraph(graph.pages, { limit: Number.isFinite(limit) && limit > 0 ? limit : 8 }),
+    edgeCount: graph.edgeCount,
+  };
+}
+
 export async function lintVault(vault) {
   const wikiRoot = path.join(vault, 'wiki');
   const files = await collectMarkdownFiles(wikiRoot);
@@ -673,10 +702,12 @@ export async function buildSite(vault, { siteDir = DEFAULT_SITE_DIR } = {}) {
   }
 
   pages.sort((a, b) => a.path.localeCompare(b.path));
+  const graph = buildGraphMetrics(pages);
+  const graphSummary = summarizeGraph(graph.pages, { limit: 10 });
   const manifestPath = path.join(targetDataRoot, 'wiki-index.json');
-  await fs.writeFile(manifestPath, `${JSON.stringify({ generatedAt: isoStamp(), pageCount: pages.length, pages }, null, 2)}\n`, 'utf8');
+  await fs.writeFile(manifestPath, `${JSON.stringify({ generatedAt: isoStamp(), pageCount: graph.pages.length, edgeCount: graph.edgeCount, graphSummary, pages: graph.pages }, null, 2)}\n`, 'utf8');
 
-  return { siteDir, wikiDir: targetWikiRoot, manifestPath, pageCount: pages.length };
+  return { siteDir, wikiDir: targetWikiRoot, manifestPath, pageCount: graph.pages.length, edgeCount: graph.edgeCount };
 }
 
 export async function deploySite(vault, { siteDir = DEFAULT_SITE_DIR, project, domain, prod = false, yes = false } = {}) {
@@ -779,6 +810,13 @@ export async function main(argv = process.argv.slice(2)) {
     const limit = Number(args.limit || 10);
     const results = await searchVault(vault, args.query || '', Number.isFinite(limit) && limit > 0 ? limit : 10);
     console.log(JSON.stringify({ query: args.query || '', results }, null, 2));
+    return;
+  }
+
+  if (command === 'graph') {
+    const limit = Number(args.limit || 8);
+    const report = await graphWiki(vault, { limit: Number.isFinite(limit) && limit > 0 ? limit : 8 });
+    console.log(JSON.stringify(report, null, 2));
     return;
   }
 

@@ -72,6 +72,7 @@ Useful maintenance commands:
 
 ```bash
 node scripts/llm-wiki.mjs search --query "persistent wiki"
+node scripts/llm-wiki.mjs graph --limit 10
 node scripts/llm-wiki.mjs query --question "What changed?" --write
 node scripts/llm-wiki.mjs lint
 node scripts/llm-wiki.mjs repair

@@ -183,6 +183,9 @@ function normalizePage(page) {
     updated: page.updated || '',
     links: Array.isArray(page.links) ? page.links : [],
     linkCount: Number(page.linkCount || 0),
+    backlinks: Array.isArray(page.backlinks) ? page.backlinks : [],
+    backlinkCount: Number(page.backlinkCount || 0),
+    hubScore: Number(page.hubScore || 0),
   };
 }
 
@@ -289,6 +292,8 @@ function renderDetails(page) {
     ['Updated', page.updated || 'n/a'],
     ['Headings', String(page.headings.length)],
     ['Outgoing links', String(page.linkCount || page.links.length || 0)],
+    ['Incoming links', String(page.backlinkCount || page.backlinks.length || 0)],
+    ['Hub score', String(page.hubScore || 0)],
   ];
   pageDetails.innerHTML = detailRows.map(([label, value]) => `
     <li>
@@ -322,7 +327,19 @@ function renderToc() {
       path: pagePathFromLink(link),
       label: link.replace(/^.*\//, '').replace(/-/g, ' '),
       score: 10,
+      reason: 'Outgoing',
     }));
+  const backlinkItems = (currentPage?.backlinks || [])
+    .filter((link) => link !== 'wiki/index.md' && link !== 'wiki/log.md')
+    .map((link) => {
+      const page = state.pages.find((entry) => entry.path === link);
+      return {
+        path: link,
+        label: page?.title || link.replace(/^wiki\//, '').replace(/\.md$/, ''),
+        score: 12,
+        reason: 'Backlink',
+      };
+    });
   const inferredLinks = state.pages
     .filter((page) => page.path !== state.current)
     .map((page) => {
@@ -331,19 +348,23 @@ function renderToc() {
         path: page.path,
         label: page.title,
         score: shared * 3 + Math.min(page.linkCount || 0, 4),
+        reason: shared > 0 ? `Shared links · ${shared}` : 'Hub page',
       };
     })
     .filter((page) => page.score > 0);
   const linkMap = new Map();
-  for (const item of [...directLinks, ...inferredLinks]) {
+  for (const item of [...backlinkItems, ...directLinks, ...inferredLinks]) {
     if (!linkMap.has(item.path) || linkMap.get(item.path).score < item.score) linkMap.set(item.path, item);
   }
-  const links = [...linkMap.values()].sort((a, b) => b.score - a.score || a.label.localeCompare(b.label)).slice(0, 8);
+  const links = [...linkMap.values()].sort((a, b) => b.score - a.score || a.label.localeCompare(b.label)).slice(0, 10);
   if (!links.length) {
-    relatedLinks.innerHTML = '<div class="toc-empty">No related wiki links captured for this page.</div>';
+    relatedLinks.innerHTML = '<div class="toc-empty">No graph context captured for this page yet.</div>';
   } else {
     relatedLinks.innerHTML = links.map((link) => `
-      <a href="#/${escapeHtml(link.path)}">${escapeHtml(link.label)}</a>
+      <a href="#/${escapeHtml(link.path)}">
+        <strong>${escapeHtml(link.label)}</strong>
+        <small>${escapeHtml(link.reason)}</small>
+      </a>
     `).join('');
   }
 }
