@@ -1,0 +1,41 @@
+name: CI + Wiki Build
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run tests
+        run: npm test
+
+      - name: Lint wiki
+        run: node scripts/llm-wiki.mjs lint
+
+      - name: Build static site
+        run: node scripts/llm-wiki.mjs build-site
+
+      - name: Upload site artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: llm-wiki-site
+          path: |
+            site/
+            vault/wiki/

@@ -1,3 +1,6 @@
 node_modules/
-.vscode/
+.vercel/
+site/.vercel/
+site/.vercel/output/
+site/vercel/output/
 .DS_Store
