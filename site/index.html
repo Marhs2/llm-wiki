@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LLM Wiki</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="shell">
+      <aside class="sidebar">
+        <div class="brand">
+          <div class="eyebrow">Hermes</div>
+          <h1>LLM Wiki</h1>
+          <p>Codex-backed persistent notes and references.</p>
+        </div>
+        <label class="search">
+          <span>Search</span>
+          <input id="search" type="search" placeholder="Search pages or content..." />
+        </label>
+        <nav id="nav"></nav>
+      </aside>
+      <main class="main">
+        <header class="topbar">
+          <div>
+            <div class="eyebrow">Live view</div>
+            <h2 id="page-title">Loading…</h2>
+          </div>
+          <div class="actions">
+            <a href="#/wiki/index.md">Index</a>
+            <a href="#/wiki/log.md">Log</a>
+          </div>
+        </header>
+        <article id="content" class="content"></article>
+      </main>
+    </div>
+    <script src="./app.js"></script>
+  </body>
+</html>
