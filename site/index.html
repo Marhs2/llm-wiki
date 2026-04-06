@@ -4,34 +4,84 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>LLM Wiki</title>
+    <meta name="description" content="Codex-backed persistent markdown wiki with fast search, filters, and static deployment." />
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
     <div class="shell">
       <aside class="sidebar">
         <div class="brand">
-          <div class="eyebrow">Hermes</div>
+          <div class="eyebrow">Hermes · Codex wiki</div>
           <h1>LLM Wiki</h1>
-          <p>Codex-backed persistent notes and references.</p>
+          <p>Persistent markdown wiki with synced vault pages, search snippets, and deploy-ready static output.</p>
         </div>
+
         <label class="search">
           <span>Search</span>
-          <input id="search" type="search" placeholder="Search pages or content..." />
+          <input id="search" type="search" placeholder="Search title, summary, headings, or page text…" autocomplete="off" />
         </label>
-        <nav id="nav"></nav>
+
+        <div id="filters" class="filters" aria-label="Page type filters"></div>
+
+        <section class="results-panel">
+          <div class="results-header">
+            <strong id="results-count">Loading…</strong>
+            <button id="clear-search" type="button">Clear</button>
+          </div>
+          <div id="search-state" class="search-state">Preparing wiki index…</div>
+          <nav id="nav" aria-label="Wiki pages"></nav>
+        </section>
       </aside>
+
       <main class="main">
         <header class="topbar">
           <div>
             <div class="eyebrow">Live view</div>
             <h2 id="page-title">Loading…</h2>
+            <p id="page-meta" class="page-meta"></p>
           </div>
           <div class="actions">
+            <a href="#/wiki/about.md">About</a>
             <a href="#/wiki/index.md">Index</a>
             <a href="#/wiki/log.md">Log</a>
           </div>
         </header>
-        <article id="content" class="content"></article>
+
+        <section id="hero-card" class="hero-card">
+          <div>
+            <div class="eyebrow">Search overview</div>
+            <h3 id="hero-title">Vault synced pages</h3>
+            <p id="hero-description">Use filters and snippets to move through sources, entities, topics, and maintenance logs quickly.</p>
+          </div>
+          <div class="hero-stats">
+            <div>
+              <strong id="stat-pages">0</strong>
+              <span>pages</span>
+            </div>
+            <div>
+              <strong id="stat-filtered">0</strong>
+              <span>visible</span>
+            </div>
+          </div>
+        </section>
+
+        <div class="content-grid">
+          <article id="content" class="content"></article>
+          <aside class="page-rail">
+            <section class="rail-card">
+              <div class="eyebrow">Page details</div>
+              <ul id="page-details" class="detail-list"></ul>
+            </section>
+            <section class="rail-card">
+              <div class="eyebrow">On this page</div>
+              <nav id="toc" class="toc"></nav>
+            </section>
+            <section class="rail-card">
+              <div class="eyebrow">Related pages</div>
+              <nav id="related-links" class="toc"></nav>
+            </section>
+          </aside>
+        </div>
       </main>
     </div>
     <script src="./app.js"></script>

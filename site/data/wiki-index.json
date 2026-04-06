@@ -1,0 +1,1023 @@
+{
+  "generatedAt": "2026-04-06T13:26:06.910Z",
+  "pageCount": 54,
+  "pages": [
+    {
+      "path": "wiki/about.md",
+      "title": "LLM Wiki",
+      "type": "about",
+      "summary": "LLM Wiki 이 페이지는 Codex 기반으로 유지되는 마크다운 위키의 퍼블릭 뷰입니다. Highlights 실제 vault/wiki/ 내용을 정적 사이트로 동기화합니다. 검색 인덱스와 필터 UI를 통해 source/entity/topic 페이지를 빠르게 탐색할 수 있습니다. 배포 전 build-site가 wiki 파일과 검색 메타데이터를 함께 생성합니다. Quick links index",
+      "headings": [
+        "LLM Wiki",
+        "Highlights",
+        "Quick links",
+        "Workflow"
+      ],
+      "updated": "2026-04-06",
+      "text": "LLM Wiki 이 페이지는 Codex 기반으로 유지되는 마크다운 위키의 퍼블릭 뷰입니다. Highlights 실제 vault/wiki/ 내용을 정적 사이트로 동기화합니다. 검색 인덱스와 필터 UI를 통해 source/entity/topic 페이지를 빠르게 탐색할 수 있습니다. 배포 전 build-site가 wiki 파일과 검색 메타데이터를 함께 생성합니다. Quick links index log Workflow 1. node scripts/llm-wiki.mjs ingest --source ... 로 자료를 수집합니다. 2. node scripts/llm-wiki.mjs repair 로 인덱스/참조를 정리합니다. 3. node scripts/llm-wiki.mjs build-site 로 site/wiki 와 검색 인덱스를 갱신합니다. 4. node scripts/llm-wiki.mjs deploy --prod --yes 로 Vercel에 배포합니다.",
+      "links": [
+        "index",
+        "log"
+      ],
+      "linkCount": 2
+    },
+    {
+      "path": "wiki/answers/2026-04-06-what-are-the-core-layers-and-workflows-of-the-llm-wiki-patte.md",
+      "title": "Answer: What are the core layers and workflows of the llm wiki pattern?",
+      "type": "answer",
+      "summary": "핵심 계층은 raw sources(불변 원문), the wiki(LLM이 유지하는 markdown 지식층), 그리고 schema/AGENTS.md 같은 운영 규칙 문서다.",
+      "headings": [
+        "Answer: What are the core layers and workflows of the llm wiki pattern?",
+        "Summary",
+        "Answer",
+        "Short answer",
+        "Layers",
+        "Workflows",
+        "Key points",
+        "Core concepts",
+        "Contradictions",
+        "Evidence pages",
+        "Suggested follow-ups",
+        "Sources"
+      ],
+      "updated": "2026-04-06",
+      "text": "Answer: What are the core layers and workflows of the llm wiki pattern? Summary 핵심 계층은 raw sources(불변 원문), the wiki(LLM이 유지하는 markdown 지식층), 그리고 schema/AGENTS.md 같은 운영 규칙 문서다. Answer 질문: What are the core layers and workflows of the llm wiki pattern? 이 답변은 5개의 위키 페이지를 바탕으로 생성되었습니다. Short answer 핵심 계층은 raw sources(불변 원문), the wiki(LLM이 유지하는 markdown 지식층), 그리고 schema/AGENTS.md 같은 운영 규칙 문서다. Layers Raw sources: 수정하지 않는 원문 저장소로서 source of truth 역할을 한다. Wiki pages: source를 바탕으로 summary, entity, concept, topic, answer 페이지를 누적 관리한다. Schema / agent rules: ingest, query, lint, linking 규칙을 정의해 일관된 유지보수를 가능하게 한다. Workflows Ingest: 새 source를 읽고 요약/핵심 주장/개념/토픽을 추출해 여러 wiki 페이지를 갱신한다. Query: index와 관련 페이지를 읽어 답변을 만들고, 가치 있는 답은 answer 페이지로 다시 저장한다. Lint: broken link, orphan, coverage 부족, 수상한 entity, underlinked concept를 점검한다. Key points A pattern for building personal knowledge bases using LLMs. This repository is a scaffold for a persistent wiki maintained by an LLM. The current LLM Wiki project is evolving from a scaffold into a deployable public knowledge base. A minimal scaffold for a persistent, LLM-maintained knowledge base. Core concepts persistent-wiki knowledge-base Contradictions No explicit contradictions were recorded in the referenced pages. Evidence pages sources/2026-04-06-karpathy-llm-wiki-gist — A pattern for building personal knowledge bases using LLMs. sources/2026-04-06-llm-wiki-agent-guide — This repository is a scaffold for a persistent wiki maintained by an LLM. sources/2026-04-06-llm-wiki-launch-roadmap — The current LLM Wiki project is evolving from a scaffold into a deployable public knowledge base. sources/2026-04-06-llm-wiki-readme — A minimal scaffold for a persistent, LLM-maintained knowledge base. entities/llm-wiki — Detected heuristically in LLM Wiki Launch Roadmap. Suggested follow-ups Drill deeper into sources/2026-04-06-karpathy-llm-wiki-gist and strengthen linked entity/concept/topic pages. Drill deeper into sources/2026-04-06-llm-wiki-agent-guide and strengthen linked entity/concept/topic pages. Drill deeper into sources/2026-04-06-llm-wiki-launch-roadmap and strengthen linked entity/concept/topic pages. Sources sources/2026-04-06-karpathy-llm-wiki-gist sources/2026-04-06-llm-wiki-agent-guide sources/2026-04-06-llm-wiki-launch-roadmap sources/2026-04-06-llm-wiki-readme entities/llm-wiki",
+      "links": [
+        "sources/2026-04-06-karpathy-llm-wiki-gist",
+        "sources/2026-04-06-llm-wiki-agent-guide",
+        "sources/2026-04-06-llm-wiki-launch-roadmap",
+        "sources/2026-04-06-llm-wiki-readme",
+        "entities/llm-wiki"
+      ],
+      "linkCount": 5
+    },
+    {
+      "path": "wiki/concepts/compounding-artifact.md",
+      "title": "compounding artifact",
+      "type": "concept",
+      "summary": "Concept collected from Karpathy LLM Wiki Gist.",
+      "headings": [
+        "compounding artifact",
+        "Summary",
+        "References",
+        "Related concepts",
+        "Sources"
+      ],
+      "updated": "2026-04-06",
+      "text": "compounding artifact Summary Concept collected from Karpathy LLM Wiki Gist. References None yet. Related concepts None yet. Sources None yet.",
+      "links": [],
+      "linkCount": 0
+    },
+    {
+      "path": "wiki/concepts/cross-references.md",
+      "title": "cross-references",
+      "type": "concept",
+      "summary": "Concept collected from Karpathy LLM Wiki Gist.",
+      "headings": [
+        "cross-references",
+        "Summary",
+        "References",
+        "Related concepts",
+        "Sources"
+      ],
+      "updated": "2026-04-06",
+      "text": "cross-references Summary Concept collected from Karpathy LLM Wiki Gist. References None yet. Related concepts None yet. Sources None yet.",
+      "links": [],
+      "linkCount": 0
+    },
+    {
+      "path": "wiki/concepts/graph-view.md",
+      "title": "graph view",
+      "type": "concept",
+      "summary": "Concept collected from Karpathy LLM Wiki Gist.",
+      "headings": [
+        "graph view",
+        "Summary",
+        "References",
+        "Related concepts",
+        "Sources"
+      ],
+      "updated": "2026-04-06",
+      "text": "graph view Summary Concept collected from Karpathy LLM Wiki Gist. References None yet. Related concepts None yet. Sources None yet.",
+      "links": [],
+      "linkCount": 0
+    },
+    {
+      "path": "wiki/concepts/knowledge-base.md",
+      "title": "knowledge base",
+      "type": "concept",
+      "summary": "Concept collected from Karpathy LLM Wiki Gist.",
+      "headings": [
+        "knowledge base",
+        "Summary",
+        "References",
+        "Related concepts",
+        "Sources"
+      ],
+      "updated": "2026-04-06",
+      "text": "knowledge base Summary Concept collected from Karpathy LLM Wiki Gist. References Discussed in sources/2026-04-06-llm-wiki-launch-roadmap Discussed in sources/2026-04-06-llm-wiki-readme Related concepts None yet. Sources sources/2026-04-06-llm-wiki-launch-roadmap sources/2026-04-06-llm-wiki-readme",
+      "links": [
+        "sources/2026-04-06-llm-wiki-launch-roadmap",
+        "sources/2026-04-06-llm-wiki-readme"
+      ],
+      "linkCount": 2
+    },
+    {
+      "path": "wiki/concepts/knowledge.md",
+      "title": "knowledge",
+      "type": "concept",
+      "summary": "Concept collected from LLM Wiki Launch Roadmap.",
+      "headings": [
+        "knowledge",
+        "Summary",
+        "References",
+        "Related concepts",
+        "Sources"
+      ],
+      "updated": "2026-04-06",
+      "text": "knowledge Summary Concept collected from LLM Wiki Launch Roadmap. References None yet. Related concepts None yet. Sources None yet.",
+      "links": [],
+      "linkCount": 0
+    },
+    {
+      "path": "wiki/concepts/markdown.md",
+      "title": "markdown",
+      "type": "concept",
+      "summary": "Concept collected from LLM Wiki Launch Roadmap.",
+      "headings": [
+        "markdown",
+        "Summary",
+        "References",
+        "Related concepts",
+        "Sources"
+      ],
+      "updated": "2026-04-06",
+      "text": "markdown Summary Concept collected from LLM Wiki Launch Roadmap. References None yet. Related concepts None yet. Sources None yet.",
+      "links": [],
+      "linkCount": 0
+    },
+    {
+      "path": "wiki/concepts/obsidian.md",
+      "title": "obsidian",
+      "type": "concept",
+      "summary": "Concept collected from LLM Wiki Agent Guide.",
+      "headings": [
+        "obsidian",
+        "Summary",
+        "References",
+        "Related concepts",
+        "Sources"
+      ],
+      "updated": "2026-04-06",
+      "text": "obsidian Summary Concept collected from LLM Wiki Agent Guide. References None yet. Related concepts None yet. Sources None yet.",
+      "links": [],
+      "linkCount": 0
+    },
+    {
+      "path": "wiki/concepts/openai.md",
+      "title": "openai",
+      "type": "concept",
+      "summary": "Concept collected from LLM Wiki Agent Guide.",
+      "headings": [
+        "openai",
+        "Summary",
+        "References",
+        "Related concepts",
+        "Sources"
+      ],
+      "updated": "2026-04-06",
+      "text": "openai Summary Concept collected from LLM Wiki Agent Guide. References None yet. Related concepts None yet. Sources None yet.",
+      "links": [],
+      "linkCount": 0
+    },
+    {
+      "path": "wiki/concepts/persistent-wiki.md",
+      "title": "persistent wiki",
+      "type": "concept",
+      "summary": "Concept collected from Karpathy LLM Wiki Gist.",
+      "headings": [
+        "persistent wiki",
+        "Summary",
+        "References",
+        "Related concepts",
+        "Sources"
+      ],
+      "updated": "2026-04-06",
+      "text": "persistent wiki Summary Concept collected from Karpathy LLM Wiki Gist. References Discussed in sources/2026-04-06-karpathy-llm-wiki-gist Discussed in sources/2026-04-06-llm-wiki-agent-guide Related concepts None yet. Sources sources/2026-04-06-karpathy-llm-wiki-gist sources/2026-04-06-llm-wiki-agent-guide",
+      "links": [
+        "sources/2026-04-06-karpathy-llm-wiki-gist",
+        "sources/2026-04-06-llm-wiki-agent-guide"
+      ],
+      "linkCount": 2
+    },
+    {
+      "path": "wiki/concepts/raw-sources.md",
+      "title": "Raw sources",
+      "type": "concept",
+      "summary": "Concept collected from Karpathy LLM Wiki Gist.",
+      "headings": [
+        "Raw sources",
+        "Summary",
+        "References",
+        "Related concepts",
+        "Sources"
+      ],
+      "updated": "2026-04-06",
+      "text": "Raw sources Summary Concept collected from Karpathy LLM Wiki Gist. References None yet. Related concepts None yet. Sources None yet.",
+      "links": [],
+      "linkCount": 0
+    },
+    {
+      "path": "wiki/concepts/source-of-truth.md",
+      "title": "source-of-truth",
+      "type": "concept",
+      "summary": "Concept collected from Karpathy LLM Wiki Gist.",
+      "headings": [
+        "source-of-truth",
+        "Summary",
+        "References",
+        "Related concepts",
+        "Sources"
+      ],
+      "updated": "2026-04-06",
+      "text": "source-of-truth Summary Concept collected from Karpathy LLM Wiki Gist. References None yet. Related concepts None yet. Sources None yet.",
+      "links": [],
+      "linkCount": 0
+    },
+    {
+      "path": "wiki/concepts/synthesis.md",
+      "title": "synthesis",
+      "type": "concept",
+      "summary": "Concept collected from Karpathy LLM Wiki Gist.",
+      "headings": [
+        "synthesis",
+        "Summary",
+        "References",
+        "Related concepts",
+        "Sources"
+      ],
+      "updated": "2026-04-06",
+      "text": "synthesis Summary Concept collected from Karpathy LLM Wiki Gist. References None yet. Related concepts None yet. Sources None yet.",
+      "links": [],
+      "linkCount": 0
+    },
+    {
+      "path": "wiki/concepts/workflow.md",
+      "title": "workflow",
+      "type": "concept",
+      "summary": "Concept collected from LLM Wiki Launch Roadmap.",
+      "headings": [
+        "workflow",
+        "Summary",
+        "References",
+        "Related concepts",
+        "Sources"
+      ],
+      "updated": "2026-04-06",
+      "text": "workflow Summary Concept collected from LLM Wiki Launch Roadmap. References None yet. Related concepts None yet. Sources None yet.",
+      "links": [],
+      "linkCount": 0
+    },
+    {
+      "path": "wiki/entities/append.md",
+      "title": "append",
+      "type": "entity",
+      "summary": "Detected heuristically in LLM Wiki Agent Guide.",
+      "headings": [
+        "append",
+        "Summary",
+        "Mentions",
+        "Sources"
+      ],
+      "updated": "2026-04-06",
+      "text": "append Summary Detected heuristically in LLM Wiki Agent Guide. Mentions None yet. Sources None yet.",
+      "links": [],
+      "linkCount": 0
+    },
+    {
+      "path": "wiki/entities/automate.md",
+      "title": "automate",
+      "type": "entity",
+      "summary": "Detected heuristically in LLM Wiki Launch Roadmap.",
+      "headings": [
+        "automate",
+        "Summary",
+        "Mentions",
+        "Sources"
+      ],
+      "updated": "2026-04-06",
+      "text": "automate Summary Detected heuristically in LLM Wiki Launch Roadmap. Mentions None yet. Sources None yet.",
+      "links": [],
+      "linkCount": 0
+    },
+    {
+      "path": "wiki/entities/chatgpt.md",
+      "title": "ChatGPT",
+      "type": "entity",
+      "summary": "Detected heuristically in Karpathy LLM Wiki Gist.",
+      "headings": [
+        "ChatGPT",
+        "Summary",
+        "Mentions",
+        "Sources"
+      ],
+      "updated": "2026-04-06",
+      "text": "ChatGPT Summary Detected heuristically in Karpathy LLM Wiki Gist. Mentions None yet. Sources None yet.",
+      "links": [],
+      "linkCount": 0
+    },
+    {
+      "path": "wiki/entities/claude-code.md",
+      "title": "Claude Code",
+      "type": "entity",
+      "summary": "Detected heuristically in Karpathy LLM Wiki Gist.",
+      "headings": [
+        "Claude Code",
+        "Summary",
+        "Mentions",
+        "Sources"
+      ],
+      "updated": "2026-04-06",
+      "text": "Claude Code Summary Detected heuristically in Karpathy LLM Wiki Gist. Mentions None yet. Sources None yet.",
+      "links": [],
+      "linkCount": 0
+    },
+    {
+      "path": "wiki/entities/codex-cli.md",
+      "title": "codex-cli",
+      "type": "entity",
+      "summary": "Detected heuristically in LLM Wiki Agent Guide.",
+      "headings": [
+        "codex-cli",
+        "Summary",
+        "Mentions",
+        "Sources"
+      ],
+      "updated": "2026-04-06",
+      "text": "codex-cli Summary Detected heuristically in LLM Wiki Agent Guide. Mentions None yet. Sources None yet.",
+      "links": [],
+      "linkCount": 0
+    },
+    {
+      "path": "wiki/entities/codex.md",
+      "title": "Codex",
+      "type": "entity",
+      "summary": "Detected heuristically in Karpathy LLM Wiki Gist.",
+      "headings": [
+        "Codex",
+        "Summary",
+        "Mentions",
+        "Sources"
+      ],
+      "updated": "2026-04-06",
+      "text": "Codex Summary Detected heuristically in Karpathy LLM Wiki Gist. Mentions None yet. Sources None yet.",
+      "links": [],
+      "linkCount": 0
+    },
+    {
+      "path": "wiki/entities/connect.md",
+      "title": "connect",
+      "type": "entity",
+      "summary": "Detected heuristically in LLM Wiki Launch Roadmap.",
+      "headings": [
+        "connect",
+        "Summary",
+        "Mentions",
+        "Sources"
+      ],
+      "updated": "2026-04-06",
+      "text": "connect Summary Detected heuristically in LLM Wiki Launch Roadmap. Mentions None yet. Sources None yet.",
+      "links": [],
+      "linkCount": 0
+    },
+    {
+      "path": "wiki/entities/if-codex.md",
+      "title": "if-codex",
+      "type": "entity",
+      "summary": "Detected heuristically in LLM Wiki README.",
+      "headings": [
+        "if-codex",
+        "Summary",
+        "Mentions",
+        "Sources"
+      ],
+      "updated": "2026-04-06",
+      "text": "if-codex Summary Detected heuristically in LLM Wiki README. Mentions None yet. Sources None yet.",
+      "links": [],
+      "linkCount": 0
+    },
+    {
+      "path": "wiki/entities/json.md",
+      "title": "json",
+      "type": "entity",
+      "summary": "Detected heuristically in LLM Wiki Launch Roadmap.",
+      "headings": [
+        "json",
+        "Summary",
+        "Mentions",
+        "Sources"
+      ],
+      "updated": "2026-04-06",
+      "text": "json Summary Detected heuristically in LLM Wiki Launch Roadmap. Mentions None yet. Sources None yet.",
+      "links": [],
+      "linkCount": 0
+    },
+    {
+      "path": "wiki/entities/llm-agent.md",
+      "title": "llm-agent",
+      "type": "entity",
+      "summary": "Detected heuristically in Karpathy LLM Wiki Gist.",
+      "headings": [
+        "llm-agent",
+        "Summary",
+        "Mentions",
+        "Sources"
+      ],
+      "updated": "2026-04-06",
+      "text": "llm-agent Summary Detected heuristically in Karpathy LLM Wiki Gist. Mentions None yet. Sources None yet.",
+      "links": [],
+      "linkCount": 0
+    },
+    {
+      "path": "wiki/entities/llm-wiki.md",
+      "title": "llm-wiki",
+      "type": "entity",
+      "summary": "Detected heuristically in LLM Wiki Launch Roadmap.",
+      "headings": [
+        "llm-wiki",
+        "Summary",
+        "Mentions",
+        "Sources"
+      ],
+      "updated": "2026-04-06",
+      "text": "llm-wiki Summary Detected heuristically in LLM Wiki Launch Roadmap. Mentions None yet. Sources None yet.",
+      "links": [],
+      "linkCount": 0
+    },
+    {
+      "path": "wiki/entities/node-cli.md",
+      "title": "node-cli",
+      "type": "entity",
+      "summary": "Detected heuristically in LLM Wiki README.",
+      "headings": [
+        "node-cli",
+        "Summary",
+        "Mentions",
+        "Sources"
+      ],
+      "updated": "2026-04-06",
+      "text": "node-cli Summary Detected heuristically in LLM Wiki README. Mentions None yet. Sources None yet.",
+      "links": [],
+      "linkCount": 0
+    },
+    {
+      "path": "wiki/entities/notebooklm.md",
+      "title": "NotebookLM",
+      "type": "entity",
+      "summary": "Detected heuristically in Karpathy LLM Wiki Gist.",
+      "headings": [
+        "NotebookLM",
+        "Summary",
+        "Mentions",
+        "Sources"
+      ],
+      "updated": "2026-04-06",
+      "text": "NotebookLM Summary Detected heuristically in Karpathy LLM Wiki Gist. Mentions None yet. Sources None yet.",
+      "links": [],
+      "linkCount": 0
+    },
+    {
+      "path": "wiki/entities/obsidian.md",
+      "title": "Obsidian",
+      "type": "entity",
+      "summary": "Detected heuristically in Karpathy LLM Wiki Gist.",
+      "headings": [
+        "Obsidian",
+        "Summary",
+        "Mentions",
+        "Sources"
+      ],
+      "updated": "2026-04-06",
+      "text": "Obsidian Summary Detected heuristically in Karpathy LLM Wiki Gist. Mentions None yet. Sources None yet.",
+      "links": [],
+      "linkCount": 0
+    },
+    {
+      "path": "wiki/entities/openai.md",
+      "title": "OpenAI",
+      "type": "entity",
+      "summary": "Detected heuristically in Karpathy LLM Wiki Gist.",
+      "headings": [
+        "OpenAI",
+        "Summary",
+        "Mentions",
+        "Sources"
+      ],
+      "updated": "2026-04-06",
+      "text": "OpenAI Summary Detected heuristically in Karpathy LLM Wiki Gist. Mentions None yet. Sources None yet.",
+      "links": [],
+      "linkCount": 0
+    },
+    {
+      "path": "wiki/entities/opencode.md",
+      "title": "OpenCode",
+      "type": "entity",
+      "summary": "Detected heuristically in Karpathy LLM Wiki Gist.",
+      "headings": [
+        "OpenCode",
+        "Summary",
+        "Mentions",
+        "Sources"
+      ],
+      "updated": "2026-04-06",
+      "text": "OpenCode Summary Detected heuristically in Karpathy LLM Wiki Gist. Mentions None yet. Sources None yet.",
+      "links": [],
+      "linkCount": 0
+    },
+    {
+      "path": "wiki/entities/optional.md",
+      "title": "optional",
+      "type": "entity",
+      "summary": "Detected heuristically in LLM Wiki README.",
+      "headings": [
+        "optional",
+        "Summary",
+        "Mentions",
+        "Sources"
+      ],
+      "updated": "2026-04-06",
+      "text": "optional Summary Detected heuristically in LLM Wiki README. Mentions None yet. Sources None yet.",
+      "links": [],
+      "linkCount": 0
+    },
+    {
+      "path": "wiki/entities/prefer.md",
+      "title": "prefer",
+      "type": "entity",
+      "summary": "Detected heuristically in LLM Wiki Agent Guide.",
+      "headings": [
+        "prefer",
+        "Summary",
+        "Mentions",
+        "Sources"
+      ],
+      "updated": "2026-04-06",
+      "text": "prefer Summary Detected heuristically in LLM Wiki Agent Guide. Mentions None yet. Sources None yet.",
+      "links": [],
+      "linkCount": 0
+    },
+    {
+      "path": "wiki/entities/primary.md",
+      "title": "primary",
+      "type": "entity",
+      "summary": "Detected heuristically in LLM Wiki Agent Guide.",
+      "headings": [
+        "primary",
+        "Summary",
+        "Mentions",
+        "Sources"
+      ],
+      "updated": "2026-04-06",
+      "text": "primary Summary Detected heuristically in LLM Wiki Agent Guide. Mentions None yet. Sources None yet.",
+      "links": [],
+      "linkCount": 0
+    },
+    {
+      "path": "wiki/entities/rag.md",
+      "title": "RAG",
+      "type": "entity",
+      "summary": "Detected heuristically in Karpathy LLM Wiki Gist.",
+      "headings": [
+        "RAG",
+        "Summary",
+        "Mentions",
+        "Sources"
+      ],
+      "updated": "2026-04-06",
+      "text": "RAG Summary Detected heuristically in Karpathy LLM Wiki Gist. Mentions None yet. Sources None yet.",
+      "links": [],
+      "linkCount": 0
+    },
+    {
+      "path": "wiki/entities/search.md",
+      "title": "search",
+      "type": "entity",
+      "summary": "Detected heuristically in LLM Wiki Launch Roadmap.",
+      "headings": [
+        "search",
+        "Summary",
+        "Mentions",
+        "Sources"
+      ],
+      "updated": "2026-04-06",
+      "text": "search Summary Detected heuristically in LLM Wiki Launch Roadmap. Mentions None yet. Sources None yet.",
+      "links": [],
+      "linkCount": 0
+    },
+    {
+      "path": "wiki/entities/upgrade.md",
+      "title": "upgrade",
+      "type": "entity",
+      "summary": "Detected heuristically in LLM Wiki Launch Roadmap.",
+      "headings": [
+        "upgrade",
+        "Summary",
+        "Mentions",
+        "Sources"
+      ],
+      "updated": "2026-04-06",
+      "text": "upgrade Summary Detected heuristically in LLM Wiki Launch Roadmap. Mentions None yet. Sources None yet.",
+      "links": [],
+      "linkCount": 0
+    },
+    {
+      "path": "wiki/entities/vercel.md",
+      "title": "vercel",
+      "type": "entity",
+      "summary": "Detected heuristically in LLM Wiki Launch Roadmap.",
+      "headings": [
+        "vercel",
+        "Summary",
+        "Mentions",
+        "Sources"
+      ],
+      "updated": "2026-04-06",
+      "text": "vercel Summary Detected heuristically in LLM Wiki Launch Roadmap. Mentions None yet. Sources None yet.",
+      "links": [],
+      "linkCount": 0
+    },
+    {
+      "path": "wiki/index.md",
+      "title": "LLM Wiki Index",
+      "type": "index",
+      "summary": "LLM Wiki Index Sources sources/2026-04-06-karpathy-llm-wiki-gist — A pattern for building personal knowledge bases using LLMs. · 1 entities · 1 concepts · 1 topics sources/2026-04-06-llm-wiki-agent-guide — This repositor",
+      "headings": [
+        "LLM Wiki Index",
+        "Sources",
+        "Entities",
+        "Concepts",
+        "Topics",
+        "Answers"
+      ],
+      "updated": "2026-04-06",
+      "text": "LLM Wiki Index Sources sources/2026-04-06-karpathy-llm-wiki-gist — A pattern for building personal knowledge bases using LLMs. · 1 entities · 1 concepts · 1 topics sources/2026-04-06-llm-wiki-agent-guide — This repository is a scaffold for a persistent wiki maintained by an LLM. · 1 entities · 1 concepts · 1 topics sources/2026-04-06-llm-wiki-launch-roadmap — The current LLM Wiki project is evolving from a scaffold into a deployable public knowledge base. · 1 entities · 1 concepts · 1 topics sources/2026-04-06-llm-wiki-readme — A minimal scaffold for a persistent, LLM-maintained knowledge base. · 1 entities · 1 concepts · 1 topics Entities entities/append — Detected heuristically in LLM Wiki Agent Guide. entities/automate — Detected heuristically in LLM Wiki Launch Roadmap. entities/chatgpt — Detected heuristically in Karpathy LLM Wiki Gist. entities/claude-code — Detected heuristically in Karpathy LLM Wiki Gist. entities/codex — Detected heuristically in Karpathy LLM Wiki Gist. entities/codex-cli — Detected heuristically in LLM Wiki Agent Guide. entities/connect — Detected heuristically in LLM Wiki Launch Roadmap. entities/if-codex — Detected heuristically in LLM Wiki README. entities/json — Detected heuristically in LLM Wiki Launch Roadmap. entities/llm-agent — Detected heuristically in Karpathy LLM Wiki Gist. entities/llm-wiki — Detected heuristically in LLM Wiki Launch Roadmap. entities/node-cli — Detected heuristically in LLM Wiki README. entities/notebooklm — Detected heuristically in Karpathy LLM Wiki Gist. entities/obsidian — Detected heuristically in Karpathy LLM Wiki Gist. entities/openai — Detected heuristically in Karpathy LLM Wiki Gist. entities/opencode — Detected heuristically in Karpathy LLM Wiki Gist. entities/optional — Detected heuristically in LLM Wiki README. entities/prefer — Detected heuristically in LLM Wiki Agent Guide. entities/primary — Detected heuristically in LLM Wiki Agent Guide. entities/rag — Detected heuristically in Karpathy LLM Wiki Gist. entities/search — Detected heuristically in LLM Wiki Launch Roadmap. entities/upgrade — Detected heuristically in LLM Wiki Launch Roadmap. entities/vercel — Detected heuristically in LLM Wiki Launch Roadmap. Concepts concepts/compounding-artifact — Concept collected from Karpathy LLM Wiki Gist. concepts/cross-references — Concept collected from Karpathy LLM Wiki Gist. concepts/graph-view — Concept collected from Karpathy LLM Wiki Gist. concepts/knowledge — Concept collected from LLM Wiki Launch Roadmap. concepts/knowledge-base — Concept collected from Karpathy LLM Wiki Gist. concepts/markdown — Concept collected from LLM Wiki Launch Roadmap. concepts/obsidian — Concept collected from LLM Wiki Agent Guide. concepts/openai — Concept collected from LLM Wiki Agent Guide. concepts/persistent-wiki — Concept collected from Karpathy LLM Wiki Gist. concepts/raw-sources — Concept collected from Karpathy LLM Wiki Gist. concepts/source-of-truth — Concept collected from Karpathy LLM Wiki Gist. concepts/synthesis — Concept collected from Karpathy LLM Wiki Gist. concepts/workflow — Concept collected from LLM Wiki Launch Roadmap. Topics topics/agent — Topic collected from Karpathy LLM Wiki Gist. topics/codex — Topic collected from Karpathy LLM Wiki Gist. topics/index — Topic collected from Karpathy LLM Wiki Gist. topics/knowledge — Topic collected from Karpathy LLM Wiki Gist. topics/markdown — Topic collected from Karpathy LLM Wiki Gist. topics/oauth — Topic collected from LLM Wiki Agent Guide. topics/obsidian — Topic collected from Karpathy LLM Wiki Gist. topics/openai — Topic collected from Karpathy LLM Wiki Gist. topics/query — Topic collected from Karpathy LLM Wiki Gist. topics/workflow — Topic collected from LLM Wiki Launch Roadmap. Answers answers/2026-04-06-what-are-the-core-layers-and-workflows-of-the-llm-wiki-patte — 핵심 계층은 raw sources(불변 원문), the wiki(LLM이 유지하는 markdown 지식층), 그리고 schema/AGENTS.md 같은 운영 규칙 문서다.",
+      "links": [
+        "sources/2026-04-06-karpathy-llm-wiki-gist",
+        "sources/2026-04-06-llm-wiki-agent-guide",
+        "sources/2026-04-06-llm-wiki-launch-roadmap",
+        "sources/2026-04-06-llm-wiki-readme",
+        "entities/append",
+        "entities/automate",
+        "entities/chatgpt",
+        "entities/claude-code",
+        "entities/codex",
+        "entities/codex-cli",
+        "entities/connect",
+        "entities/if-codex",
+        "entities/json",
+        "entities/llm-agent",
+        "entities/llm-wiki",
+        "entities/node-cli",
+        "entities/notebooklm",
+        "entities/obsidian",
+        "entities/openai",
+        "entities/opencode",
+        "entities/optional",
+        "entities/prefer",
+        "entities/primary",
+        "entities/rag",
+        "entities/search",
+        "entities/upgrade",
+        "entities/vercel",
+        "concepts/compounding-artifact",
+        "concepts/cross-references",
+        "concepts/graph-view",
+        "concepts/knowledge",
+        "concepts/knowledge-base",
+        "concepts/markdown",
+        "concepts/obsidian",
+        "concepts/openai",
+        "concepts/persistent-wiki",
+        "concepts/raw-sources",
+        "concepts/source-of-truth",
+        "concepts/synthesis",
+        "concepts/workflow",
+        "topics/agent",
+        "topics/codex",
+        "topics/index",
+        "topics/knowledge",
+        "topics/markdown",
+        "topics/oauth",
+        "topics/obsidian",
+        "topics/openai",
+        "topics/query",
+        "topics/workflow",
+        "answers/2026-04-06-what-are-the-core-layers-and-workflows-of-the-llm-wiki-patte"
+      ],
+      "linkCount": 51
+    },
+    {
+      "path": "wiki/log.md",
+      "title": "LLM Wiki Log",
+      "type": "log",
+      "summary": "LLM Wiki Log [2026-04-06] init | vault scaffold Created the initial wiki scaffold. [2026-04-06] ingest | Karpathy LLM Wiki Gist raw: ../raw/sources/2026-04-06-karpathy-llm-wiki-gist.md wiki: sources/2026-04-06-karpathy-l",
+      "headings": [
+        "LLM Wiki Log",
+        "[2026-04-06] init | vault scaffold",
+        "[2026-04-06] ingest | Karpathy LLM Wiki Gist",
+        "[2026-04-06] ingest | LLM Wiki README",
+        "[2026-04-06] ingest | LLM Wiki Agent Guide",
+        "[2026-04-06] ingest | LLM Wiki Launch Roadmap",
+        "[2026-04-06] repair | vault repaired",
+        "[2026-04-06] query | What are the core layers and workflows of the llm wiki pattern?",
+        "[2026-04-06] query | What are the core layers and workflows of the llm wiki pattern?",
+        "[2026-04-06] ingest | Karpathy LLM Wiki Gist",
+        "[2026-04-06] repair | vault repaired",
+        "[2026-04-06] query | What are the core layers and workflows of the llm wiki pattern?",
+        "[2026-04-06] repair | vault repaired",
+        "[2026-04-06] query | What are the core layers and workflows of the llm wiki pattern?",
+        "[2026-04-06] query | What are the core layers and workflows of the llm wiki pattern?",
+        "[2026-04-06] repair | vault repaired",
+        "[2026-04-06] ingest | Karpathy LLM Wiki Gist",
+        "[2026-04-06] repair | vault repaired",
+        "[2026-04-06] ingest | Karpathy LLM Wiki Gist",
+        "[2026-04-06] repair | vault repaired",
+        "[2026-04-06] repair | vault repaired",
+        "[2026-04-06] repair | vault repaired",
+        "[2026-04-06] repair | vault repaired",
+        "[2026-04-06] query | What are the core layers and workflows of the llm wiki pattern?",
+        "[2026-04-06] repair | vault repaired"
+      ],
+      "updated": "2026-04-06",
+      "text": "LLM Wiki Log [2026-04-06] init | vault scaffold Created the initial wiki scaffold. [2026-04-06] ingest | Karpathy LLM Wiki Gist raw: ../raw/sources/2026-04-06-karpathy-llm-wiki-gist.md wiki: sources/2026-04-06-karpathy-llm-wiki-gist.md backend: heuristic model: gpt-4.1-mini [2026-04-06] ingest | LLM Wiki README raw: ../raw/sources/2026-04-06-llm-wiki-readme.md wiki: sources/2026-04-06-llm-wiki-readme.md backend: heuristic model: gpt-4.1-mini [2026-04-06] ingest | LLM Wiki Agent Guide raw: ../raw/sources/2026-04-06-llm-wiki-agent-guide.md wiki: sources/2026-04-06-llm-wiki-agent-guide.md backend: heuristic model: gpt-4.1-mini [2026-04-06] ingest | LLM Wiki Launch Roadmap raw: ../raw/sources/2026-04-06-llm-wiki-launch-roadmap.md wiki: sources/2026-04-06-llm-wiki-launch-roadmap.md backend: heuristic model: gpt-4.1-mini [2026-04-06] repair | vault repaired sources: 4 entities: 30 concepts: 12 topics: 8 answers: 0 [2026-04-06] query | What are the core layers and workflows of the llm wiki pattern? answer: answers/2026-04-06-what-are-the-core-layers-and-workflows-of-the-llm-wiki-patte.md sources: 0 [2026-04-06] query | What are the core layers and workflows of the llm wiki pattern? answer: answers/2026-04-06-what-are-the-core-layers-and-workflows-of-the-llm-wiki-patte.md sources: 6 [2026-04-06] ingest | Karpathy LLM Wiki Gist raw: ../raw/sources/2026-04-06-karpathy-llm-wiki-gist.md wiki: sources/2026-04-06-karpathy-llm-wiki-gist.md backend: heuristic model: gpt-4.1-mini [2026-04-06] repair | vault repaired sources: 4 entities: 35 concepts: 13 topics: 10 answers: 1 [2026-04-06] query | What are the core layers and workflows of the llm wiki pattern? answer: answers/2026-04-06-what-are-the-core-layers-and-workflows-of-the-llm-wiki-patte.md sources: 6 [2026-04-06] repair | vault repaired sources: 4 entities: 35 concepts: 13 topics: 10 answers: 1 [2026-04-06] query | What are the core layers and workflows of the llm wiki pattern? answer: answers/2026-04-06-what-are-the-core-layers-and-workflows-of-the-llm-wiki-patte.md sources: 5 [2026-04-06] query | What are the core layers and workflows of the llm wiki pattern? answer: answers/2026-04-06-what-are-the-core-layers-and-workflows-of-the-llm-wiki-patte.md sources: 5 [2026-04-06] repair | vault repaired sources: 4 entities: 35 concepts: 13 topics: 10 answers: 1 [2026-04-06] ingest | Karpathy LLM Wiki Gist raw: ../raw/sources/2026-04-06-karpathy-llm-wiki-gist.md wiki: sources/2026-04-06-karpathy-llm-wiki-gist.md backend: heuristic model: gpt-4.1-mini [2026-04-06] repair | vault repaired sources: 4 entities: 23 concepts: 13 topics: 10 answers: 1 [2026-04-06] ingest | Karpathy LLM Wiki Gist raw: ../raw/sources/2026-04-06-karpathy-llm-wiki-gist.md wiki: sources/2026-04-06-karpathy-llm-wiki-gist.md backend: heuristic model: gpt-4.1-mini [2026-04-06] repair | vault repaired sources: 4 entities: 23 concepts: 13 topics: 10 answers: 1 [2026-04-06] repair | vault repaired sources: 4 entities: 23 concepts: 13 topics: 10 answers: 1 [2026-04-06] repair | vault repaired sources: 4 entities: 23 concepts: 13 topics: 10 answers: 1 [2026-04-06] repair | vault repaired sources: 4 entities: 23 concepts: 13 topics: 10 answers: 1 [2026-04-06] query | What are the core layers and workflows of the llm wiki pattern? answer: answers/2026-04-06-what-are-the-core-layers-and-workflows-of-the-llm-wiki-patte.md sources: 5 [2026-04-06] repair | vault repaired sources: 4 entities: 23 concepts: 13 topics: 10 answers: 1",
+      "links": [],
+      "linkCount": 0
+    },
+    {
+      "path": "wiki/sources/2026-04-06-karpathy-llm-wiki-gist.md",
+      "title": "Karpathy LLM Wiki Gist",
+      "type": "source",
+      "summary": "A pattern for building personal knowledge bases using LLMs.",
+      "headings": [
+        "Karpathy LLM Wiki Gist",
+        "Summary",
+        "Key claims",
+        "Entities",
+        "Concepts",
+        "Topics",
+        "Contradictions",
+        "Source extract",
+        "Links"
+      ],
+      "updated": "2026-04-06",
+      "text": "Karpathy LLM Wiki Gist Summary A pattern for building personal knowledge bases using LLMs. Key claims A pattern for building personal knowledge bases using LLMs. Entities entities/openai (entity) — Detected heuristically in Karpathy LLM Wiki Gist. Concepts concepts/persistent-wiki Topics topics/knowledge Contradictions None noted. Source extract Karpathy LLM Wiki Gist Summary A pattern for building personal knowledge bases using LLMs. Key claims A pattern for building personal knowledge bases using LLMs. Entities entities/openai (entity) — Detected heuristically in Karpathy LLM Wiki Gist. Concepts concepts/persistent-wiki concepts/source-of-truth Topics topics/knowledge Contradictions None noted. Source extract Karpathy LLM Wiki Gist Summary A pattern for building personal knowledge bases using LLMs. Key claims A pattern for building personal knowledge bases using LLMs. This is an idea file, it is designed to be copy pasted to your own LLM Agent e.g. OpenAI Codex, Claude Code, OpenCode / Pi, or etc. Its goal is to communicate the high level idea, but your agent will build out the specifics in collaboration with you. Entities entities/openai (entity) — Detected heuristically in Karpathy LLM Wiki Gist. entities/codex (entity) — Detected heuristically in Karpathy LLM Wiki Gist. entities/claude-code (entity) — Detected heuristically in Karpathy LLM Wiki Gist. entities/opencode (entity) — Detected heuristically in Karpathy LLM Wiki Gist. entities/rag (entity) — Detected heuristically in Karpathy LLM Wiki Gist. entities/notebooklm (entity) — Detected heuristically in Karpathy LLM Wiki Gist. entities/chatgpt (entity) — Detected heuristically in Karpathy LLM Wiki Gist. entities/obsidian (entity) — Detected heuristically in Karpathy LLM Wiki Gist. Concepts concepts/persistent-wiki concepts/raw-sources concepts/synthesis concepts/compounding-artifact concepts/cross-references concepts/knowledge-base concepts/graph-view concepts/raw-sources Topics topics/knowledge topics/agent topics/openai topics/codex topics/query topics/markdown topics/index topics/obsidian Contradictions None noted. Source extract LLM Wiki A pattern for building personal knowledge bases using LLMs. This is an idea file, it is designed to be copy pasted to your own LLM Agent (e.g. OpenAI Codex, Claude Code, OpenCode / Pi, or etc.). Its goal is to communicate the high level idea, but your agent will build out the specifics in collaboration with you. The core idea Most people's experience with LLMs and documents looks like RAG: you upload a collection of files, the LLM retrieves relevant chunks at query time, and generates an answer. This works, but the LLM is rediscovering knowledge from scratch on every question. There's no accumulation. Ask a subtle question that requires synthesizing five documents, and the LLM has to find and piece together the relevant fragments every time. Nothing is built up. NotebookLM, ChatGPT file uploads, and most RAG systems work this way. The idea here is different. Instead of just retrieving from raw documents at query time, the LLM **incrementally builds and maintains a persistent wiki** — a structured, interlinked collection of markdown files that sits between you and the raw sources. When you add a new source, the LLM doesn't just index it for later retrieval. It reads it, extracts the key information, and integrates it into the existing wiki — updating entity pages, revising topic summaries, noting where new data contradicts old claims, strengthening or challenging the evolving synthesis. The knowledge is compiled once and then *kept current*, not re-derived on every query. This is the key difference: **the wiki is a persistent, compounding artifact.** The cross-references are already there. The contradictions have already been flagged. The synthesis already reflects everything you've read. The wiki keeps getting richer with every source you add and every question you ask. You never (or rarely) write the wiki yourself — the LLM writes and maintains all of it. You're in charge of sourcing, exploration, and asking the right questions. The LLM does all the grunt work — the summarizing, cross-referencing, filing, and bookkeeping that makes a knowledge base actually useful over time. In practice, I have the LLM agent open on one side and Obsidian open on the other. The LLM makes edits based on our conversation, and I browse the results in real time — following links, checking the graph view, reading the updated pages. Obsidian is the IDE; the LLM is the programmer; the wiki is the codebase. This can apply to a lot of different contexts. A few examples: **Personal**: tracking your own goals, health, psychology, self-improvement — filing journal entries, articles, podcast notes, and building up a structured picture of yourself over time. Links Related pages: Links entity: entities/openai (entity) — Detected heuristically in Karpathy LLM Wiki Gist. concept: concepts/persistent-wiki topic: topics/knowledge Links entity: entities/openai (entity) — Detected heuristically in Karpathy LLM Wiki Gist. concept: concepts/persistent-wiki topic: topics/knowledge",
+      "links": [
+        "entities/openai",
+        "concepts/persistent-wiki",
+        "topics/knowledge"
+      ],
+      "linkCount": 3
+    },
+    {
+      "path": "wiki/sources/2026-04-06-llm-wiki-agent-guide.md",
+      "title": "LLM Wiki Agent Guide",
+      "type": "source",
+      "summary": "This repository is a scaffold for a persistent wiki maintained by an LLM.",
+      "headings": [
+        "LLM Wiki Agent Guide",
+        "Summary",
+        "Key claims",
+        "Entities",
+        "Concepts",
+        "Topics",
+        "Contradictions",
+        "Source extract",
+        "Links"
+      ],
+      "updated": "2026-04-06",
+      "text": "LLM Wiki Agent Guide Summary This repository is a scaffold for a persistent wiki maintained by an LLM. Key claims This repository is a scaffold for a persistent wiki maintained by an LLM. Entities entities/append (entity) — Detected heuristically in LLM Wiki Agent Guide. Concepts concepts/persistent-wiki Topics topics/markdown Contradictions None noted. Source extract LLM Wiki Agent Guide Summary This repository is a scaffold for a persistent wiki maintained by an LLM. Key claims This repository is a scaffold for a persistent wiki maintained by an LLM. Entities entities/append (entity) — Detected heuristically in LLM Wiki Agent Guide. Concepts concepts/persistent-wiki Topics topics/markdown Contradictions None noted. Source extract LLM Wiki Agent Guide Summary This repository is a scaffold for a persistent wiki maintained by an LLM. Key claims This repository is a scaffold for a persistent wiki maintained by an LLM. 1. Treat vault/raw/ as immutable source material. 2. Write generated content only into vault/wiki/. Entities entities/append (entity) — Detected heuristically in LLM Wiki Agent Guide. entities/prefer (entity) — Detected heuristically in LLM Wiki Agent Guide. entities/primary (entity) — Detected heuristically in LLM Wiki Agent Guide. entities/codex-cli (entity) — Detected heuristically in LLM Wiki Agent Guide. Concepts concepts/persistent-wiki concepts/cross-references concepts/markdown concepts/openai concepts/obsidian Topics topics/markdown topics/codex topics/openai topics/oauth topics/obsidian Contradictions None noted. Source extract Agent Guide for LLM Wiki This repository is a scaffold for a persistent wiki maintained by an LLM. Core rules 1. Treat vault/raw/ as immutable source material. 2. Write generated content only into vault/wiki/. 3. Update vault/wiki/index.md when new pages are added. 4. Append every meaningful action to vault/wiki/log.md. 5. Prefer small, interlinked markdown pages over large monolith notes. 6. Primary backend: Codex CLI. Keep OpenAI OAuth as an optional fallback only. 7. Read Codex availability from the local environment; allow LLM_WIKI_CODEX_COMMAND to override the binary path. Links Related pages: Links entity: entities/append (entity) — Detected heuristically in LLM Wiki Agent Guide. concept: concepts/persistent-wiki topic: topics/markdown Links entity: entities/append (entity) — Detected heuristically in LLM Wiki Agent Guide. concept: concepts/persistent-wiki topic: topics/markdown",
+      "links": [
+        "entities/append",
+        "concepts/persistent-wiki",
+        "topics/markdown"
+      ],
+      "linkCount": 3
+    },
+    {
+      "path": "wiki/sources/2026-04-06-llm-wiki-launch-roadmap.md",
+      "title": "LLM Wiki Launch Roadmap",
+      "type": "source",
+      "summary": "The current LLM Wiki project is evolving from a scaffold into a deployable public knowledge base.",
+      "headings": [
+        "LLM Wiki Launch Roadmap",
+        "Summary",
+        "Key claims",
+        "Entities",
+        "Concepts",
+        "Topics",
+        "Contradictions",
+        "Source extract",
+        "Links"
+      ],
+      "updated": "2026-04-06",
+      "text": "LLM Wiki Launch Roadmap Summary The current LLM Wiki project is evolving from a scaffold into a deployable public knowledge base. Key claims The current LLM Wiki project is evolving from a scaffold into a deployable public knowledge base. Entities entities/llm-wiki (entity) — Detected heuristically in LLM Wiki Launch Roadmap. Concepts concepts/knowledge-base Topics topics/knowledge Contradictions None noted. Source extract LLM Wiki Launch Roadmap Summary The current LLM Wiki project is evolving from a scaffold into a deployable public knowledge base. Key claims The current LLM Wiki project is evolving from a scaffold into a deployable public knowledge base. Entities entities/llm-wiki (entity) — Detected heuristically in LLM Wiki Launch Roadmap. Concepts concepts/knowledge-base Topics topics/knowledge Contradictions None noted. Source extract LLM Wiki Launch Roadmap Summary The current LLM Wiki project is evolving from a scaffold into a deployable public knowledge base. Key claims The current LLM Wiki project is evolving from a scaffold into a deployable public knowledge base. - Connect the wiki to a stable production domain. - Fill the wiki with real source, entity, and topic pages rather than placeholder notes. Entities entities/llm-wiki (entity) — Detected heuristically in LLM Wiki Launch Roadmap. entities/connect (entity) — Detected heuristically in LLM Wiki Launch Roadmap. entities/upgrade (entity) — Detected heuristically in LLM Wiki Launch Roadmap. entities/automate (entity) — Detected heuristically in LLM Wiki Launch Roadmap. entities/vercel (entity) — Detected heuristically in LLM Wiki Launch Roadmap. entities/search (entity) — Detected heuristically in LLM Wiki Launch Roadmap. entities/json (entity) — Detected heuristically in LLM Wiki Launch Roadmap. Concepts concepts/knowledge-base concepts/knowledge concepts/markdown concepts/workflow Topics topics/knowledge topics/markdown topics/workflow Contradictions None noted. Source extract LLM Wiki Launch Roadmap The current LLM Wiki project is evolving from a scaffold into a deployable public knowledge base. Goals Connect the wiki to a stable production domain. Fill the wiki with real source, entity, and topic pages rather than placeholder notes. Upgrade the public search UI so users can filter and preview results quickly. Automate static site generation and Vercel deployment. Implementation decisions The public site should be generated directly from vault/wiki so that the viewer always reflects the latest maintained markdown pages. Search should use a prebuilt JSON manifest containing path, title, summary, headings, page type, and full text. Links Related pages: Links entity: entities/llm-wiki (entity) — Detected heuristically in LLM Wiki Launch Roadmap. concept: concepts/knowledge-base topic: topics/knowledge Links entity: entities/llm-wiki (entity) — Detected heuristically in LLM Wiki Launch Roadmap. concept: concepts/knowledge-base topic: topics/knowledge",
+      "links": [
+        "entities/llm-wiki",
+        "concepts/knowledge-base",
+        "topics/knowledge"
+      ],
+      "linkCount": 3
+    },
+    {
+      "path": "wiki/sources/2026-04-06-llm-wiki-readme.md",
+      "title": "LLM Wiki README",
+      "type": "source",
+      "summary": "A minimal scaffold for a persistent, LLM-maintained knowledge base.",
+      "headings": [
+        "LLM Wiki README",
+        "Summary",
+        "Key claims",
+        "Entities",
+        "Concepts",
+        "Topics",
+        "Contradictions",
+        "Source extract",
+        "Links"
+      ],
+      "updated": "2026-04-06",
+      "text": "LLM Wiki README Summary A minimal scaffold for a persistent, LLM-maintained knowledge base. Key claims A minimal scaffold for a persistent, LLM-maintained knowledge base. Entities entities/codex-cli (entity) — Detected heuristically in LLM Wiki README. Concepts concepts/knowledge-base Topics topics/knowledge Contradictions None noted. Source extract LLM Wiki README Summary A minimal scaffold for a persistent, LLM-maintained knowledge base. Key claims A minimal scaffold for a persistent, LLM-maintained knowledge base. Entities entities/codex-cli (entity) — Detected heuristically in LLM Wiki README. Concepts concepts/knowledge-base Topics topics/knowledge Contradictions None noted. Source extract LLM Wiki README Summary A minimal scaffold for a persistent, LLM-maintained knowledge base. Key claims A minimal scaffold for a persistent, LLM-maintained knowledge base. This project now prefers the local **Codex CLI** for analysis and wiki maintenance. Set a custom Codex binary if needed: Entities entities/codex-cli (entity) — Detected heuristically in LLM Wiki README. entities/codex (entity) — Detected heuristically in LLM Wiki README. entities/if-codex (entity) — Detected heuristically in LLM Wiki README. entities/node-cli (entity) — Detected heuristically in LLM Wiki README. entities/optional (entity) — Detected heuristically in LLM Wiki README. Concepts concepts/knowledge-base concepts/raw-sources concepts/knowledge concepts/openai Topics topics/knowledge topics/codex topics/openai topics/oauth Contradictions None noted. Source extract LLM Wiki A minimal scaffold for a persistent, LLM-maintained knowledge base. Primary backend: Codex CLI This project now prefers the local **Codex CLI** for analysis and wiki maintenance. Set a custom Codex binary if needed: If Codex is installed normally, no extra configuration is needed. Optional fallback: OpenAI OAuth Links Related pages: Links entity: entities/codex-cli (entity) — Detected heuristically in LLM Wiki README. concept: concepts/knowledge-base topic: topics/knowledge Links entity: entities/codex-cli (entity) — Detected heuristically in LLM Wiki README. concept: concepts/knowledge-base topic: topics/knowledge",
+      "links": [
+        "entities/codex-cli",
+        "concepts/knowledge-base",
+        "topics/knowledge"
+      ],
+      "linkCount": 3
+    },
+    {
+      "path": "wiki/topics/agent.md",
+      "title": "agent",
+      "type": "topic",
+      "summary": "Topic collected from Karpathy LLM Wiki Gist.",
+      "headings": [
+        "agent",
+        "Summary",
+        "References",
+        "Sources"
+      ],
+      "updated": "2026-04-06",
+      "text": "agent Summary Topic collected from Karpathy LLM Wiki Gist. References None yet. Sources None yet.",
+      "links": [],
+      "linkCount": 0
+    },
+    {
+      "path": "wiki/topics/codex.md",
+      "title": "codex",
+      "type": "topic",
+      "summary": "Topic collected from Karpathy LLM Wiki Gist.",
+      "headings": [
+        "codex",
+        "Summary",
+        "References",
+        "Sources"
+      ],
+      "updated": "2026-04-06",
+      "text": "codex Summary Topic collected from Karpathy LLM Wiki Gist. References None yet. Sources None yet.",
+      "links": [],
+      "linkCount": 0
+    },
+    {
+      "path": "wiki/topics/index.md",
+      "title": "index",
+      "type": "topic",
+      "summary": "Topic collected from Karpathy LLM Wiki Gist.",
+      "headings": [
+        "index",
+        "Summary",
+        "References",
+        "Sources"
+      ],
+      "updated": "2026-04-06",
+      "text": "index Summary Topic collected from Karpathy LLM Wiki Gist. References None yet. Sources None yet.",
+      "links": [],
+      "linkCount": 0
+    },
+    {
+      "path": "wiki/topics/knowledge.md",
+      "title": "knowledge",
+      "type": "topic",
+      "summary": "Topic collected from Karpathy LLM Wiki Gist.",
+      "headings": [
+        "knowledge",
+        "Summary",
+        "References",
+        "Sources"
+      ],
+      "updated": "2026-04-06",
+      "text": "knowledge Summary Topic collected from Karpathy LLM Wiki Gist. References Appears in sources/2026-04-06-karpathy-llm-wiki-gist Appears in sources/2026-04-06-llm-wiki-launch-roadmap Appears in sources/2026-04-06-llm-wiki-readme Sources sources/2026-04-06-karpathy-llm-wiki-gist sources/2026-04-06-llm-wiki-launch-roadmap sources/2026-04-06-llm-wiki-readme",
+      "links": [
+        "sources/2026-04-06-karpathy-llm-wiki-gist",
+        "sources/2026-04-06-llm-wiki-launch-roadmap",
+        "sources/2026-04-06-llm-wiki-readme"
+      ],
+      "linkCount": 3
+    },
+    {
+      "path": "wiki/topics/markdown.md",
+      "title": "markdown",
+      "type": "topic",
+      "summary": "Topic collected from Karpathy LLM Wiki Gist.",
+      "headings": [
+        "markdown",
+        "Summary",
+        "References",
+        "Sources"
+      ],
+      "updated": "2026-04-06",
+      "text": "markdown Summary Topic collected from Karpathy LLM Wiki Gist. References Appears in sources/2026-04-06-llm-wiki-agent-guide Sources sources/2026-04-06-llm-wiki-agent-guide",
+      "links": [
+        "sources/2026-04-06-llm-wiki-agent-guide"
+      ],
+      "linkCount": 1
+    },
+    {
+      "path": "wiki/topics/oauth.md",
+      "title": "oauth",
+      "type": "topic",
+      "summary": "Topic collected from LLM Wiki Agent Guide.",
+      "headings": [
+        "oauth",
+        "Summary",
+        "References",
+        "Sources"
+      ],
+      "updated": "2026-04-06",
+      "text": "oauth Summary Topic collected from LLM Wiki Agent Guide. References None yet. Sources None yet.",
+      "links": [],
+      "linkCount": 0
+    },
+    {
+      "path": "wiki/topics/obsidian.md",
+      "title": "obsidian",
+      "type": "topic",
+      "summary": "Topic collected from Karpathy LLM Wiki Gist.",
+      "headings": [
+        "obsidian",
+        "Summary",
+        "References",
+        "Sources"
+      ],
+      "updated": "2026-04-06",
+      "text": "obsidian Summary Topic collected from Karpathy LLM Wiki Gist. References None yet. Sources None yet.",
+      "links": [],
+      "linkCount": 0
+    },
+    {
+      "path": "wiki/topics/openai.md",
+      "title": "openai",
+      "type": "topic",
+      "summary": "Topic collected from Karpathy LLM Wiki Gist.",
+      "headings": [
+        "openai",
+        "Summary",
+        "References",
+        "Sources"
+      ],
+      "updated": "2026-04-06",
+      "text": "openai Summary Topic collected from Karpathy LLM Wiki Gist. References None yet. Sources None yet.",
+      "links": [],
+      "linkCount": 0
+    },
+    {
+      "path": "wiki/topics/query.md",
+      "title": "query",
+      "type": "topic",
+      "summary": "Topic collected from Karpathy LLM Wiki Gist.",
+      "headings": [
+        "query",
+        "Summary",
+        "References",
+        "Sources"
+      ],
+      "updated": "2026-04-06",
+      "text": "query Summary Topic collected from Karpathy LLM Wiki Gist. References None yet. Sources None yet.",
+      "links": [],
+      "linkCount": 0
+    },
+    {
+      "path": "wiki/topics/workflow.md",
+      "title": "workflow",
+      "type": "topic",
+      "summary": "Topic collected from LLM Wiki Launch Roadmap.",
+      "headings": [
+        "workflow",
+        "Summary",
+        "References",
+        "Sources"
+      ],
+      "updated": "2026-04-06",
+      "text": "workflow Summary Topic collected from LLM Wiki Launch Roadmap. References None yet. Sources None yet.",
+      "links": [],
+      "linkCount": 0
+    }
+  ]
+}

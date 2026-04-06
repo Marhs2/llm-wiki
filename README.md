@@ -28,11 +28,13 @@ node scripts/llm-wiki.mjs auth import --file ./openai-oauth.json
 ## What this project provides
 
 - A vault layout for raw sources and generated wiki pages
-- A small Node CLI to initialize the vault
+- A modular Node CLI split across `scripts/lib/` instead of one monolithic script
 - An ingest flow that copies a source into `vault/raw/sources/` and creates wiki notes
 - Codex-backed summaries when Codex CLI is available
 - Optional OpenAI OAuth fallback
-- Auto-generated entity/topic pages and an index/log
+- Auto-generated entity/concept/topic/answer pages and an index/log
+- Static site build + Vercel deploy commands for the public viewer
+- A small Node test suite for smoke-testing shared helpers
 
 ## Quick start
 
@@ -54,8 +56,11 @@ Useful maintenance commands:
 
 ```bash
 node scripts/llm-wiki.mjs search --query codex
+node scripts/llm-wiki.mjs query --question "What changed?" --write
 node scripts/llm-wiki.mjs lint
 node scripts/llm-wiki.mjs repair --dry-run
+node scripts/llm-wiki.mjs build-site
+npm test
 ```
 
 ## Layout
@@ -71,5 +76,17 @@ vault/
     entities/
     concepts/
     topics/
+    answers/
     sources/
+
+scripts/
+  llm-wiki.mjs      # Thin CLI entrypoint
+  lib/
+    config.mjs
+    utils.mjs
+    markdown.mjs
+    vault.mjs
+    auth.mjs
+    analysis.mjs
+    commands.mjs
 ```

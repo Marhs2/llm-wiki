@@ -8,6 +8,13 @@
     "init": "node scripts/llm-wiki.mjs init",
     "auth": "node scripts/llm-wiki.mjs auth",
     "ingest": "node scripts/llm-wiki.mjs ingest",
+    "query": "node scripts/llm-wiki.mjs query",
+    "search": "node scripts/llm-wiki.mjs search",
+    "lint": "node scripts/llm-wiki.mjs lint",
+    "repair": "node scripts/llm-wiki.mjs repair",
+    "test": "node --test tests/*.test.mjs",
+    "build:site": "node scripts/llm-wiki.mjs build-site",
+    "deploy": "node scripts/llm-wiki.mjs deploy --prod --yes",
     "status": "node scripts/llm-wiki.mjs status"
   }
 }

@@ -1,24 +1,26 @@
 ---
 title: "LLM Wiki"
 type: "about"
+updated: "2026-04-06"
 ---
 # LLM Wiki
 
-This is the public view of the wiki.
+이 페이지는 Codex 기반으로 유지되는 마크다운 위키의 퍼블릭 뷰입니다.
 
-## What it is
+## Highlights
 
-- Persistent markdown knowledge base
-- Codex-backed ingestion and maintenance
-- Search, lint, and repair tools built into the CLI
+- 실제 `vault/wiki/` 내용을 정적 사이트로 동기화합니다.
+- 검색 인덱스와 필터 UI를 통해 source/entity/topic 페이지를 빠르게 탐색할 수 있습니다.
+- 배포 전 `build-site`가 wiki 파일과 검색 메타데이터를 함께 생성합니다.
 
-## Open pages
+## Quick links
 
-- [[wiki/index]]
-- [[wiki/log]]
+- [[index]]
+- [[log]]
 
-## How to use
+## Workflow
 
-- Search the sidebar
-- Open the index or log
-- Add new sources with `scripts/llm-wiki.mjs ingest`
+1. `node scripts/llm-wiki.mjs ingest --source ...` 로 자료를 수집합니다.
+2. `node scripts/llm-wiki.mjs repair` 로 인덱스/참조를 정리합니다.
+3. `node scripts/llm-wiki.mjs build-site` 로 site/wiki 와 검색 인덱스를 갱신합니다.
+4. `node scripts/llm-wiki.mjs deploy --prod --yes` 로 Vercel에 배포합니다.
