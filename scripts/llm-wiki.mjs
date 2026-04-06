@@ -26,6 +26,8 @@ Usage:
   node scripts/llm-wiki.mjs auth import --file TOKEN_JSON
   node scripts/llm-wiki.mjs auth clear
   node scripts/llm-wiki.mjs ingest --source PATH [--title TITLE] [--kind KIND] [--vault PATH] [--model MODEL] [--backend BACKEND]
+  node scripts/llm-wiki.mjs search --query TEXT [--vault PATH] [--limit N]
+  node scripts/llm-wiki.mjs lint [--vault PATH]
   node scripts/llm-wiki.mjs status [--vault PATH]
 `);
 }
@@ -813,6 +815,104 @@ async function countMarkdownFiles(dir) {
   return count;
 }
 
+async function collectMarkdownFiles(dir) {
+  const files = [];
+  const entries = await fs.readdir(dir, { withFileTypes: true });
+  for (const entry of entries) {
+    const full = path.join(dir, entry.name);
+    if (entry.isDirectory()) files.push(...await collectMarkdownFiles(full));
+    else if (entry.isFile() && entry.name.endsWith('.md')) files.push(full);
+  }
+  return files;
+}
+
+function extractWikiLinks(text) {
+  const links = [];
+  const regex = /\[\[([^\]|#]+)(?:#[^\]|]+)?(?:\|[^\]]+)?\]\]/g;
+  for (const match of String(text || '').matchAll(regex)) {
+    links.push(match[1].trim());
+  }
+  return normalizeList(links);
+}
+
+function parseFrontmatterTitle(text) {
+  const match = String(text || '').match(/^---\n[\s\S]*?\ntitle:\s*"?([^"\n]+)"?[\s\S]*?\n---/m);
+  return match ? match[1].trim() : '';
+}
+
+async function searchVault(vault, query, limit = 10) {
+  const files = await collectMarkdownFiles(path.join(vault, 'wiki'));
+  const needle = String(query || '').trim().toLowerCase();
+  const results = [];
+  for (const file of files) {
+    const text = await fs.readFile(file, 'utf8');
+    const rel = path.relative(vault, file).replace(/\\/g, '/');
+    const title = parseFrontmatterTitle(text);
+    if (!needle || rel.toLowerCase().includes(needle) || title.toLowerCase().includes(needle)) {
+      results.push({ file: rel, line: 1, excerpt: title ? `# ${title}` : path.basename(file) });
+    }
+    const lines = text.split(/\r?\n/);
+    lines.forEach((line, index) => {
+      const hay = line.toLowerCase();
+      if (needle && hay.includes(needle)) {
+        results.push({
+          file: rel,
+          line: index + 1,
+          excerpt: line.trim().slice(0, 240),
+        });
+      }
+    });
+  }
+  return results.slice(0, limit);
+}
+
+async function lintVault(vault) {
+  const wikiRoot = path.join(vault, 'wiki');
+  const files = await collectMarkdownFiles(wikiRoot);
+  const pageFiles = files.filter((file) => !/\/index\.md$|\/log\.md$/.test(file));
+  const pagesBySlug = new Map();
+  const inbound = new Map();
+  const brokenLinks = [];
+  const duplicateSlugs = [];
+
+  for (const file of pageFiles) {
+    const slug = path.basename(file, '.md');
+    const category = path.relative(wikiRoot, file).split(path.sep)[0];
+    const key = `${category}:${slug}`;
+    if (pagesBySlug.has(key)) duplicateSlugs.push(key);
+    else pagesBySlug.set(key, file);
+    inbound.set(file, inbound.get(file) || 0);
+  }
+
+  for (const file of files) {
+    const text = await fs.readFile(file, 'utf8');
+    const links = extractWikiLinks(text);
+    for (const link of links) {
+      const target = path.join(wikiRoot, `${link}.md`);
+      if (await exists(target)) {
+        inbound.set(target, (inbound.get(target) || 0) + 1);
+      } else if (link !== 'index' && link !== 'log') {
+        brokenLinks.push({ from: path.relative(vault, file).replace(/\\/g, '/'), link });
+      }
+    }
+  }
+
+  const orphans = [];
+  for (const file of pageFiles) {
+    const inboundCount = inbound.get(file) || 0;
+    if (inboundCount === 0) {
+      orphans.push(path.relative(vault, file).replace(/\\/g, '/'));
+    }
+  }
+
+  return {
+    pages: pageFiles.length,
+    duplicateSlugs,
+    brokenLinks,
+    orphans,
+  };
+}
+
 async function status(vault) {
   const rawDir = path.join(vault, 'raw', 'sources');
   const wikiDir = path.join(vault, 'wiki', 'sources');
@@ -855,6 +955,14 @@ try {
     }
   } else if (command === 'ingest') {
     await ingest(vault, { source: args.source, title: args.title, kind: args.kind, model: args.model, backend: args.backend });
+  } else if (command === 'search') {
+    const limit = Number(args.limit || 10);
+    const results = await searchVault(vault, args.query || '', Number.isFinite(limit) && limit > 0 ? limit : 10);
+    console.log(JSON.stringify({ query: args.query || '', results }, null, 2));
+  } else if (command === 'lint') {
+    const report = await lintVault(vault);
+    console.log(JSON.stringify(report, null, 2));
+    if (report.brokenLinks.length || report.orphans.length || report.duplicateSlugs.length) process.exitCode = 2;
   } else if (command === 'status') {
     await status(vault);
   } else {

@@ -50,6 +50,13 @@ npm run ingest -- --source ./path/to/source.md --backend openai
 npm run ingest -- --source ./path/to/source.md --backend heuristic
 ```
 
+Useful maintenance commands:
+
+```bash
+node scripts/llm-wiki.mjs search --query codex
+node scripts/llm-wiki.mjs lint
+```
+
 ## Layout
 
 ```text

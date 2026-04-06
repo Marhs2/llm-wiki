@@ -38,6 +38,10 @@ Periodically check for:
 - broken links
 - missing cross-references
 
+Use the CLI when helpful:
+- `node scripts/llm-wiki.mjs search --query <term>`
+- `node scripts/llm-wiki.mjs lint`
+
 ## Conventions
 
 - Use Obsidian-style wiki links where helpful: `[[page-name]]`
