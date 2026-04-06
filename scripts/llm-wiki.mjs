@@ -28,6 +28,7 @@ Usage:
   node scripts/llm-wiki.mjs ingest --source PATH [--title TITLE] [--kind KIND] [--vault PATH] [--model MODEL] [--backend BACKEND]
   node scripts/llm-wiki.mjs search --query TEXT [--vault PATH] [--limit N]
   node scripts/llm-wiki.mjs lint [--vault PATH]
+  node scripts/llm-wiki.mjs repair [--vault PATH] [--dry-run]
   node scripts/llm-wiki.mjs status [--vault PATH]
 `);
 }
@@ -840,6 +841,38 @@ function parseFrontmatterTitle(text) {
   return match ? match[1].trim() : '';
 }
 
+function parseFrontmatterValue(text, key) {
+  const pattern = new RegExp(`^---\\n[\\s\\S]*?^${key}:\\s*(.+)$`, 'm');
+  const match = String(text || '').match(pattern);
+  if (!match) return '';
+  return match[1].trim().replace(/^"|"$/g, '');
+}
+
+function parseFrontmatterList(text, key) {
+  const raw = parseFrontmatterValue(text, key);
+  const matches = [...String(raw).matchAll(/\[\[([^\]]+)\]\]/g)].map((m) => m[1].trim());
+  return normalizeList(matches);
+}
+
+function extractSectionLinks(text, heading) {
+  const lines = String(text || '').split(/\r?\n/);
+  const start = lines.findIndex((line) => line.trim() === `## ${heading}`);
+  if (start === -1) return [];
+  const collected = [];
+  for (let i = start + 1; i < lines.length; i += 1) {
+    const line = lines[i].trim();
+    if (line.startsWith('## ')) break;
+    const match = line.match(/\[\[([^\]]+)\]\]/);
+    if (match) collected.push(match[1].trim());
+  }
+  return normalizeList(collected);
+}
+
+function replaceFrontmatter(text, data) {
+  const body = String(text || '').replace(/^---\n[\s\S]*?\n---\n?/, '');
+  return `${frontmatter(data)}${body.startsWith('\n') ? body.slice(1) : body}`;
+}
+
 async function searchVault(vault, query, limit = 10) {
   const files = await collectMarkdownFiles(path.join(vault, 'wiki'));
   const needle = String(query || '').trim().toLowerCase();
@@ -913,6 +946,125 @@ async function lintVault(vault) {
   };
 }
 
+async function repairVault(vault, { dryRun = false } = {}) {
+  await initVault(vault);
+  const wikiRoot = path.join(vault, 'wiki');
+  const files = await collectMarkdownFiles(wikiRoot);
+  const sourceFiles = files.filter((file) => /\/sources\/[^/]+\.md$/.test(file));
+  const entityFiles = files.filter((file) => /\/entities\/[^/]+\.md$/.test(file));
+  const topicFiles = files.filter((file) => /\/topics\/[^/]+\.md$/.test(file));
+
+  const entityRefs = new Map();
+  const topicRefs = new Map();
+  const sourceRows = [];
+
+  for (const file of sourceFiles) {
+    const text = await fs.readFile(file, 'utf8');
+    const title = parseFrontmatterTitle(text) || path.basename(file, '.md');
+    const kind = parseFrontmatterValue(text, 'kind') || 'source';
+    const backend = parseFrontmatterValue(text, 'backend') || 'heuristic';
+    const entities = extractSectionLinks(text, 'Entities').filter((link) => link.startsWith('entities/'));
+    const topics = extractSectionLinks(text, 'Topics').filter((link) => link.startsWith('topics/'));
+    sourceRows.push({ title, kind, backend, file, slug: path.basename(file, '.md') });
+    for (const entityLink of entities) {
+      if (!entityRefs.has(entityLink)) entityRefs.set(entityLink, new Set());
+      entityRefs.get(entityLink).add(path.basename(file, '.md'));
+    }
+    for (const topicLink of topics) {
+      if (!topicRefs.has(topicLink)) topicRefs.set(topicLink, new Set());
+      topicRefs.get(topicLink).add(path.basename(file, '.md'));
+    }
+  }
+
+  const updates = [];
+  const indexLines = [
+    frontmatter({ title: 'LLM Wiki Index', type: 'index', created: isoDate() }),
+    '# LLM Wiki Index',
+    '',
+    '## Sources',
+    ...sourceRows
+      .sort((a, b) => a.slug.localeCompare(b.slug))
+      .map((row) => `- [[sources/${row.slug}]] — ${row.kind} (${row.backend})`),
+    '',
+    '## Entities',
+    ...[...entityRefs.keys()].sort().map((link) => `- [[${link}]]`),
+    '',
+    '## Topics',
+    ...[...topicRefs.keys()].sort().map((link) => `- [[${link}]]`),
+    '',
+  ].join('\n');
+  updates.push({ file: path.join(wikiRoot, 'index.md'), content: indexLines });
+
+  for (const file of entityFiles) {
+    const slug = path.basename(file, '.md');
+    const title = parseFrontmatterTitle(await fs.readFile(file, 'utf8')) || slug;
+    const refs = [...(entityRefs.get(`entities/${slug}`) || new Set())].sort().map((sourceSlug) => `[[sources/${sourceSlug}]]`);
+    const text = await fs.readFile(file, 'utf8');
+    const summaryMatch = text.match(/## Summary\n([\s\S]*?)\n## /m);
+    const summary = summaryMatch ? summaryMatch[1].trim() : 'TODO';
+    const mentions = refs.length ? refs.map((ref) => `- Mentioned in ${ref}`).join('\n') : '- None yet.';
+    const content = [
+      frontmatter({ title, type: 'entity', updated: isoDate(), sources: refs }),
+      `# ${title}`,
+      '',
+      '## Summary',
+      summary,
+      '',
+      '## Mentions',
+      mentions,
+      '',
+      '## Sources',
+      ...(refs.length ? refs.map((ref) => `- ${ref}`) : ['- None yet.']),
+      '',
+    ].join('\n');
+    updates.push({ file, content });
+  }
+
+  for (const file of topicFiles) {
+    const slug = path.basename(file, '.md');
+    const title = parseFrontmatterTitle(await fs.readFile(file, 'utf8')) || slug;
+    const refs = [...(topicRefs.get(`topics/${slug}`) || new Set())].sort().map((sourceSlug) => `[[sources/${sourceSlug}]]`);
+    const text = await fs.readFile(file, 'utf8');
+    const summaryMatch = text.match(/## Summary\n([\s\S]*?)\n## /m);
+    const summary = summaryMatch ? summaryMatch[1].trim() : 'TODO';
+    const references = refs.length ? refs.map((ref) => `- Appears in ${ref}`).join('\n') : '- None yet.';
+    const content = [
+      frontmatter({ title, type: 'topic', updated: isoDate(), sources: refs }),
+      `# ${title}`,
+      '',
+      '## Summary',
+      summary,
+      '',
+      '## References',
+      references,
+      '',
+      '## Sources',
+      ...(refs.length ? refs.map((ref) => `- ${ref}`) : ['- None yet.']),
+      '',
+    ].join('\n');
+    updates.push({ file, content });
+  }
+
+  const logPath = path.join(wikiRoot, 'log.md');
+  const logEntry = `## [${isoStamp().slice(0, 10)}] repair | vault repaired\n- sources: ${sourceFiles.length}\n- entities: ${entityFiles.length}\n- topics: ${topicFiles.length}\n`;
+  updates.push({ file: logPath, append: `\n${logEntry}` });
+
+  if (!dryRun) {
+    for (const update of updates) {
+      if (update.append) await fs.appendFile(update.file, update.append, 'utf8');
+      else await fs.writeFile(update.file, update.content, 'utf8');
+    }
+  }
+
+  return {
+    dryRun,
+    sources: sourceFiles.length,
+    entities: entityFiles.length,
+    topics: topicFiles.length,
+    filesPlanned: updates.length,
+  };
+}
+
 async function status(vault) {
   const rawDir = path.join(vault, 'raw', 'sources');
   const wikiDir = path.join(vault, 'wiki', 'sources');
@@ -963,6 +1115,9 @@ try {
     const report = await lintVault(vault);
     console.log(JSON.stringify(report, null, 2));
     if (report.brokenLinks.length || report.orphans.length || report.duplicateSlugs.length) process.exitCode = 2;
+  } else if (command === 'repair') {
+    const report = await repairVault(vault, { dryRun: !!args['dry-run'] });
+    console.log(JSON.stringify(report, null, 2));
   } else if (command === 'status') {
     await status(vault);
   } else {

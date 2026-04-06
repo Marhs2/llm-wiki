@@ -55,6 +55,7 @@ Useful maintenance commands:
 ```bash
 node scripts/llm-wiki.mjs search --query codex
 node scripts/llm-wiki.mjs lint
+node scripts/llm-wiki.mjs repair --dry-run
 ```
 
 ## Layout

@@ -41,6 +41,7 @@ Periodically check for:
 Use the CLI when helpful:
 - `node scripts/llm-wiki.mjs search --query <term>`
 - `node scripts/llm-wiki.mjs lint`
+- `node scripts/llm-wiki.mjs repair --dry-run`
 
 ## Conventions
 
