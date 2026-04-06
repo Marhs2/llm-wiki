@@ -9,7 +9,8 @@ This repository is a scaffold for a persistent wiki maintained by an LLM.
 3. Update `vault/wiki/index.md` when new pages are added.
 4. Append every meaningful action to `vault/wiki/log.md`.
 5. Prefer small, interlinked markdown pages over large monolith notes.
-6. Prefer OpenAI OAuth bearer tokens over API keys; read them from `OPENAI_OAUTH_TOKEN`, `~/.config/llm-wiki/openai-oauth.json`, or the `auth login` PKCE flow.
+6. Primary backend: Codex CLI. Keep OpenAI OAuth as an optional fallback only.
+7. Read Codex availability from the local environment; allow `LLM_WIKI_CODEX_COMMAND` to override the binary path.
 
 ## Ingest workflow
 

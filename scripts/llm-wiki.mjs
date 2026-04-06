@@ -1,21 +1,18 @@
 #!/usr/bin/env node
 import fs from 'node:fs/promises';
-import http from 'node:http';
 import os from 'node:os';
 import path from 'node:path';
 import crypto from 'node:crypto';
+import http from 'node:http';
+import { spawnSync } from 'node:child_process';
 import { URL } from 'node:url';
 
 const DEFAULT_VAULT = path.resolve('vault');
 const DEFAULT_MODEL = process.env.OPENAI_MODEL || 'gpt-4.1-mini';
-const DEFAULT_REDIRECT_URI = process.env.OPENAI_OAUTH_REDIRECT_URI || 'http://127.0.0.1:43112/callback';
-const DEFAULT_AUTH_URL = process.env.OPENAI_OAUTH_AUTHORIZATION_URL || 'https://auth.openai.com/oauth/authorize';
-const DEFAULT_TOKEN_URL = process.env.OPENAI_OAUTH_TOKEN_URL || 'https://auth.openai.com/oauth/token';
-const DEFAULT_CLIENT_ID = process.env.OPENAI_OAUTH_CLIENT_ID || '';
-const DEFAULT_SCOPE = process.env.OPENAI_OAUTH_SCOPE || 'openid offline_access profile email';
-const DEFAULT_AUDIENCE = process.env.OPENAI_OAUTH_AUDIENCE || '';
 const OPENAI_API_URL = process.env.OPENAI_API_URL || 'https://api.openai.com/v1/responses';
 const OAUTH_TOKEN_FILE = path.join(os.homedir(), '.config', 'llm-wiki', 'openai-oauth.json');
+const CODEX_COMMAND = process.env.LLM_WIKI_CODEX_COMMAND || 'codex';
+const REPO_ROOT = path.resolve('.');
 
 function usage() {
   console.log(`
@@ -28,7 +25,7 @@ Usage:
   node scripts/llm-wiki.mjs auth set-token --token TOKEN
   node scripts/llm-wiki.mjs auth import --file TOKEN_JSON
   node scripts/llm-wiki.mjs auth clear
-  node scripts/llm-wiki.mjs ingest --source PATH [--title TITLE] [--kind KIND] [--vault PATH] [--model MODEL]
+  node scripts/llm-wiki.mjs ingest --source PATH [--title TITLE] [--kind KIND] [--vault PATH] [--model MODEL] [--backend BACKEND]
   node scripts/llm-wiki.mjs status [--vault PATH]
 `);
 }
@@ -140,6 +137,33 @@ function buildLogPage() {
   return `${frontmatter({ title: 'LLM Wiki Log', type: 'log', created: isoDate() })}# LLM Wiki Log\n\n## [${isoDate()}] init | vault created\n- Created vault scaffold\n`;
 }
 
+function buildCodeXSchema() {
+  return {
+    type: 'object',
+    additionalProperties: false,
+    required: ['summary', 'key_claims', 'entities', 'topics', 'contradictions'],
+    properties: {
+      summary: { type: 'string' },
+      key_claims: { type: 'array', items: { type: 'string' } },
+      entities: {
+        type: 'array',
+        items: {
+          type: 'object',
+          additionalProperties: false,
+          required: ['name', 'type', 'note'],
+          properties: {
+            name: { type: 'string' },
+            type: { type: 'string' },
+            note: { type: 'string' },
+          },
+        },
+      },
+      topics: { type: 'array', items: { type: 'string' } },
+      contradictions: { type: 'array', items: { type: 'string' } },
+    },
+  };
+}
+
 async function initVault(vault) {
   const dirs = [
     vault,
@@ -211,7 +235,7 @@ async function insertUnderHeading(filePath, heading, linesToAdd) {
 }
 
 function sanitizeJson(text) {
-  const trimmed = text.trim();
+  const trimmed = String(text || '').trim();
   const fenced = trimmed.match(/```(?:json)?\s*([\s\S]*?)```/i);
   if (fenced) return fenced[1].trim();
   const first = trimmed.indexOf('{');
@@ -248,7 +272,7 @@ function heuristicAnalysis(title, sourceText) {
     });
   const topicSeeds = [...new Set([
     ...title.toLowerCase().split(/\s+/),
-    ...(plain.toLowerCase().match(/\b(?:wiki|llm|openai|obsidian|research|product|design|tool|model|api|workflow|knowledge|note|agent|markdown|oauth)\b/g) || []),
+    ...(plain.toLowerCase().match(/\b(?:wiki|llm|openai|obsidian|research|product|design|tool|model|api|workflow|knowledge|note|agent|markdown|oauth|codex)\b/g) || []),
   ])]
     .map((s) => String(s).trim())
     .filter((s) => {
@@ -256,11 +280,37 @@ function heuristicAnalysis(title, sourceText) {
       return lower && lower.length > 3 && !stopTopicWords.has(lower) && !titleWords.has(lower);
     });
   return {
-    summary: sent[0] || `Source ingested for ${title}. Manual or authenticated OpenAI analysis is unavailable, so this is a placeholder summary.`,
+    summary: sent[0] || `Source ingested for ${title}. No model backend was available, so this is a placeholder summary.`,
     key_claims: contentLines.slice(0, 3),
     entities: properNouns.slice(0, 8).map((name) => ({ name, type: 'entity', note: `Detected heuristically in ${title}.` })),
     topics: topicSeeds.slice(0, 6),
     contradictions: [],
+  };
+}
+
+function normalizeAnalysis(raw, title) {
+  const data = raw && typeof raw === 'object' ? raw : {};
+  const entities = Array.isArray(data.entities)
+    ? data.entities
+        .map((entry) => {
+          if (typeof entry === 'string') return { name: entry, type: 'entity', note: `Mentioned in ${title}.` };
+          if (!entry || typeof entry !== 'object') return null;
+          const name = String(entry.name || '').trim();
+          if (!name) return null;
+          return {
+            name,
+            type: String(entry.type || 'entity').trim() || 'entity',
+            note: String(entry.note || `Mentioned in ${title}.`).trim(),
+          };
+        })
+        .filter(Boolean)
+    : [];
+  return {
+    summary: String(data.summary || '').trim(),
+    key_claims: normalizeList(data.key_claims),
+    entities,
+    topics: normalizeList(data.topics),
+    contradictions: normalizeList(data.contradictions),
   };
 }
 
@@ -288,7 +338,7 @@ async function clearOAuthRecord() {
   if (await exists(OAUTH_TOKEN_FILE)) await fs.unlink(OAUTH_TOKEN_FILE);
 }
 
-async function refreshOAuthRecord(record, tokenUrl = DEFAULT_TOKEN_URL, clientId = DEFAULT_CLIENT_ID) {
+async function refreshOAuthRecord(record, tokenUrl = 'https://auth.openai.com/oauth/token', clientId = '') {
   if (!record?.refresh_token) return record;
   const body = new URLSearchParams({
     grant_type: 'refresh_token',
@@ -316,7 +366,7 @@ async function refreshOAuthRecord(record, tokenUrl = DEFAULT_TOKEN_URL, clientId
   return updated;
 }
 
-async function getActiveOAuthRecord({ tokenUrl = DEFAULT_TOKEN_URL, clientId = DEFAULT_CLIENT_ID } = {}) {
+async function getActiveOAuthRecord({ tokenUrl = 'https://auth.openai.com/oauth/token', clientId = '' } = {}) {
   const record = await readOAuthRecord();
   if (!record) return null;
   if (record.expires_at && new Date(record.expires_at).getTime() < Date.now() - 30_000 && record.refresh_token) {
@@ -355,15 +405,15 @@ async function authImport(filePath) {
 }
 
 async function authLogin({ clientId, authorizeUrl, tokenUrl, redirectUri, scope, audience, port }) {
-  const resolvedClientId = clientId || DEFAULT_CLIENT_ID;
+  const resolvedClientId = clientId || process.env.OPENAI_OAUTH_CLIENT_ID || '';
   if (!resolvedClientId) {
     throw new Error('Missing client ID. Pass --client-id or set OPENAI_OAUTH_CLIENT_ID.');
   }
-  const resolvedAuthorizeUrl = authorizeUrl || DEFAULT_AUTH_URL;
-  const resolvedTokenUrl = tokenUrl || DEFAULT_TOKEN_URL;
-  const resolvedRedirectUri = redirectUri || DEFAULT_REDIRECT_URI;
-  const resolvedScope = scope || DEFAULT_SCOPE;
-  const resolvedAudience = audience || DEFAULT_AUDIENCE;
+  const resolvedAuthorizeUrl = authorizeUrl || 'https://auth.openai.com/oauth/authorize';
+  const resolvedTokenUrl = tokenUrl || 'https://auth.openai.com/oauth/token';
+  const resolvedRedirectUri = redirectUri || 'http://127.0.0.1:43112/callback';
+  const resolvedScope = scope || 'openid offline_access profile email';
+  const resolvedAudience = audience || '';
   const state = randomBase64Url(18);
   const verifier = randomBase64Url(48);
   const challenge = sha256Base64Url(verifier);
@@ -449,9 +499,81 @@ async function authLogin({ clientId, authorizeUrl, tokenUrl, redirectUri, scope,
   return result;
 }
 
-async function callOpenAI({ model, title, sourceText }) {
+async function commandAvailable(command) {
+  if (!command) return false;
+  if (command.includes(path.sep)) return exists(command);
+  const probe = spawnSync(command, ['--version'], { encoding: 'utf8', stdio: 'ignore' });
+  return probe.status === 0 || probe.status === 1;
+}
+
+async function runCodexAnalysis({ title, sourceText, model }) {
+  if (!(await commandAvailable(CODEX_COMMAND))) {
+    return { analysis: null, warning: `Codex command not found: ${CODEX_COMMAND}` };
+  }
+
+  const tempDir = await fs.mkdtemp(path.join(os.tmpdir(), 'llm-wiki-codex-'));
+  const schemaPath = path.join(tempDir, 'output-schema.json');
+  const outputPath = path.join(tempDir, 'last-message.txt');
+  await writeJson(schemaPath, buildCodeXSchema());
+
+  const prompt = `You are maintaining a persistent markdown wiki.
+
+Return ONLY JSON matching the provided output schema. No markdown fences, no commentary.
+
+Title: ${title}
+Model hint: ${model || DEFAULT_MODEL}
+
+Source:
+${sourceText}`;
+
+  try {
+    const result = spawnSync(
+      CODEX_COMMAND,
+      [
+        'exec',
+        '--sandbox', 'read-only',
+        '--ephemeral',
+        '--output-schema', schemaPath,
+        '--output-last-message', outputPath,
+        '-',
+      ],
+      {
+        cwd: REPO_ROOT,
+        input: prompt,
+        encoding: 'utf8',
+        maxBuffer: 20 * 1024 * 1024,
+      },
+    );
+
+    if (result.error) {
+      throw result.error;
+    }
+    if (result.status !== 0) {
+      const stderr = String(result.stderr || '').trim();
+      throw new Error(stderr || `Codex exited with status ${result.status}`);
+    }
+
+    const candidates = [];
+    try {
+      candidates.push(await fs.readFile(outputPath, 'utf8'));
+    } catch {}
+    if (result.stdout) candidates.push(result.stdout);
+    if (result.stderr) candidates.push(result.stderr);
+
+    for (const text of candidates) {
+      const parsed = safeJsonParse(text);
+      if (parsed) return { analysis: normalizeAnalysis(parsed, title), warning: null };
+    }
+
+    return { analysis: null, warning: 'Codex completed but no parseable JSON output was found.' };
+  } finally {
+    await fs.rm(tempDir, { recursive: true, force: true });
+  }
+}
+
+async function runOpenAIAnalysis({ title, sourceText, model }) {
   const token = await getActiveOAuthRecord();
-  if (!token?.access_token) return null;
+  if (!token?.access_token) return { analysis: null, warning: 'No OpenAI OAuth token available.' };
 
   const prompt = `You are maintaining a persistent markdown wiki.
 
@@ -481,29 +603,61 @@ ${sourceText}`;
       Authorization: `Bearer ${token.access_token}`,
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ model, input: prompt }),
+    body: JSON.stringify({ model: model || DEFAULT_MODEL, input: prompt }),
   });
 
   if (!response.ok) {
     const text = await response.text().catch(() => '');
-    throw new Error(`OpenAI request failed (${response.status}): ${text}`);
+    return { analysis: null, warning: `OpenAI request failed (${response.status}): ${text}` };
   }
 
   const data = await response.json();
   const parsedFromOutputText = typeof data.output_text === 'string' ? safeJsonParse(data.output_text) : null;
-  if (parsedFromOutputText) return parsedFromOutputText;
+  if (parsedFromOutputText) return { analysis: normalizeAnalysis(parsedFromOutputText, title), warning: null };
 
   const outputs = Array.isArray(data.output) ? data.output : [];
   for (const item of outputs) {
     for (const part of item?.content || []) {
       if (typeof part?.text === 'string') {
         const tryParsed = safeJsonParse(part.text);
-        if (tryParsed) return tryParsed;
+        if (tryParsed) return { analysis: normalizeAnalysis(tryParsed, title), warning: null };
       }
     }
   }
 
-  return null;
+  return { analysis: null, warning: 'OpenAI response did not contain parseable JSON.' };
+}
+
+function chooseBackend(preferred, { codexAvailable, openaiAvailable }) {
+  const mode = (preferred || 'auto').toLowerCase();
+  if (mode === 'codex') return 'codex';
+  if (mode === 'openai') return 'openai';
+  if (mode === 'heuristic') return 'heuristic';
+  if (codexAvailable) return 'codex';
+  if (openaiAvailable) return 'openai';
+  return 'heuristic';
+}
+
+async function analyzeSource({ title, sourceText, backend, model }) {
+  const codexAvailable = await commandAvailable(CODEX_COMMAND);
+  const openaiAvailable = !!(await readOAuthRecord());
+  const resolvedBackend = chooseBackend(backend, { codexAvailable, openaiAvailable });
+
+  if (resolvedBackend === 'codex') {
+    const result = await runCodexAnalysis({ title, sourceText, model });
+    if (result.analysis) return { backend: 'codex', analysis: result.analysis, warning: result.warning };
+    const heuristic = heuristicAnalysis(title, sourceText);
+    return { backend: 'heuristic', analysis: heuristic, warning: result.warning || 'Codex analysis unavailable; used heuristic fallback.' };
+  }
+
+  if (resolvedBackend === 'openai') {
+    const result = await runOpenAIAnalysis({ title, sourceText, model });
+    if (result.analysis) return { backend: 'openai', analysis: result.analysis, warning: result.warning };
+    const heuristic = heuristicAnalysis(title, sourceText);
+    return { backend: 'heuristic', analysis: heuristic, warning: result.warning || 'OpenAI analysis unavailable; used heuristic fallback.' };
+  }
+
+  return { backend: 'heuristic', analysis: heuristicAnalysis(title, sourceText), warning: null };
 }
 
 async function upsertReferencePage({ filePath, title, type, sourceLinks, summary, bullets, kindLabel }) {
@@ -525,7 +679,7 @@ async function upsertReferencePage({ filePath, title, type, sourceLinks, summary
   await fs.writeFile(filePath, lines.join('\n'), 'utf8');
 }
 
-async function ingest(vault, { source, title, kind = 'source', model }) {
+async function ingest(vault, { source, title, kind = 'source', model, backend }) {
   if (!source) throw new Error('--source is required');
   const sourcePath = path.resolve(source);
   const sourceText = await fs.readFile(sourcePath, 'utf8');
@@ -539,19 +693,17 @@ async function ingest(vault, { source, title, kind = 'source', model }) {
   await initVault(vault);
   await fs.copyFile(sourcePath, rawDest);
 
-  let analysis;
-  let openAiWarning = null;
-  try {
-    analysis = await callOpenAI({ model: model || DEFAULT_MODEL, title: derivedTitle, sourceText });
-  } catch (error) {
-    openAiWarning = error instanceof Error ? error.message : String(error);
-  }
-  if (!analysis) analysis = heuristicAnalysis(derivedTitle, sourceText);
-  const summary = typeof analysis.summary === 'string' ? analysis.summary.trim() : '';
-  const keyClaims = normalizeList(Array.isArray(analysis.key_claims) ? analysis.key_claims : []);
+  const { backend: analysisBackend, analysis, warning } = await analyzeSource({
+    title: derivedTitle,
+    sourceText,
+    backend,
+    model,
+  });
+  const summary = analysis.summary || `Source ingested for ${derivedTitle}.`;
+  const keyClaims = normalizeList(analysis.key_claims);
   const entities = Array.isArray(analysis.entities) ? analysis.entities : [];
-  const topics = normalizeList(Array.isArray(analysis.topics) ? analysis.topics : []);
-  const contradictions = normalizeList(Array.isArray(analysis.contradictions) ? analysis.contradictions : []);
+  const topics = normalizeList(analysis.topics);
+  const contradictions = normalizeList(analysis.contradictions);
 
   const sourcePage = [
     frontmatter({
@@ -560,12 +712,13 @@ async function ingest(vault, { source, title, kind = 'source', model }) {
       kind,
       created: stamp,
       model: model || DEFAULT_MODEL,
+      backend: analysisBackend,
       source: sourceLinkFromPath(rawDest, wikiDest),
     }),
     `# ${derivedTitle}`,
     '',
     '## Summary',
-    summary || 'TODO: replace this placeholder with an LLM-generated synthesis.',
+    summary || 'TODO: replace this placeholder with a generated synthesis.',
     '',
     '## Key claims',
     ...(keyClaims.length ? keyClaims.map((line) => `- ${line}`) : ['- None extracted.']),
@@ -592,7 +745,7 @@ async function ingest(vault, { source, title, kind = 'source', model }) {
   const sourceWikiLink = `[[sources/${stamp}-${slug}]]`;
   const indexPath = path.join(vault, 'wiki', 'index.md');
   const logPath = path.join(vault, 'wiki', 'log.md');
-  await insertUnderHeading(indexPath, 'Sources', [`- ${sourceWikiLink} — ${kind}`]);
+  await insertUnderHeading(indexPath, 'Sources', [`- ${sourceWikiLink} — ${kind} (${analysisBackend})`]);
 
   for (const entry of entities) {
     const name = typeof entry === 'string' ? entry : entry?.name;
@@ -640,12 +793,13 @@ async function ingest(vault, { source, title, kind = 'source', model }) {
     await insertUnderHeading(indexPath, 'Topics', [`- [[topics/${topicSlug}]]`]);
   }
 
-  const logEntry = `## [${stamp}] ingest | ${derivedTitle}\n- raw: ${path.relative(path.join(vault, 'wiki'), rawDest).replace(/\\/g, '/')}\n- wiki: ${path.relative(path.join(vault, 'wiki'), wikiDest).replace(/\\/g, '/')}\n- model: ${model || DEFAULT_MODEL}\n- auth: ${await getActiveOAuthRecord() ? 'openai-oauth' : 'none'}\n${openAiWarning ? `- openai-warning: ${openAiWarning}\n` : ''}`;
+  const logEntry = `## [${stamp}] ingest | ${derivedTitle}\n- raw: ${path.relative(path.join(vault, 'wiki'), rawDest).replace(/\\/g, '/')}\n- wiki: ${path.relative(path.join(vault, 'wiki'), wikiDest).replace(/\\/g, '/')}\n- backend: ${analysisBackend}\n- model: ${model || DEFAULT_MODEL}\n${warning ? `- warning: ${warning}\n` : ''}`;
   await fs.appendFile(logPath, `\n${logEntry}`, 'utf8');
 
   console.log(`Ingested ${derivedTitle}`);
-  console.log(`  raw : ${rawDest}`);
-  console.log(`  wiki: ${wikiDest}`);
+  console.log(`  backend: ${analysisBackend}`);
+  console.log(`  raw    : ${rawDest}`);
+  console.log(`  wiki   : ${wikiDest}`);
 }
 
 async function countMarkdownFiles(dir) {
@@ -665,10 +819,13 @@ async function status(vault) {
   const rawSources = (await exists(rawDir)) ? await countMarkdownFiles(rawDir) : 0;
   const wikiSources = (await exists(wikiDir)) ? await countMarkdownFiles(wikiDir) : 0;
   const token = await readOAuthRecord();
+  const codexAvailable = await commandAvailable(CODEX_COMMAND);
   console.log(JSON.stringify({
     vault,
     rawSources,
     wikiSources,
+    backendPriority: ['codex', 'openai', 'heuristic'],
+    codex: { command: CODEX_COMMAND, available: codexAvailable },
     auth: token ? { configured: true, source: token.source, expires_at: token.expires_at || null } : { configured: false },
     model: DEFAULT_MODEL,
   }, null, 2));
@@ -697,7 +854,7 @@ try {
       process.exitCode = 1;
     }
   } else if (command === 'ingest') {
-    await ingest(vault, { source: args.source, title: args.title, kind: args.kind, model: args.model });
+    await ingest(vault, { source: args.source, title: args.title, kind: args.kind, model: args.model, backend: args.backend });
   } else if (command === 'status') {
     await status(vault);
   } else {
