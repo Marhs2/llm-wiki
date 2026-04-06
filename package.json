@@ -1,0 +1,13 @@
+{
+  "name": "llm-wiki",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Persistent LLM-maintained wiki scaffold for Obsidian-style knowledge bases.",
+  "scripts": {
+    "init": "node scripts/llm-wiki.mjs init",
+    "auth": "node scripts/llm-wiki.mjs auth",
+    "ingest": "node scripts/llm-wiki.mjs ingest",
+    "status": "node scripts/llm-wiki.mjs status"
+  }
+}
