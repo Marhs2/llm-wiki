@@ -1,18 +1,18 @@
 {
-  "generatedAt": "2026-04-07T05:17:14.932Z",
-  "edgeCount": 213,
+  "generatedAt": "2026-04-07T05:35:50.645Z",
+  "edgeCount": 217,
   "graphSummary": {
-    "pageCount": 63,
-    "connectedPages": 63,
+    "pageCount": 64,
+    "connectedPages": 64,
     "isolatedPages": [],
     "topHubPages": [
       {
         "path": "wiki/index.md",
         "title": "LLM Wiki Index",
         "type": "index",
-        "hubScore": 61,
+        "hubScore": 62,
         "backlinks": 1,
-        "outgoingLinks": 60
+        "outgoingLinks": 61
       },
       {
         "path": "wiki/sources/2026-04-06-llm-wiki-readme.md",
@@ -26,24 +26,24 @@
         "path": "wiki/concepts/persistent-wiki.md",
         "title": "persistent wiki",
         "type": "concept",
-        "hubScore": 23,
-        "backlinks": 12,
+        "hubScore": 24,
+        "backlinks": 13,
         "outgoingLinks": 11
       },
       {
         "path": "wiki/concepts/knowledge-base.md",
         "title": "knowledge base",
         "type": "concept",
-        "hubScore": 21,
-        "backlinks": 12,
+        "hubScore": 22,
+        "backlinks": 13,
         "outgoingLinks": 9
       },
       {
         "path": "wiki/concepts/workflow.md",
         "title": "workflow",
         "type": "concept",
-        "hubScore": 20,
-        "backlinks": 11,
+        "hubScore": 21,
+        "backlinks": 12,
         "outgoingLinks": 9
       },
       {

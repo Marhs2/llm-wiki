@@ -20,5 +20,8 @@
     "serve": "node scripts/llm-wiki.mjs serve",
     "deploy": "node scripts/llm-wiki.mjs deploy --prod --yes",
     "status": "node scripts/llm-wiki.mjs status"
+  },
+  "dependencies": {
+    "firebase": "^12.11.0"
   }
 }

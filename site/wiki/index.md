@@ -57,6 +57,7 @@ created: "2026-04-06"
 - [[concepts/raw-sources]] — Concept collected from LLM Wiki README.
 - [[concepts/source-of-truth]] — Concept collected from Karpathy LLM Wiki Gist.
 - [[concepts/synthesis]] — Concept collected from Karpathy LLM Wiki Gist.
+- [[concepts/api-connection-test]] — Temporary page added to verify API-connected editing and site rebuilds.
 - [[concepts/workflow]] — Concept collected from LLM Wiki Automation Update.
 
 ## Topics

@@ -884,3 +884,7 @@ Warning: no last agent message; wrote empty content to /tmp/llm-wiki-codex-ZRigq
 ## [2026-04-07] update | strengthen underlinked concept pages
 - Updated concept pages with related concept links to improve wiki graph connectivity.
 - Files: concepts/compounding-artifact.md, concepts/cross-references.md, concepts/graph-view.md, concepts/obsidian.md, concepts/source-of-truth.md, concepts/synthesis.md
+
+## [2026-04-07] create | API connection test
+- Added a temporary concept page to verify API-connected editing and site rebuilds.
+- Files: concepts/api-connection-test.md, index.md

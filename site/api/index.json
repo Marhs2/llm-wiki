@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-04-07T05:17:14.932Z",
-  "pageCount": 63,
-  "edgeCount": 213,
+  "generatedAt": "2026-04-07T05:35:50.645Z",
+  "pageCount": 64,
+  "edgeCount": 217,
   "types": {
     "about": 1,
     "answer": 1,
-    "concept": 14,
+    "concept": 15,
     "entity": 27,
     "index": 1,
     "log": 1,
@@ -33,6 +33,17 @@
       "apiPath": "api/pages/answers--2026-04-06-what-are-the-core-layers-and-workflows-of-the-llm-wiki-patte.json",
       "hubScore": 6,
       "outgoingLinks": 5,
+      "incomingLinks": 1
+    },
+    {
+      "path": "wiki/concepts/api-connection-test.md",
+      "title": "API connection test",
+      "type": "concept",
+      "summary": "Temporary page added to verify API-connected editing and site rebuilds.",
+      "updated": "2026-04-07",
+      "apiPath": "api/pages/concepts--api-connection-test.json",
+      "hubScore": 4,
+      "outgoingLinks": 3,
       "incomingLinks": 1
     },
     {
@@ -86,9 +97,9 @@
       "summary": "Concept collected from LLM Wiki README.",
       "updated": "2026-04-06",
       "apiPath": "api/pages/concepts--knowledge-base.json",
-      "hubScore": 21,
+      "hubScore": 22,
       "outgoingLinks": 9,
-      "incomingLinks": 12
+      "incomingLinks": 13
     },
     {
       "path": "wiki/concepts/knowledge.md",
@@ -141,9 +152,9 @@
       "summary": "Concept collected from LLM Wiki Graph Insights Update.",
       "updated": "2026-04-06",
       "apiPath": "api/pages/concepts--persistent-wiki.json",
-      "hubScore": 23,
+      "hubScore": 24,
       "outgoingLinks": 11,
-      "incomingLinks": 12
+      "incomingLinks": 13
     },
     {
       "path": "wiki/concepts/raw-sources.md",
@@ -185,9 +196,9 @@
       "summary": "Concept collected from LLM Wiki Automation Update.",
       "updated": "2026-04-06",
       "apiPath": "api/pages/concepts--workflow.json",
-      "hubScore": 20,
+      "hubScore": 21,
       "outgoingLinks": 9,
-      "incomingLinks": 11
+      "incomingLinks": 12
     },
     {
       "path": "wiki/entities/append.md",
@@ -493,8 +504,8 @@
       "summary": "LLM Wiki Index Sources sources/2026-04-06-karpathy-llm-wiki-gist — A pattern for building personal knowledge bases using LLMs. · 1 entities · 1 concepts · 1 topics sources/2026-04-06-llm-wiki-agent-guide — This repositor",
       "updated": "2026-04-06",
       "apiPath": "api/pages/index.json",
-      "hubScore": 61,
-      "outgoingLinks": 60,
+      "hubScore": 62,
+      "outgoingLinks": 61,
       "incomingLinks": 1
     },
     {

@@ -1,0 +1,27 @@
+{
+  "path": "wiki/concepts/api-connection-test.md",
+  "title": "API connection test",
+  "type": "concept",
+  "summary": "Temporary page added to verify API-connected editing and site rebuilds.",
+  "text": "api connection test Summary Temporary page added to verify API-connected editing and site rebuilds. References concepts/knowledge-base concepts/workflow concepts/persistent-wiki Related concepts concepts/knowledge-base concepts/workflow concepts/persistent-wiki Sources None yet.",
+  "markdown": "---\ntitle: \"API connection test\"\ntype: \"concept\"\nupdated: \"2026-04-07\"\nsources: []\n---\n\n# api connection test\n\n## Summary\nTemporary page added to verify API-connected editing and site rebuilds.\n\n## References\n- [[concepts/knowledge-base]]\n- [[concepts/workflow]]\n- [[concepts/persistent-wiki]]\n\n## Related concepts\n- [[concepts/knowledge-base]]\n- [[concepts/workflow]]\n- [[concepts/persistent-wiki]]\n\n## Sources\n- None yet.\n",
+  "headings": [
+    "api connection test",
+    "Summary",
+    "References",
+    "Related concepts",
+    "Sources"
+  ],
+  "updated": "2026-04-07",
+  "links": [
+    "concepts/knowledge-base",
+    "concepts/workflow",
+    "concepts/persistent-wiki"
+  ],
+  "backlinks": [
+    "wiki/index.md"
+  ],
+  "linkCount": 3,
+  "backlinkCount": 1,
+  "hubScore": 4
+}

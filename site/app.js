@@ -16,6 +16,39 @@ const heroTitle = document.getElementById('hero-title');
 const heroDescription = document.getElementById('hero-description');
 
 const FILTER_ORDER = ['all', 'source', 'entity', 'concept', 'topic', 'answer', 'index', 'log', 'about'];
+const FIREBASE_CONFIG = {
+  apiKey: 'AIzaSyAbsOmNmBzV0yX_0D7dBx-h-es0WrU9_7g',
+  authDomain: 'sinuous-pact-381011.firebaseapp.com',
+  projectId: 'sinuous-pact-381011',
+  storageBucket: 'sinuous-pact-381011.firebasestorage.app',
+  messagingSenderId: '42205729056',
+  appId: '1:42205729056:web:565d8455e6819bc14fc745',
+  measurementId: 'G-HKQZZ5X8FT',
+};
+const FIREBASE_COLLECTION = 'wiki_pages';
+const FIREBASE_SDK = {
+  app: 'https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js',
+  firestore: 'https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js',
+  analytics: 'https://www.gstatic.com/firebasejs/10.12.5/firebase-analytics.js',
+};
+const FIREBASE_FIRST_SNAPSHOT_TIMEOUT_MS = 2000;
+
+const firebaseRuntime = {
+  ready: false,
+  error: null,
+  app: null,
+  db: null,
+  unsubscribe: null,
+  collection: null,
+  doc: null,
+  getDoc: null,
+  onSnapshot: null,
+  orderBy: null,
+  query: null,
+  getAnalytics: null,
+  isSupported: null,
+  hasLiveData: false,
+};
 
 const state = {
   pages: [],
@@ -202,6 +235,133 @@ function normalizePage(page) {
   };
 }
 
+function docIdFromPath(pagePath) {
+  const cleaned = String(pagePath || '').replace(/^\/?/, '').replace(/\.md$/, '');
+  if (!cleaned) return 'about';
+  const normalized = cleaned.replace(/^wiki\//, '');
+  if (normalized === 'index' || normalized === 'log' || normalized === 'about') return normalized;
+  return normalized.replace(/[\/]+/g, '--');
+}
+
+function firebaseEnabled() {
+  return Boolean(FIREBASE_CONFIG.projectId && FIREBASE_CONFIG.apiKey);
+}
+
+async function ensureFirebaseRuntime() {
+  if (firebaseRuntime.ready) return firebaseRuntime;
+  if (firebaseRuntime.error) return null;
+  if (!firebaseEnabled()) return null;
+
+  try {
+    const [{ initializeApp }, firestoreModule, analyticsModule] = await Promise.all([
+      import(FIREBASE_SDK.app),
+      import(FIREBASE_SDK.firestore),
+      import(FIREBASE_SDK.analytics),
+    ]);
+    const app = initializeApp(FIREBASE_CONFIG);
+    firebaseRuntime.app = app;
+    firebaseRuntime.db = firestoreModule.getFirestore(app);
+    firebaseRuntime.collection = firestoreModule.collection;
+    firebaseRuntime.doc = firestoreModule.doc;
+    firebaseRuntime.getDoc = firestoreModule.getDoc;
+    firebaseRuntime.onSnapshot = firestoreModule.onSnapshot;
+    firebaseRuntime.orderBy = firestoreModule.orderBy;
+    firebaseRuntime.query = firestoreModule.query;
+    firebaseRuntime.getAnalytics = analyticsModule.getAnalytics;
+    firebaseRuntime.isSupported = analyticsModule.isSupported;
+    try {
+      if (await analyticsModule.isSupported()) {
+        analyticsModule.getAnalytics(app);
+      }
+    } catch {
+      // Analytics is optional; keep the wiki usable even if analytics is blocked.
+    }
+    firebaseRuntime.ready = true;
+    return firebaseRuntime;
+  } catch (error) {
+    firebaseRuntime.error = error;
+    return null;
+  }
+}
+
+async function loadFirebasePages() {
+  const runtime = await ensureFirebaseRuntime();
+  if (!runtime) return false;
+
+  if (firebaseRuntime.unsubscribe) {
+    firebaseRuntime.unsubscribe();
+    firebaseRuntime.unsubscribe = null;
+  }
+
+  const pagesQuery = runtime.query(runtime.collection(runtime.db, FIREBASE_COLLECTION), runtime.orderBy('path'));
+
+  return new Promise((resolve) => {
+    let firstSnapshot = true;
+    let settled = false;
+    const settle = (value) => {
+      if (settled) return;
+      settled = true;
+      resolve(value);
+    };
+    const timeout = setTimeout(() => {
+      settle(false);
+    }, FIREBASE_FIRST_SNAPSHOT_TIMEOUT_MS);
+
+    firebaseRuntime.unsubscribe = runtime.onSnapshot(
+      pagesQuery,
+      (snapshot) => {
+        const nextPages = snapshot.docs.map((docSnap) => normalizePage({ id: docSnap.id, ...docSnap.data() }));
+        const hasPages = nextPages.length > 0;
+        const shouldAdoptFirebase = hasPages || firebaseRuntime.hasLiveData;
+
+        if (hasPages) {
+          firebaseRuntime.hasLiveData = true;
+        }
+
+        if (shouldAdoptFirebase) {
+          state.pages = nextPages;
+          renderFilters();
+          updateHeroStats();
+          searchState.textContent = 'Showing live Firestore pages.';
+          buildNav(search.value);
+          loadPage(resolveHash());
+        }
+
+        if (firstSnapshot && (hasPages || firebaseRuntime.hasLiveData)) {
+          firstSnapshot = false;
+          clearTimeout(timeout);
+          settle(true);
+        }
+      },
+      (error) => {
+        firebaseRuntime.error = error;
+        if (firebaseRuntime.unsubscribe) {
+          firebaseRuntime.unsubscribe();
+          firebaseRuntime.unsubscribe = null;
+        }
+        clearTimeout(timeout);
+        settle(false);
+      }
+    );
+  });
+}
+
+async function loadApiPages() {
+  const attempts = ['./api/index.json', './data/wiki-index.json'];
+  let response = null;
+  for (const url of attempts) {
+    // eslint-disable-next-line no-await-in-loop
+    response = await fetch(url, { cache: 'no-store' });
+    if (response.ok) break;
+  }
+  if (!response || !response.ok) throw new Error('Could not load wiki index from API or local data');
+  const payload = await response.json();
+  state.pages = (payload.pages || []).map(normalizePage);
+  renderFilters();
+  updateHeroStats();
+  return true;
+}
+
 function sortedFilterTypes() {
   const counts = state.pages.reduce((acc, page) => {
     acc[page.type] = (acc[page.type] || 0) + 1;
@@ -239,7 +399,7 @@ function updateHeroStats() {
   statFiltered.textContent = String(state.filteredPages.length);
   heroTitle.textContent = `${state.filteredPages.length} visible page${state.filteredPages.length === 1 ? '' : 's'}`;
   heroDescription.textContent = state.activeFilter === 'all'
-    ? 'Browse the full synced wiki, then narrow results with text search or page-type filters.'
+    ? (firebaseRuntime.hasLiveData ? 'Browse the live Firestore-backed wiki, then narrow results with text search or page-type filters.' : 'Browse the synced wiki, then narrow results with text search or page-type filters.')
     : `Filtered to ${state.activeFilter} pages. Combine the filter with text search for faster lookup.`;
 }
 
@@ -383,18 +543,18 @@ function renderToc() {
 }
 
 async function loadManifest() {
-  const attempts = ['./api/index.json', './data/wiki-index.json'];
-  let response = null;
-  for (const url of attempts) {
-    // eslint-disable-next-line no-await-in-loop
-    response = await fetch(url, { cache: 'no-store' });
-    if (response.ok) break;
+  try {
+    const firebaseLoaded = await loadFirebasePages();
+    if (firebaseLoaded) {
+      return 'firebase';
+    }
+  } catch (error) {
+    firebaseRuntime.error = error;
+    console.warn('Firebase realtime mode unavailable; falling back to API data.', error);
   }
-  if (!response || !response.ok) throw new Error('Could not load wiki index from API or local data');
-  const payload = await response.json();
-  state.pages = (payload.pages || []).map(normalizePage);
-  renderFilters();
-  updateHeroStats();
+
+  await loadApiPages();
+  return 'api';
 }
 
 function resolveHash() {
@@ -410,6 +570,20 @@ async function loadPage(pagePath) {
   const apiPath = page.apiPath || pageApiPathFromLink(path);
   let markdown = page.markdown || '';
   let hydratedPage = page;
+
+  if (!markdown && firebaseRuntime.hasLiveData && firebaseRuntime.db) {
+    try {
+      const docRef = firebaseRuntime.doc(firebaseRuntime.db, FIREBASE_COLLECTION, docIdFromPath(path));
+      const docSnap = await firebaseRuntime.getDoc(docRef);
+      if (docSnap.exists()) {
+        const payload = docSnap.data();
+        markdown = payload.markdown || payload.text || '';
+        hydratedPage = normalizePage({ ...page, id: docSnap.id, ...payload, markdown, text: payload.text || page.text || '' });
+      }
+    } catch (error) {
+      console.warn(`Failed to load Firebase page ${path}; falling back to API.`, error);
+    }
+  }
 
   if (!markdown) {
     const response = await fetch(apiPath, { cache: 'no-store' });
@@ -455,6 +629,10 @@ window.addEventListener('keydown', (event) => {
     search.focus();
     search.select();
   }
+});
+
+window.addEventListener('beforeunload', () => {
+  if (firebaseRuntime.unsubscribe) firebaseRuntime.unsubscribe();
 });
 
 (async function main() {

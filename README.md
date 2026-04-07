@@ -117,6 +117,12 @@ Current linked Vercel values for this project:
 - `VERCEL_ORG_ID=team_2tA7Ens8fc9xQMEDRDcPFnL7`
 - `VERCEL_PROJECT_ID=prj_vghY14zqws05fJzqZoTJofYXUbZ6`
 
+## Realtime mode
+
+The public viewer now supports a Firestore-backed realtime mode. When the wiki pages are mirrored into a Firestore collection named `wiki_pages`, the site subscribes to live updates and rerenders without a rebuild. If Firestore is unavailable, the viewer falls back to the generated API files in `site/api/`.
+
+The browser app uses the Firebase Web SDK and the project config defined in `site/app.js`. The installed `firebase` package is included for SDK parity and future bundling/sync work.
+
 ## Layout
 
 ```text
