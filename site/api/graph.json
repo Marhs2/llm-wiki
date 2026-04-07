@@ -1,0 +1,91 @@
+{
+  "generatedAt": "2026-04-07T04:55:14.039Z",
+  "edgeCount": 213,
+  "graphSummary": {
+    "pageCount": 63,
+    "connectedPages": 63,
+    "isolatedPages": [],
+    "topHubPages": [
+      {
+        "path": "wiki/index.md",
+        "title": "LLM Wiki Index",
+        "type": "index",
+        "hubScore": 61,
+        "backlinks": 1,
+        "outgoingLinks": 60
+      },
+      {
+        "path": "wiki/sources/2026-04-06-llm-wiki-readme.md",
+        "title": "LLM Wiki README",
+        "type": "source",
+        "hubScore": 42,
+        "backlinks": 18,
+        "outgoingLinks": 24
+      },
+      {
+        "path": "wiki/concepts/persistent-wiki.md",
+        "title": "persistent wiki",
+        "type": "concept",
+        "hubScore": 23,
+        "backlinks": 12,
+        "outgoingLinks": 11
+      },
+      {
+        "path": "wiki/concepts/knowledge-base.md",
+        "title": "knowledge base",
+        "type": "concept",
+        "hubScore": 21,
+        "backlinks": 12,
+        "outgoingLinks": 9
+      },
+      {
+        "path": "wiki/concepts/workflow.md",
+        "title": "workflow",
+        "type": "concept",
+        "hubScore": 20,
+        "backlinks": 11,
+        "outgoingLinks": 9
+      },
+      {
+        "path": "wiki/concepts/ingest.md",
+        "title": "ingest",
+        "type": "concept",
+        "hubScore": 19,
+        "backlinks": 10,
+        "outgoingLinks": 9
+      },
+      {
+        "path": "wiki/concepts/markdown.md",
+        "title": "markdown",
+        "type": "concept",
+        "hubScore": 18,
+        "backlinks": 10,
+        "outgoingLinks": 8
+      },
+      {
+        "path": "wiki/concepts/raw-sources.md",
+        "title": "raw sources",
+        "type": "concept",
+        "hubScore": 18,
+        "backlinks": 10,
+        "outgoingLinks": 8
+      },
+      {
+        "path": "wiki/concepts/knowledge.md",
+        "title": "knowledge",
+        "type": "concept",
+        "hubScore": 17,
+        "backlinks": 9,
+        "outgoingLinks": 8
+      },
+      {
+        "path": "wiki/concepts/openai.md",
+        "title": "openai",
+        "type": "concept",
+        "hubScore": 17,
+        "backlinks": 9,
+        "outgoingLinks": 8
+      }
+    ]
+  }
+}

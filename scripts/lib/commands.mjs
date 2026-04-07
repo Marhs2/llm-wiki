@@ -42,6 +42,8 @@ import {
 import { analyzeSource } from './analysis.mjs';
 import { authImport, authLogin, authSetToken, authStatus, clearOAuthRecord, readOAuthRecord } from './auth.mjs';
 import { buildGraphMetrics, summarizeGraph } from './graph.mjs';
+import { apiPathForPage, buildApiIndexPayload, buildPageApiPayload } from './api.mjs';
+import { startLiveApiServer } from './live-api.mjs';
 
 export function usage() {
   console.log(`
@@ -61,6 +63,7 @@ Usage:
   node scripts/llm-wiki.mjs lint [--vault PATH]
   node scripts/llm-wiki.mjs repair [--vault PATH] [--dry-run]
   node scripts/llm-wiki.mjs build-site [--vault PATH] [--site PATH]
+  node scripts/llm-wiki.mjs serve [--vault PATH] [--host HOST] [--port PORT]
   node scripts/llm-wiki.mjs deploy [--vault PATH] [--site PATH] [--project NAME] [--domain DOMAIN] [--prod] [--yes]
   node scripts/llm-wiki.mjs status [--vault PATH]
 `);
@@ -675,9 +678,14 @@ export async function buildSite(vault, { siteDir = DEFAULT_SITE_DIR } = {}) {
   const wikiRoot = path.join(vault, 'wiki');
   const targetWikiRoot = path.join(siteDir, 'wiki');
   const targetDataRoot = path.join(siteDir, 'data');
+  const targetApiRoot = path.join(siteDir, 'api');
+  const targetApiPagesRoot = path.join(targetApiRoot, 'pages');
   await fs.mkdir(siteDir, { recursive: true });
   await fs.mkdir(targetDataRoot, { recursive: true });
+  await fs.mkdir(targetApiPagesRoot, { recursive: true });
   await fs.rm(targetWikiRoot, { recursive: true, force: true });
+  await fs.rm(targetApiRoot, { recursive: true, force: true });
+  await fs.mkdir(targetApiPagesRoot, { recursive: true });
   await fs.cp(wikiRoot, targetWikiRoot, { recursive: true });
   await fs.writeFile(path.join(targetWikiRoot, 'about.md'), buildAboutPage(), 'utf8');
 
@@ -703,11 +711,57 @@ export async function buildSite(vault, { siteDir = DEFAULT_SITE_DIR } = {}) {
 
   pages.sort((a, b) => a.path.localeCompare(b.path));
   const graph = buildGraphMetrics(pages);
+  const generatedAt = isoStamp();
   const graphSummary = summarizeGraph(graph.pages, { limit: 10 });
   const manifestPath = path.join(targetDataRoot, 'wiki-index.json');
-  await fs.writeFile(manifestPath, `${JSON.stringify({ generatedAt: isoStamp(), pageCount: graph.pages.length, edgeCount: graph.edgeCount, graphSummary, pages: graph.pages }, null, 2)}\n`, 'utf8');
+  await fs.writeFile(manifestPath, `${JSON.stringify({ generatedAt, pageCount: graph.pages.length, edgeCount: graph.edgeCount, graphSummary, pages: graph.pages }, null, 2)}\n`, 'utf8');
 
-  return { siteDir, wikiDir: targetWikiRoot, manifestPath, pageCount: graph.pages.length, edgeCount: graph.edgeCount };
+  const apiIndexPayload = buildApiIndexPayload({ generatedAt, edgeCount: graph.edgeCount, pages: graph.pages });
+  await fs.writeFile(path.join(targetApiRoot, 'index.json'), `${JSON.stringify(apiIndexPayload, null, 2)}\n`, 'utf8');
+  await fs.writeFile(path.join(targetApiRoot, 'graph.json'), `${JSON.stringify({ generatedAt, edgeCount: graph.edgeCount, graphSummary }, null, 2)}\n`, 'utf8');
+  for (const page of graph.pages) {
+    const apiPath = path.join(siteDir, apiPathForPage(page.path));
+    await fs.mkdir(path.dirname(apiPath), { recursive: true });
+    await fs.writeFile(apiPath, `${JSON.stringify(buildPageApiPayload(page), null, 2)}\n`, 'utf8');
+  }
+
+  return {
+    siteDir,
+    wikiDir: targetWikiRoot,
+    manifestPath,
+    apiRoot: targetApiRoot,
+    apiIndexPath: path.join(targetApiRoot, 'index.json'),
+    pageCount: graph.pages.length,
+    edgeCount: graph.edgeCount,
+  };
+}
+
+export async function serveWiki(vault, { host = '127.0.0.1', port = 3030 } = {}) {
+  await initVault(vault);
+  const numericPort = Number(port);
+  const resolvedPort = Number.isFinite(numericPort) && numericPort >= 0 ? numericPort : 3030;
+  const { server, port: activePort, host: activeHost } = await startLiveApiServer({ vault, host, port: resolvedPort });
+  console.log(JSON.stringify({
+    mode: 'live-api',
+    vault,
+    host: activeHost,
+    requestedPort: resolvedPort,
+    port: activePort,
+    root: `http://${host}:${activePort}/`,
+    index: `http://${host}:${activePort}/api/index.json`,
+    graph: `http://${host}:${activePort}/api/graph.json`,
+    note: 'Responses are generated from vault/wiki on every request, so local edits show up immediately. Use --port 0 to auto-select a free port.',
+  }, null, 2));
+
+  await new Promise((resolve) => {
+    const shutdown = () => {
+      process.off('SIGINT', shutdown);
+      process.off('SIGTERM', shutdown);
+      server.close(() => resolve());
+    };
+    process.once('SIGINT', shutdown);
+    process.once('SIGTERM', shutdown);
+  });
 }
 
 export async function deploySite(vault, { siteDir = DEFAULT_SITE_DIR, project, domain, prod = false, yes = false } = {}) {
@@ -836,6 +890,11 @@ export async function main(argv = process.argv.slice(2)) {
   if (command === 'build-site') {
     const report = await buildSite(vault, { siteDir });
     console.log(JSON.stringify(report, null, 2));
+    return;
+  }
+
+  if (command === 'serve') {
+    await serveWiki(vault, { host: args.host || '127.0.0.1', port: args.port || 3030 });
     return;
   }
 

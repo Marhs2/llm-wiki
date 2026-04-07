@@ -1,0 +1,28 @@
+{
+  "path": "wiki/concepts/synthesis.md",
+  "title": "synthesis",
+  "type": "concept",
+  "summary": "Concept collected from Karpathy LLM Wiki Gist.",
+  "text": "synthesis Summary Concept collected from Karpathy LLM Wiki Gist. References None yet. Related concepts concepts/knowledge-base concepts/workflow concepts/cross-references Sources None yet.",
+  "headings": [
+    "synthesis",
+    "Summary",
+    "References",
+    "Related concepts",
+    "Sources"
+  ],
+  "updated": "2026-04-07",
+  "links": [
+    "concepts/knowledge-base",
+    "concepts/workflow",
+    "concepts/cross-references"
+  ],
+  "backlinks": [
+    "wiki/concepts/compounding-artifact.md",
+    "wiki/concepts/cross-references.md",
+    "wiki/index.md"
+  ],
+  "linkCount": 3,
+  "backlinkCount": 3,
+  "hubScore": 6
+}

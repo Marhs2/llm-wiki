@@ -2,16 +2,18 @@
 title: "workflow"
 type: "topic"
 updated: "2026-04-06"
-sources: []
+sources: ["[[sources/2026-04-06-llm-wiki-automation-update]]", "[[sources/2026-04-06-llm-wiki-readme]]"]
 ---
 
 # workflow
 
 ## Summary
-Topic collected from LLM Wiki Launch Roadmap.
+Topic collected from LLM Wiki Automation Update.
 
 ## References
-- None yet.
+- Appears in [[sources/2026-04-06-llm-wiki-automation-update]]
+- Appears in [[sources/2026-04-06-llm-wiki-readme]]
 
 ## Sources
-- None yet.
+- [[sources/2026-04-06-llm-wiki-automation-update]]
+- [[sources/2026-04-06-llm-wiki-readme]]

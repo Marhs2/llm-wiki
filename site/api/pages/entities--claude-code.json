@@ -1,0 +1,21 @@
+{
+  "path": "wiki/entities/claude-code.md",
+  "title": "Claude Code",
+  "type": "entity",
+  "summary": "Detected heuristically in Karpathy LLM Wiki Gist.",
+  "text": "Claude Code Summary Detected heuristically in Karpathy LLM Wiki Gist. Mentions None yet. Sources None yet.",
+  "headings": [
+    "Claude Code",
+    "Summary",
+    "Mentions",
+    "Sources"
+  ],
+  "updated": "2026-04-06",
+  "links": [],
+  "backlinks": [
+    "wiki/index.md"
+  ],
+  "linkCount": 0,
+  "backlinkCount": 1,
+  "hubScore": 1
+}

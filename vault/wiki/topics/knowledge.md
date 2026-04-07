@@ -8,7 +8,7 @@ sources: ["[[sources/2026-04-06-karpathy-llm-wiki-gist]]", "[[sources/2026-04-06
 # knowledge
 
 ## Summary
-Topic collected from Karpathy LLM Wiki Gist.
+Topic collected from LLM Wiki README.
 
 ## References
 - Appears in [[sources/2026-04-06-karpathy-llm-wiki-gist]]

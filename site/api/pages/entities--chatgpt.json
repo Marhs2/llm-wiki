@@ -1,0 +1,21 @@
+{
+  "path": "wiki/entities/chatgpt.md",
+  "title": "ChatGPT",
+  "type": "entity",
+  "summary": "Detected heuristically in Karpathy LLM Wiki Gist.",
+  "text": "ChatGPT Summary Detected heuristically in Karpathy LLM Wiki Gist. Mentions None yet. Sources None yet.",
+  "headings": [
+    "ChatGPT",
+    "Summary",
+    "Mentions",
+    "Sources"
+  ],
+  "updated": "2026-04-06",
+  "links": [],
+  "backlinks": [
+    "wiki/index.md"
+  ],
+  "linkCount": 0,
+  "backlinkCount": 1,
+  "hubScore": 1
+}

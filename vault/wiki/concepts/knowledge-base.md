@@ -8,14 +8,20 @@ sources: ["[[sources/2026-04-06-llm-wiki-launch-roadmap]]", "[[sources/2026-04-0
 # knowledge base
 
 ## Summary
-Concept collected from Karpathy LLM Wiki Gist.
+Concept collected from LLM Wiki README.
 
 ## References
 - Discussed in [[sources/2026-04-06-llm-wiki-launch-roadmap]]
 - Discussed in [[sources/2026-04-06-llm-wiki-readme]]
 
 ## Related concepts
-- None yet.
+- [[concepts/ingest]]
+- [[concepts/knowledge]]
+- [[concepts/markdown]]
+- [[concepts/openai]]
+- [[concepts/persistent-wiki]]
+- [[concepts/raw-sources]]
+- [[concepts/workflow]]
 
 ## Sources
 - [[sources/2026-04-06-llm-wiki-launch-roadmap]]

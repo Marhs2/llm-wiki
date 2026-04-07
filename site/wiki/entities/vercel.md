@@ -1,14 +1,14 @@
 ---
-title: "vercel"
+title: "Vercel"
 type: "entity"
 updated: "2026-04-06"
 sources: []
 ---
 
-# vercel
+# Vercel
 
 ## Summary
-Detected heuristically in LLM Wiki Launch Roadmap.
+Detected heuristically in LLM Wiki Automation Update.
 
 ## Mentions
 - None yet.

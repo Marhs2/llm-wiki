@@ -14,7 +14,10 @@
     "lint": "node scripts/llm-wiki.mjs lint",
     "repair": "node scripts/llm-wiki.mjs repair",
     "test": "node --test tests/*.test.mjs",
+    "build": "node scripts/llm-wiki.mjs build-site",
     "build:site": "node scripts/llm-wiki.mjs build-site",
+    "vercel-build": "node scripts/llm-wiki.mjs build-site",
+    "serve": "node scripts/llm-wiki.mjs serve",
     "deploy": "node scripts/llm-wiki.mjs deploy --prod --yes",
     "status": "node scripts/llm-wiki.mjs status"
   }

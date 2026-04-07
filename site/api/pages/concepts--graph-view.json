@@ -1,0 +1,28 @@
+{
+  "path": "wiki/concepts/graph-view.md",
+  "title": "graph view",
+  "type": "concept",
+  "summary": "Concept collected from Karpathy LLM Wiki Gist.",
+  "text": "graph view Summary Concept collected from Karpathy LLM Wiki Gist. References None yet. Related concepts concepts/obsidian concepts/cross-references concepts/source-of-truth Sources None yet.",
+  "headings": [
+    "graph view",
+    "Summary",
+    "References",
+    "Related concepts",
+    "Sources"
+  ],
+  "updated": "2026-04-07",
+  "links": [
+    "concepts/obsidian",
+    "concepts/cross-references",
+    "concepts/source-of-truth"
+  ],
+  "backlinks": [
+    "wiki/concepts/cross-references.md",
+    "wiki/concepts/obsidian.md",
+    "wiki/index.md"
+  ],
+  "linkCount": 3,
+  "backlinkCount": 3,
+  "hubScore": 6
+}

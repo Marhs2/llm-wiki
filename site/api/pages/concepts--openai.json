@@ -1,0 +1,39 @@
+{
+  "path": "wiki/concepts/openai.md",
+  "title": "openai",
+  "type": "concept",
+  "summary": "Concept collected from LLM Wiki README.",
+  "text": "openai Summary Concept collected from LLM Wiki README. References Discussed in sources/2026-04-06-llm-wiki-readme Related concepts concepts/ingest concepts/knowledge concepts/knowledge-base concepts/markdown concepts/persistent-wiki concepts/raw-sources concepts/workflow Sources sources/2026-04-06-llm-wiki-readme",
+  "headings": [
+    "openai",
+    "Summary",
+    "References",
+    "Related concepts",
+    "Sources"
+  ],
+  "updated": "2026-04-06",
+  "links": [
+    "sources/2026-04-06-llm-wiki-readme",
+    "concepts/ingest",
+    "concepts/knowledge",
+    "concepts/knowledge-base",
+    "concepts/markdown",
+    "concepts/persistent-wiki",
+    "concepts/raw-sources",
+    "concepts/workflow"
+  ],
+  "backlinks": [
+    "wiki/concepts/ingest.md",
+    "wiki/concepts/knowledge-base.md",
+    "wiki/concepts/knowledge.md",
+    "wiki/concepts/markdown.md",
+    "wiki/concepts/persistent-wiki.md",
+    "wiki/concepts/raw-sources.md",
+    "wiki/concepts/workflow.md",
+    "wiki/index.md",
+    "wiki/sources/2026-04-06-llm-wiki-readme.md"
+  ],
+  "linkCount": 8,
+  "backlinkCount": 9,
+  "hubScore": 17
+}

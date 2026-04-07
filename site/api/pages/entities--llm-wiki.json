@@ -1,0 +1,23 @@
+{
+  "path": "wiki/entities/llm-wiki.md",
+  "title": "llm-wiki",
+  "type": "entity",
+  "summary": "Detected heuristically in LLM Wiki Launch Roadmap.",
+  "text": "llm-wiki Summary Detected heuristically in LLM Wiki Launch Roadmap. Mentions None yet. Sources None yet.",
+  "headings": [
+    "llm-wiki",
+    "Summary",
+    "Mentions",
+    "Sources"
+  ],
+  "updated": "2026-04-06",
+  "links": [],
+  "backlinks": [
+    "wiki/answers/2026-04-06-what-are-the-core-layers-and-workflows-of-the-llm-wiki-patte.md",
+    "wiki/index.md",
+    "wiki/sources/2026-04-06-llm-wiki-launch-roadmap.md"
+  ],
+  "linkCount": 0,
+  "backlinkCount": 3,
+  "hubScore": 3
+}

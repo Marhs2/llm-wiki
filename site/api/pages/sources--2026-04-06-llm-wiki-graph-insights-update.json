@@ -1,0 +1,34 @@
+{
+  "path": "wiki/sources/2026-04-06-llm-wiki-graph-insights-update.md",
+  "title": "LLM Wiki Graph Insights Update",
+  "type": "source",
+  "summary": "The LLM Wiki project now includes explicit graph analysis and backlink-aware browsing.",
+  "text": "LLM Wiki Graph Insights Update Summary The LLM Wiki project now includes explicit graph analysis and backlink-aware browsing. Key claims The LLM Wiki project now includes explicit graph analysis and backlink-aware browsing. - A new CLI command: node scripts/llm-wiki.mjs graph --limit 10 - Graph metrics now calculate page connectivity across the wiki. - Each page can now expose: - backlinks - backlinkCount - hubScore - The static site manifest now includes graph metadata. - The public viewer now shows graph context, incoming links, outgoing links, and hub score. Entities entities/cli (entity) — Detected heuristically in LLM Wiki Graph Insights Update. Concepts concepts/persistent-wiki Topics topics/index topics/query Contradictions None noted. Source extract LLM Wiki Graph Insights Update The LLM Wiki project now includes explicit graph analysis and backlink-aware browsing. Added capabilities A new CLI command: node scripts/llm-wiki.mjs graph --limit 10 Graph metrics now calculate page connectivity across the wiki. Each page can now expose: backlinks backlinkCount hubScore The static site manifest now includes graph metadata. Links entity: entities/cli concept: concepts/persistent-wiki topic: topics/index topic: topics/query",
+  "headings": [
+    "LLM Wiki Graph Insights Update",
+    "Summary",
+    "Key claims",
+    "Entities",
+    "Concepts",
+    "Topics",
+    "Contradictions",
+    "Source extract",
+    "Links"
+  ],
+  "updated": "2026-04-06",
+  "links": [
+    "entities/cli",
+    "concepts/persistent-wiki",
+    "topics/index",
+    "topics/query"
+  ],
+  "backlinks": [
+    "wiki/concepts/persistent-wiki.md",
+    "wiki/index.md",
+    "wiki/topics/index.md",
+    "wiki/topics/query.md"
+  ],
+  "linkCount": 4,
+  "backlinkCount": 4,
+  "hubScore": 8
+}

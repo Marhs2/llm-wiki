@@ -1,11 +1,11 @@
 ---
-title: "node-cli"
+title: "Node CLI"
 type: "entity"
 updated: "2026-04-06"
 sources: []
 ---
 
-# node-cli
+# Node CLI
 
 ## Summary
 Detected heuristically in LLM Wiki README.

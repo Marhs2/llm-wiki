@@ -1,0 +1,30 @@
+{
+  "path": "wiki/concepts/cross-references.md",
+  "title": "cross-references",
+  "type": "concept",
+  "summary": "Concept collected from Karpathy LLM Wiki Gist.",
+  "text": "cross-references Summary Concept collected from Karpathy LLM Wiki Gist. References None yet. Related concepts concepts/graph-view concepts/source-of-truth concepts/synthesis Sources None yet.",
+  "headings": [
+    "cross-references",
+    "Summary",
+    "References",
+    "Related concepts",
+    "Sources"
+  ],
+  "updated": "2026-04-07",
+  "links": [
+    "concepts/graph-view",
+    "concepts/source-of-truth",
+    "concepts/synthesis"
+  ],
+  "backlinks": [
+    "wiki/concepts/compounding-artifact.md",
+    "wiki/concepts/graph-view.md",
+    "wiki/concepts/obsidian.md",
+    "wiki/concepts/synthesis.md",
+    "wiki/index.md"
+  ],
+  "linkCount": 3,
+  "backlinkCount": 5,
+  "hubScore": 8
+}

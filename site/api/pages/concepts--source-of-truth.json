@@ -1,0 +1,29 @@
+{
+  "path": "wiki/concepts/source-of-truth.md",
+  "title": "source-of-truth",
+  "type": "concept",
+  "summary": "Concept collected from Karpathy LLM Wiki Gist.",
+  "text": "source-of-truth Summary Concept collected from Karpathy LLM Wiki Gist. References None yet. Related concepts concepts/raw-sources concepts/knowledge-base concepts/compounding-artifact Sources None yet.",
+  "headings": [
+    "source-of-truth",
+    "Summary",
+    "References",
+    "Related concepts",
+    "Sources"
+  ],
+  "updated": "2026-04-07",
+  "links": [
+    "concepts/raw-sources",
+    "concepts/knowledge-base",
+    "concepts/compounding-artifact"
+  ],
+  "backlinks": [
+    "wiki/concepts/compounding-artifact.md",
+    "wiki/concepts/cross-references.md",
+    "wiki/concepts/graph-view.md",
+    "wiki/index.md"
+  ],
+  "linkCount": 3,
+  "backlinkCount": 4,
+  "hubScore": 7
+}

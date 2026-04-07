@@ -1,0 +1,22 @@
+{
+  "path": "wiki/entities/codex-cli.md",
+  "title": "Codex CLI",
+  "type": "entity",
+  "summary": "Detected heuristically in LLM Wiki README.",
+  "text": "Codex CLI Summary Detected heuristically in LLM Wiki README. Mentions None yet. Sources None yet.",
+  "headings": [
+    "Codex CLI",
+    "Summary",
+    "Mentions",
+    "Sources"
+  ],
+  "updated": "2026-04-06",
+  "links": [],
+  "backlinks": [
+    "wiki/index.md",
+    "wiki/sources/2026-04-06-llm-wiki-readme.md"
+  ],
+  "linkCount": 0,
+  "backlinkCount": 2,
+  "hubScore": 2
+}

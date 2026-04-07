@@ -8,7 +8,7 @@ sources: []
 # Codex
 
 ## Summary
-Detected heuristically in Karpathy LLM Wiki Gist.
+Detected heuristically in LLM Wiki README.
 
 ## Mentions
 - None yet.

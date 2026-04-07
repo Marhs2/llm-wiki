@@ -1,7 +1,7 @@
 ---
 title: "compounding artifact"
 type: "concept"
-updated: "2026-04-06"
+updated: "2026-04-07"
 sources: []
 ---
 
@@ -14,7 +14,9 @@ Concept collected from Karpathy LLM Wiki Gist.
 - None yet.
 
 ## Related concepts
-- None yet.
+- [[concepts/source-of-truth]]
+- [[concepts/synthesis]]
+- [[concepts/cross-references]]
 
 ## Sources
 - None yet.

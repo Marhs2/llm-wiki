@@ -1,0 +1,27 @@
+{
+  "path": "wiki/concepts/obsidian.md",
+  "title": "obsidian",
+  "type": "concept",
+  "summary": "Concept collected from LLM Wiki Agent Guide.",
+  "text": "obsidian Summary Concept collected from LLM Wiki Agent Guide. References None yet. Related concepts concepts/markdown concepts/graph-view concepts/cross-references Sources None yet.",
+  "headings": [
+    "obsidian",
+    "Summary",
+    "References",
+    "Related concepts",
+    "Sources"
+  ],
+  "updated": "2026-04-07",
+  "links": [
+    "concepts/markdown",
+    "concepts/graph-view",
+    "concepts/cross-references"
+  ],
+  "backlinks": [
+    "wiki/concepts/graph-view.md",
+    "wiki/index.md"
+  ],
+  "linkCount": 3,
+  "backlinkCount": 2,
+  "hubScore": 5
+}

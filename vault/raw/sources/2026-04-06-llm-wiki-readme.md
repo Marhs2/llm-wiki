@@ -1,10 +1,25 @@
 # LLM Wiki
 
-A minimal scaffold for a persistent, LLM-maintained knowledge base.
+Persistent, LLM-maintained wiki scaffold with a Codex-first workflow, modular CLI, interlinked markdown vault, and static Vercel viewer.
+
+## Links
+
+- GitHub: https://github.com/Marhs2/llm-wiki
+- Live site: https://site-mu-puce.vercel.app
+
+## What this project does
+
+This repository implements the persistent wiki pattern described in Karpathy's LLM wiki gist:
+
+- ingest raw sources into a growing markdown knowledge base
+- maintain entity / concept / topic / answer pages
+- keep a catalog-style `index.md` and time-ordered `log.md`
+- lint and repair the wiki graph over time
+- publish the current wiki as a searchable static site
 
 ## Primary backend: Codex CLI
 
-This project now prefers the local **Codex CLI** for analysis and wiki maintenance.
+This project prefers the local **Codex CLI** for analysis and wiki maintenance.
 
 Set a custom Codex binary if needed:
 
@@ -16,8 +31,8 @@ If Codex is installed normally, no extra configuration is needed.
 
 ## Optional fallback: OpenAI OAuth
 
-OpenAI OAuth support is still available, but it is now optional.
-Use it only if you want to force the OpenAI backend.
+OpenAI OAuth support is still available, but optional.
+Use it only when you want to force the OpenAI backend.
 
 ```bash
 node scripts/llm-wiki.mjs auth login --client-id YOUR_CLIENT_ID
@@ -25,18 +40,21 @@ node scripts/llm-wiki.mjs auth set-token --token YOUR_TOKEN
 node scripts/llm-wiki.mjs auth import --file ./openai-oauth.json
 ```
 
-## What this project provides
+## Features
 
-- A vault layout for raw sources and generated wiki pages
-- A small Node CLI to initialize the vault
-- An ingest flow that copies a source into `vault/raw/sources/` and creates wiki notes
-- Codex-backed summaries when Codex CLI is available
-- Optional OpenAI OAuth fallback
-- Auto-generated entity/topic pages and an index/log
+- modular Node CLI split across `scripts/lib/`
+- vault layout for raw sources and generated wiki pages
+- Codex-backed ingest with heuristic fallback
+- query / search / lint / repair maintenance commands
+- auto-generated entity, concept, topic, answer, source, index, and log pages
+- static site build with manifest metadata for filters and related-page navigation
+- Vercel deployment workflow for public browsing
+- small Node test suite for shared helpers
 
 ## Quick start
 
 ```bash
+npm install
 npm run init
 npm run ingest -- --source ./path/to/source.md --title "Source Title"
 npm run status
@@ -53,10 +71,31 @@ npm run ingest -- --source ./path/to/source.md --backend heuristic
 Useful maintenance commands:
 
 ```bash
-node scripts/llm-wiki.mjs search --query codex
+node scripts/llm-wiki.mjs search --query "persistent wiki"
+node scripts/llm-wiki.mjs graph --limit 10
+node scripts/llm-wiki.mjs query --question "What changed?" --write
 node scripts/llm-wiki.mjs lint
-node scripts/llm-wiki.mjs repair --dry-run
+node scripts/llm-wiki.mjs repair
+node scripts/llm-wiki.mjs build-site
+node scripts/llm-wiki.mjs deploy --prod --yes
+npm test
 ```
+
+## Automation
+
+This repo includes a GitHub Actions workflow at `.github/workflows/ci-vercel.yml` that:
+
+- runs tests on pushes and pull requests
+- lints the wiki
+- rebuilds the static wiki site
+- uploads the built site as a workflow artifact
+
+Separately, the Vercel project is now connected directly to this GitHub repository, so pushes to `main` can trigger Vercel deployments through the Git integration.
+
+Current linked Vercel values for this project:
+
+- `VERCEL_ORG_ID=team_2tA7Ens8fc9xQMEDRDcPFnL7`
+- `VERCEL_PROJECT_ID=prj_vghY14zqws05fJzqZoTJofYXUbZ6`
 
 ## Layout
 
@@ -71,5 +110,39 @@ vault/
     entities/
     concepts/
     topics/
+    answers/
     sources/
+
+site/
+  index.html
+  app.js
+  style.css
+  data/wiki-index.json
+  wiki/
+
+scripts/
+  llm-wiki.mjs      # Thin CLI entrypoint
+  lib/
+    config.mjs
+    utils.mjs
+    markdown.mjs
+    vault.mjs
+    auth.mjs
+    analysis.mjs
+    commands.mjs
 ```
+
+## Typical workflow
+
+```bash
+npm run ingest -- --source ./notes/source.md --title "New source"
+node scripts/llm-wiki.mjs repair
+node scripts/llm-wiki.mjs lint
+node scripts/llm-wiki.mjs build-site
+```
+
+## Deployment notes
+
+- The Vercel project is connected to `https://github.com/Marhs2/llm-wiki`
+- The static site is served from the `site/` directory
+- Local production deployment is also available with `node scripts/llm-wiki.mjs deploy --prod --yes`

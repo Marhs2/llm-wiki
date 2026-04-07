@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: llm-wiki
+    env: static
+    buildCommand: npm ci && npm run build
+    staticPublishPath: site

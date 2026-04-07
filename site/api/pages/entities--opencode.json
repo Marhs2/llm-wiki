@@ -1,0 +1,21 @@
+{
+  "path": "wiki/entities/opencode.md",
+  "title": "OpenCode",
+  "type": "entity",
+  "summary": "Detected heuristically in Karpathy LLM Wiki Gist.",
+  "text": "OpenCode Summary Detected heuristically in Karpathy LLM Wiki Gist. Mentions None yet. Sources None yet.",
+  "headings": [
+    "OpenCode",
+    "Summary",
+    "Mentions",
+    "Sources"
+  ],
+  "updated": "2026-04-06",
+  "links": [],
+  "backlinks": [
+    "wiki/index.md"
+  ],
+  "linkCount": 0,
+  "backlinkCount": 1,
+  "hubScore": 1
+}

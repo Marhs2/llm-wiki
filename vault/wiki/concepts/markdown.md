@@ -2,19 +2,25 @@
 title: "markdown"
 type: "concept"
 updated: "2026-04-06"
-sources: []
+sources: ["[[sources/2026-04-06-llm-wiki-readme]]"]
 ---
 
 # markdown
 
 ## Summary
-Concept collected from LLM Wiki Launch Roadmap.
+Concept collected from LLM Wiki README.
 
 ## References
-- None yet.
+- Discussed in [[sources/2026-04-06-llm-wiki-readme]]
 
 ## Related concepts
-- None yet.
+- [[concepts/ingest]]
+- [[concepts/knowledge]]
+- [[concepts/knowledge-base]]
+- [[concepts/openai]]
+- [[concepts/persistent-wiki]]
+- [[concepts/raw-sources]]
+- [[concepts/workflow]]
 
 ## Sources
-- None yet.
+- [[sources/2026-04-06-llm-wiki-readme]]

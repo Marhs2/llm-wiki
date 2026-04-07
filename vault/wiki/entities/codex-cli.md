@@ -1,14 +1,14 @@
 ---
-title: "codex-cli"
+title: "Codex CLI"
 type: "entity"
 updated: "2026-04-06"
 sources: []
 ---
 
-# codex-cli
+# Codex CLI
 
 ## Summary
-Detected heuristically in LLM Wiki Agent Guide.
+Detected heuristically in LLM Wiki README.
 
 ## Mentions
 - None yet.

@@ -48,6 +48,7 @@ node scripts/llm-wiki.mjs auth import --file ./openai-oauth.json
 - query / search / lint / repair maintenance commands
 - auto-generated entity, concept, topic, answer, source, index, and log pages
 - static site build with manifest metadata for filters and related-page navigation
+- API-style JSON output under `site/api/` for programmatic access
 - Vercel deployment workflow for public browsing
 - small Node test suite for shared helpers
 
@@ -77,8 +78,27 @@ node scripts/llm-wiki.mjs query --question "What changed?" --write
 node scripts/llm-wiki.mjs lint
 node scripts/llm-wiki.mjs repair
 node scripts/llm-wiki.mjs build-site
+node scripts/llm-wiki.mjs serve --host 0.0.0.0 --port 3030
 node scripts/llm-wiki.mjs deploy --prod --yes
 npm test
+```
+
+For live local API hosting, run:
+
+```bash
+npm run serve -- --host 0.0.0.0 --port 3030
+# or let the CLI auto-pick a free port
+npm run serve -- --host 127.0.0.1 --port 0
+```
+
+That server reads `vault/wiki` on every request, so if you edit the wiki locally the API responses change immediately without rebuilding. If the requested port is already in use, the command now fails fast instead of hanging silently.
+
+After `build-site`, API-style JSON files are available at:
+
+```text
+site/api/index.json
+site/api/graph.json
+site/api/pages/*.json
 ```
 
 ## Automation
