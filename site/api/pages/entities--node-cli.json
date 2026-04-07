@@ -4,6 +4,7 @@
   "type": "entity",
   "summary": "Detected heuristically in LLM Wiki README.",
   "text": "Node CLI Summary Detected heuristically in LLM Wiki README. Mentions None yet. Sources None yet.",
+  "markdown": "---\ntitle: \"Node CLI\"\ntype: \"entity\"\nupdated: \"2026-04-06\"\nsources: []\n---\n\n# Node CLI\n\n## Summary\nDetected heuristically in LLM Wiki README.\n\n## Mentions\n- None yet.\n\n## Sources\n- None yet.\n",
   "headings": [
     "Node CLI",
     "Summary",

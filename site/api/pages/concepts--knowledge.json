@@ -4,6 +4,7 @@
   "type": "concept",
   "summary": "Concept collected from LLM Wiki README.",
   "text": "knowledge Summary Concept collected from LLM Wiki README. References Discussed in sources/2026-04-06-llm-wiki-readme Related concepts concepts/ingest concepts/knowledge-base concepts/markdown concepts/openai concepts/persistent-wiki concepts/raw-sources concepts/workflow Sources sources/2026-04-06-llm-wiki-readme",
+  "markdown": "---\ntitle: \"knowledge\"\ntype: \"concept\"\nupdated: \"2026-04-06\"\nsources: [\"[[sources/2026-04-06-llm-wiki-readme]]\"]\n---\n\n# knowledge\n\n## Summary\nConcept collected from LLM Wiki README.\n\n## References\n- Discussed in [[sources/2026-04-06-llm-wiki-readme]]\n\n## Related concepts\n- [[concepts/ingest]]\n- [[concepts/knowledge-base]]\n- [[concepts/markdown]]\n- [[concepts/openai]]\n- [[concepts/persistent-wiki]]\n- [[concepts/raw-sources]]\n- [[concepts/workflow]]\n\n## Sources\n- [[sources/2026-04-06-llm-wiki-readme]]\n",
   "headings": [
     "knowledge",
     "Summary",

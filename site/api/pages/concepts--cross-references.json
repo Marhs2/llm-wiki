@@ -4,6 +4,7 @@
   "type": "concept",
   "summary": "Concept collected from Karpathy LLM Wiki Gist.",
   "text": "cross-references Summary Concept collected from Karpathy LLM Wiki Gist. References None yet. Related concepts concepts/graph-view concepts/source-of-truth concepts/synthesis Sources None yet.",
+  "markdown": "---\ntitle: \"cross-references\"\ntype: \"concept\"\nupdated: \"2026-04-07\"\nsources: []\n---\n\n# cross-references\n\n## Summary\nConcept collected from Karpathy LLM Wiki Gist.\n\n## References\n- None yet.\n\n## Related concepts\n- [[concepts/graph-view]]\n- [[concepts/source-of-truth]]\n- [[concepts/synthesis]]\n\n## Sources\n- None yet.\n",
   "headings": [
     "cross-references",
     "Summary",

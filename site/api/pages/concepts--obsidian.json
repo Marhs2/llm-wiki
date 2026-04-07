@@ -4,6 +4,7 @@
   "type": "concept",
   "summary": "Concept collected from LLM Wiki Agent Guide.",
   "text": "obsidian Summary Concept collected from LLM Wiki Agent Guide. References None yet. Related concepts concepts/markdown concepts/graph-view concepts/cross-references Sources None yet.",
+  "markdown": "---\ntitle: \"obsidian\"\ntype: \"concept\"\nupdated: \"2026-04-07\"\nsources: []\n---\n\n# obsidian\n\n## Summary\nConcept collected from LLM Wiki Agent Guide.\n\n## References\n- None yet.\n\n## Related concepts\n- [[concepts/markdown]]\n- [[concepts/graph-view]]\n- [[concepts/cross-references]]\n\n## Sources\n- None yet.\n",
   "headings": [
     "obsidian",
     "Summary",

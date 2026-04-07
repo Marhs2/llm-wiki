@@ -4,6 +4,7 @@
   "type": "entity",
   "summary": "Detected heuristically in LLM Wiki Agent Guide.",
   "text": "append Summary Detected heuristically in LLM Wiki Agent Guide. Mentions None yet. Sources None yet.",
+  "markdown": "---\ntitle: \"append\"\ntype: \"entity\"\nupdated: \"2026-04-06\"\nsources: []\n---\n\n# append\n\n## Summary\nDetected heuristically in LLM Wiki Agent Guide.\n\n## Mentions\n- None yet.\n\n## Sources\n- None yet.\n",
   "headings": [
     "append",
     "Summary",

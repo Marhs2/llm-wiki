@@ -4,6 +4,7 @@
   "type": "concept",
   "summary": "Concept collected from Karpathy LLM Wiki Gist.",
   "text": "compounding artifact Summary Concept collected from Karpathy LLM Wiki Gist. References None yet. Related concepts concepts/source-of-truth concepts/synthesis concepts/cross-references Sources None yet.",
+  "markdown": "---\ntitle: \"compounding artifact\"\ntype: \"concept\"\nupdated: \"2026-04-07\"\nsources: []\n---\n\n# compounding artifact\n\n## Summary\nConcept collected from Karpathy LLM Wiki Gist.\n\n## References\n- None yet.\n\n## Related concepts\n- [[concepts/source-of-truth]]\n- [[concepts/synthesis]]\n- [[concepts/cross-references]]\n\n## Sources\n- None yet.\n",
   "headings": [
     "compounding artifact",
     "Summary",

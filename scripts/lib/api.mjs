@@ -42,6 +42,7 @@ export function buildPageApiPayload(page) {
     type: page.type,
     summary: page.summary || '',
     text: page.text || '',
+    markdown: page.markdown || '',
     headings: Array.isArray(page.headings) ? page.headings : [],
     updated: page.updated || '',
     links: Array.isArray(page.links) ? page.links : [],

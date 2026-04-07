@@ -4,6 +4,7 @@
   "type": "topic",
   "summary": "Topic collected from LLM Wiki README.",
   "text": "knowledge Summary Topic collected from LLM Wiki README. References Appears in sources/2026-04-06-karpathy-llm-wiki-gist Appears in sources/2026-04-06-llm-wiki-launch-roadmap Appears in sources/2026-04-06-llm-wiki-readme Sources sources/2026-04-06-karpathy-llm-wiki-gist sources/2026-04-06-llm-wiki-launch-roadmap sources/2026-04-06-llm-wiki-readme",
+  "markdown": "---\ntitle: \"knowledge\"\ntype: \"topic\"\nupdated: \"2026-04-06\"\nsources: [\"[[sources/2026-04-06-karpathy-llm-wiki-gist]]\", \"[[sources/2026-04-06-llm-wiki-launch-roadmap]]\", \"[[sources/2026-04-06-llm-wiki-readme]]\"]\n---\n\n# knowledge\n\n## Summary\nTopic collected from LLM Wiki README.\n\n## References\n- Appears in [[sources/2026-04-06-karpathy-llm-wiki-gist]]\n- Appears in [[sources/2026-04-06-llm-wiki-launch-roadmap]]\n- Appears in [[sources/2026-04-06-llm-wiki-readme]]\n\n## Sources\n- [[sources/2026-04-06-karpathy-llm-wiki-gist]]\n- [[sources/2026-04-06-llm-wiki-launch-roadmap]]\n- [[sources/2026-04-06-llm-wiki-readme]]\n",
   "headings": [
     "knowledge",
     "Summary",

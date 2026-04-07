@@ -15,6 +15,7 @@ test('buildApiIndexPayload exposes summary stats and page endpoints', () => {
       title: 'Index',
       type: 'index',
       summary: 'Catalog page',
+      markdown: '# Index\n\n## Summary\nCatalog page\n',
       updated: '2026-04-06',
       links: ['sources/a'],
       linkCount: 1,

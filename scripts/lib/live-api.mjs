@@ -44,6 +44,7 @@ export async function loadLiveApiArtifacts(vault) {
       title: parseFrontmatterTitle(text) || path.basename(file, '.md'),
       type: inferPageType(rel, text),
       summary: (extractSectionText(text, 'Summary') || markdownToPlainText(text).slice(0, 220)).replace(/\s+/g, ' ').trim(),
+      markdown: text,
       text: markdownToPlainText(text),
       headings: extractHeadings(text),
       updated: parseFrontmatterValue(text, 'updated') || parseFrontmatterValue(text, 'created') || '',

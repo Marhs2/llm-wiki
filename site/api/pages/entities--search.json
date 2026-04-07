@@ -4,6 +4,7 @@
   "type": "entity",
   "summary": "Detected heuristically in LLM Wiki Launch Roadmap.",
   "text": "search Summary Detected heuristically in LLM Wiki Launch Roadmap. Mentions None yet. Sources None yet.",
+  "markdown": "---\ntitle: \"search\"\ntype: \"entity\"\nupdated: \"2026-04-06\"\nsources: []\n---\n\n# search\n\n## Summary\nDetected heuristically in LLM Wiki Launch Roadmap.\n\n## Mentions\n- None yet.\n\n## Sources\n- None yet.\n",
   "headings": [
     "search",
     "Summary",

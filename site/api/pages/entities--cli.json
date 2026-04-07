@@ -4,6 +4,7 @@
   "type": "entity",
   "summary": "Detected heuristically in LLM Wiki Graph Insights Update.",
   "text": "CLI Summary Detected heuristically in LLM Wiki Graph Insights Update. Mentions None yet. Sources None yet.",
+  "markdown": "---\ntitle: \"CLI\"\ntype: \"entity\"\nupdated: \"2026-04-06\"\nsources: []\n---\n\n# CLI\n\n## Summary\nDetected heuristically in LLM Wiki Graph Insights Update.\n\n## Mentions\n- None yet.\n\n## Sources\n- None yet.\n",
   "headings": [
     "CLI",
     "Summary",

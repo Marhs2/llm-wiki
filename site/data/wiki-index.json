@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-07T04:55:14.039Z",
+  "generatedAt": "2026-04-07T05:17:14.932Z",
   "pageCount": 63,
   "edgeCount": 213,
   "graphSummary": {
@@ -95,6 +95,7 @@
       "title": "LLM Wiki",
       "type": "about",
       "summary": "LLM Wiki 이 페이지는 Codex 기반으로 유지되는 마크다운 위키의 퍼블릭 뷰입니다. Highlights 실제 vault/wiki/ 내용을 정적 사이트로 동기화합니다. 검색 인덱스와 필터 UI를 통해 source/entity/topic 페이지를 빠르게 탐색할 수 있습니다. 배포 전 build-site가 wiki 파일과 검색 메타데이터를 함께 생성합니다. Quick links index",
+      "markdown": "---\ntitle: \"LLM Wiki\"\ntype: \"about\"\nupdated: \"2026-04-07\"\n---\n# LLM Wiki\n\n이 페이지는 Codex 기반으로 유지되는 마크다운 위키의 퍼블릭 뷰입니다.\n\n## Highlights\n\n- 실제 `vault/wiki/` 내용을 정적 사이트로 동기화합니다.\n- 검색 인덱스와 필터 UI를 통해 source/entity/topic 페이지를 빠르게 탐색할 수 있습니다.\n- 배포 전 `build-site`가 wiki 파일과 검색 메타데이터를 함께 생성합니다.\n\n## Quick links\n\n- [[index]]\n- [[log]]\n\n## Workflow\n\n1. `node scripts/llm-wiki.mjs ingest --source ...` 로 자료를 수집합니다.\n2. `node scripts/llm-wiki.mjs repair` 로 인덱스/참조를 정리합니다.\n3. `node scripts/llm-wiki.mjs build-site` 로 site/wiki 와 검색 인덱스를 갱신합니다.\n4. `node scripts/llm-wiki.mjs deploy --prod --yes` 로 Vercel에 배포합니다.\n",
       "headings": [
         "LLM Wiki",
         "Highlights",
@@ -117,6 +118,7 @@
       "title": "Answer: What are the core layers and workflows of the llm wiki pattern?",
       "type": "answer",
       "summary": "핵심 계층은 raw sources(불변 원문), the wiki(LLM이 유지하는 markdown 지식층), 그리고 schema/AGENTS.md 같은 운영 규칙 문서다.",
+      "markdown": "---\ntitle: \"Answer: What are the core layers and workflows of the llm wiki pattern?\"\ntype: \"answer\"\ncreated: \"2026-04-06\"\nupdated: \"2026-04-06\"\nsources: [\"[[sources/2026-04-06-karpathy-llm-wiki-gist]]\", \"[[sources/2026-04-06-llm-wiki-agent-guide]]\", \"[[sources/2026-04-06-llm-wiki-launch-roadmap]]\", \"[[sources/2026-04-06-llm-wiki-readme]]\", \"[[entities/llm-wiki]]\"]\n---\n\n# Answer: What are the core layers and workflows of the llm wiki pattern?\n\n## Summary\n핵심 계층은 raw sources(불변 원문), the wiki(LLM이 유지하는 markdown 지식층), 그리고 schema/AGENTS.md 같은 운영 규칙 문서다.\n\n## Answer\n질문: What are the core layers and workflows of the llm wiki pattern?\n\n이 답변은 5개의 위키 페이지를 바탕으로 생성되었습니다.\n\n## Short answer\n- 핵심 계층은 raw sources(불변 원문), the wiki(LLM이 유지하는 markdown 지식층), 그리고 schema/AGENTS.md 같은 운영 규칙 문서다.\n\n## Layers\n- Raw sources: 수정하지 않는 원문 저장소로서 source of truth 역할을 한다.\n- Wiki pages: source를 바탕으로 summary, entity, concept, topic, answer 페이지를 누적 관리한다.\n- Schema / agent rules: ingest, query, lint, linking 규칙을 정의해 일관된 유지보수를 가능하게 한다.\n\n## Workflows\n- Ingest: 새 source를 읽고 요약/핵심 주장/개념/토픽을 추출해 여러 wiki 페이지를 갱신한다.\n- Query: index와 관련 페이지를 읽어 답변을 만들고, 가치 있는 답은 answer 페이지로 다시 저장한다.\n- Lint: broken link, orphan, coverage 부족, 수상한 entity, underlinked concept를 점검한다.\n\n## Key points\n- A pattern for building personal knowledge bases using LLMs.\n- This repository is a scaffold for a persistent wiki maintained by an LLM.\n- The current LLM Wiki project is evolving from a scaffold into a deployable public knowledge base.\n- A minimal scaffold for a persistent, LLM-maintained knowledge base.\n\n## Core concepts\n- persistent-wiki\n- knowledge-base\n\n## Contradictions\n- No explicit contradictions were recorded in the referenced pages.\n\n## Evidence pages\n- [[sources/2026-04-06-karpathy-llm-wiki-gist]] — A pattern for building personal knowledge bases using LLMs.\n- [[sources/2026-04-06-llm-wiki-agent-guide]] — This repository is a scaffold for a persistent wiki maintained by an LLM.\n- [[sources/2026-04-06-llm-wiki-launch-roadmap]] — The current LLM Wiki project is evolving from a scaffold into a deployable public knowledge base.\n- [[sources/2026-04-06-llm-wiki-readme]] — A minimal scaffold for a persistent, LLM-maintained knowledge base.\n- [[entities/llm-wiki]] — Detected heuristically in LLM Wiki Launch Roadmap.\n\n## Suggested follow-ups\n- Drill deeper into [[sources/2026-04-06-karpathy-llm-wiki-gist]] and strengthen linked entity/concept/topic pages.\n- Drill deeper into [[sources/2026-04-06-llm-wiki-agent-guide]] and strengthen linked entity/concept/topic pages.\n- Drill deeper into [[sources/2026-04-06-llm-wiki-launch-roadmap]] and strengthen linked entity/concept/topic pages.\n\n## Sources\n- [[sources/2026-04-06-karpathy-llm-wiki-gist]]\n- [[sources/2026-04-06-llm-wiki-agent-guide]]\n- [[sources/2026-04-06-llm-wiki-launch-roadmap]]\n- [[sources/2026-04-06-llm-wiki-readme]]\n- [[entities/llm-wiki]]\n",
       "headings": [
         "Answer: What are the core layers and workflows of the llm wiki pattern?",
         "Summary",
@@ -152,6 +154,7 @@
       "title": "compounding artifact",
       "type": "concept",
       "summary": "Concept collected from Karpathy LLM Wiki Gist.",
+      "markdown": "---\ntitle: \"compounding artifact\"\ntype: \"concept\"\nupdated: \"2026-04-07\"\nsources: []\n---\n\n# compounding artifact\n\n## Summary\nConcept collected from Karpathy LLM Wiki Gist.\n\n## References\n- None yet.\n\n## Related concepts\n- [[concepts/source-of-truth]]\n- [[concepts/synthesis]]\n- [[concepts/cross-references]]\n\n## Sources\n- None yet.\n",
       "headings": [
         "compounding artifact",
         "Summary",
@@ -179,6 +182,7 @@
       "title": "cross-references",
       "type": "concept",
       "summary": "Concept collected from Karpathy LLM Wiki Gist.",
+      "markdown": "---\ntitle: \"cross-references\"\ntype: \"concept\"\nupdated: \"2026-04-07\"\nsources: []\n---\n\n# cross-references\n\n## Summary\nConcept collected from Karpathy LLM Wiki Gist.\n\n## References\n- None yet.\n\n## Related concepts\n- [[concepts/graph-view]]\n- [[concepts/source-of-truth]]\n- [[concepts/synthesis]]\n\n## Sources\n- None yet.\n",
       "headings": [
         "cross-references",
         "Summary",
@@ -209,6 +213,7 @@
       "title": "graph view",
       "type": "concept",
       "summary": "Concept collected from Karpathy LLM Wiki Gist.",
+      "markdown": "---\ntitle: \"graph view\"\ntype: \"concept\"\nupdated: \"2026-04-07\"\nsources: []\n---\n\n# graph view\n\n## Summary\nConcept collected from Karpathy LLM Wiki Gist.\n\n## References\n- None yet.\n\n## Related concepts\n- [[concepts/obsidian]]\n- [[concepts/cross-references]]\n- [[concepts/source-of-truth]]\n\n## Sources\n- None yet.\n",
       "headings": [
         "graph view",
         "Summary",
@@ -237,6 +242,7 @@
       "title": "ingest",
       "type": "concept",
       "summary": "Concept collected from LLM Wiki Automation Update.",
+      "markdown": "---\ntitle: \"ingest\"\ntype: \"concept\"\nupdated: \"2026-04-06\"\nsources: [\"[[sources/2026-04-06-llm-wiki-automation-update]]\", \"[[sources/2026-04-06-llm-wiki-readme]]\"]\n---\n\n# ingest\n\n## Summary\nConcept collected from LLM Wiki Automation Update.\n\n## References\n- Discussed in [[sources/2026-04-06-llm-wiki-automation-update]]\n- Discussed in [[sources/2026-04-06-llm-wiki-readme]]\n\n## Related concepts\n- [[concepts/knowledge]]\n- [[concepts/knowledge-base]]\n- [[concepts/markdown]]\n- [[concepts/openai]]\n- [[concepts/persistent-wiki]]\n- [[concepts/raw-sources]]\n- [[concepts/workflow]]\n\n## Sources\n- [[sources/2026-04-06-llm-wiki-automation-update]]\n- [[sources/2026-04-06-llm-wiki-readme]]\n",
       "headings": [
         "ingest",
         "Summary",
@@ -278,6 +284,7 @@
       "title": "knowledge base",
       "type": "concept",
       "summary": "Concept collected from LLM Wiki README.",
+      "markdown": "---\ntitle: \"knowledge base\"\ntype: \"concept\"\nupdated: \"2026-04-06\"\nsources: [\"[[sources/2026-04-06-llm-wiki-launch-roadmap]]\", \"[[sources/2026-04-06-llm-wiki-readme]]\"]\n---\n\n# knowledge base\n\n## Summary\nConcept collected from LLM Wiki README.\n\n## References\n- Discussed in [[sources/2026-04-06-llm-wiki-launch-roadmap]]\n- Discussed in [[sources/2026-04-06-llm-wiki-readme]]\n\n## Related concepts\n- [[concepts/ingest]]\n- [[concepts/knowledge]]\n- [[concepts/markdown]]\n- [[concepts/openai]]\n- [[concepts/persistent-wiki]]\n- [[concepts/raw-sources]]\n- [[concepts/workflow]]\n\n## Sources\n- [[sources/2026-04-06-llm-wiki-launch-roadmap]]\n- [[sources/2026-04-06-llm-wiki-readme]]\n",
       "headings": [
         "knowledge base",
         "Summary",
@@ -321,6 +328,7 @@
       "title": "knowledge",
       "type": "concept",
       "summary": "Concept collected from LLM Wiki README.",
+      "markdown": "---\ntitle: \"knowledge\"\ntype: \"concept\"\nupdated: \"2026-04-06\"\nsources: [\"[[sources/2026-04-06-llm-wiki-readme]]\"]\n---\n\n# knowledge\n\n## Summary\nConcept collected from LLM Wiki README.\n\n## References\n- Discussed in [[sources/2026-04-06-llm-wiki-readme]]\n\n## Related concepts\n- [[concepts/ingest]]\n- [[concepts/knowledge-base]]\n- [[concepts/markdown]]\n- [[concepts/openai]]\n- [[concepts/persistent-wiki]]\n- [[concepts/raw-sources]]\n- [[concepts/workflow]]\n\n## Sources\n- [[sources/2026-04-06-llm-wiki-readme]]\n",
       "headings": [
         "knowledge",
         "Summary",
@@ -360,6 +368,7 @@
       "title": "markdown",
       "type": "concept",
       "summary": "Concept collected from LLM Wiki README.",
+      "markdown": "---\ntitle: \"markdown\"\ntype: \"concept\"\nupdated: \"2026-04-06\"\nsources: [\"[[sources/2026-04-06-llm-wiki-readme]]\"]\n---\n\n# markdown\n\n## Summary\nConcept collected from LLM Wiki README.\n\n## References\n- Discussed in [[sources/2026-04-06-llm-wiki-readme]]\n\n## Related concepts\n- [[concepts/ingest]]\n- [[concepts/knowledge]]\n- [[concepts/knowledge-base]]\n- [[concepts/openai]]\n- [[concepts/persistent-wiki]]\n- [[concepts/raw-sources]]\n- [[concepts/workflow]]\n\n## Sources\n- [[sources/2026-04-06-llm-wiki-readme]]\n",
       "headings": [
         "markdown",
         "Summary",
@@ -400,6 +409,7 @@
       "title": "obsidian",
       "type": "concept",
       "summary": "Concept collected from LLM Wiki Agent Guide.",
+      "markdown": "---\ntitle: \"obsidian\"\ntype: \"concept\"\nupdated: \"2026-04-07\"\nsources: []\n---\n\n# obsidian\n\n## Summary\nConcept collected from LLM Wiki Agent Guide.\n\n## References\n- None yet.\n\n## Related concepts\n- [[concepts/markdown]]\n- [[concepts/graph-view]]\n- [[concepts/cross-references]]\n\n## Sources\n- None yet.\n",
       "headings": [
         "obsidian",
         "Summary",
@@ -427,6 +437,7 @@
       "title": "openai",
       "type": "concept",
       "summary": "Concept collected from LLM Wiki README.",
+      "markdown": "---\ntitle: \"openai\"\ntype: \"concept\"\nupdated: \"2026-04-06\"\nsources: [\"[[sources/2026-04-06-llm-wiki-readme]]\"]\n---\n\n# openai\n\n## Summary\nConcept collected from LLM Wiki README.\n\n## References\n- Discussed in [[sources/2026-04-06-llm-wiki-readme]]\n\n## Related concepts\n- [[concepts/ingest]]\n- [[concepts/knowledge]]\n- [[concepts/knowledge-base]]\n- [[concepts/markdown]]\n- [[concepts/persistent-wiki]]\n- [[concepts/raw-sources]]\n- [[concepts/workflow]]\n\n## Sources\n- [[sources/2026-04-06-llm-wiki-readme]]\n",
       "headings": [
         "openai",
         "Summary",
@@ -466,6 +477,7 @@
       "title": "persistent wiki",
       "type": "concept",
       "summary": "Concept collected from LLM Wiki Graph Insights Update.",
+      "markdown": "---\ntitle: \"persistent wiki\"\ntype: \"concept\"\nupdated: \"2026-04-06\"\nsources: [\"[[sources/2026-04-06-karpathy-llm-wiki-gist]]\", \"[[sources/2026-04-06-llm-wiki-agent-guide]]\", \"[[sources/2026-04-06-llm-wiki-graph-insights-update]]\", \"[[sources/2026-04-06-llm-wiki-readme]]\"]\n---\n\n# persistent wiki\n\n## Summary\nConcept collected from LLM Wiki Graph Insights Update.\n\n## References\n- Discussed in [[sources/2026-04-06-karpathy-llm-wiki-gist]]\n- Discussed in [[sources/2026-04-06-llm-wiki-agent-guide]]\n- Discussed in [[sources/2026-04-06-llm-wiki-graph-insights-update]]\n- Discussed in [[sources/2026-04-06-llm-wiki-readme]]\n\n## Related concepts\n- [[concepts/ingest]]\n- [[concepts/knowledge]]\n- [[concepts/knowledge-base]]\n- [[concepts/markdown]]\n- [[concepts/openai]]\n- [[concepts/raw-sources]]\n- [[concepts/workflow]]\n\n## Sources\n- [[sources/2026-04-06-karpathy-llm-wiki-gist]]\n- [[sources/2026-04-06-llm-wiki-agent-guide]]\n- [[sources/2026-04-06-llm-wiki-graph-insights-update]]\n- [[sources/2026-04-06-llm-wiki-readme]]\n",
       "headings": [
         "persistent wiki",
         "Summary",
@@ -511,6 +523,7 @@
       "title": "raw sources",
       "type": "concept",
       "summary": "Concept collected from LLM Wiki README.",
+      "markdown": "---\ntitle: \"raw sources\"\ntype: \"concept\"\nupdated: \"2026-04-06\"\nsources: [\"[[sources/2026-04-06-llm-wiki-readme]]\"]\n---\n\n# raw sources\n\n## Summary\nConcept collected from LLM Wiki README.\n\n## References\n- Discussed in [[sources/2026-04-06-llm-wiki-readme]]\n\n## Related concepts\n- [[concepts/ingest]]\n- [[concepts/knowledge]]\n- [[concepts/knowledge-base]]\n- [[concepts/markdown]]\n- [[concepts/openai]]\n- [[concepts/persistent-wiki]]\n- [[concepts/workflow]]\n\n## Sources\n- [[sources/2026-04-06-llm-wiki-readme]]\n",
       "headings": [
         "raw sources",
         "Summary",
@@ -551,6 +564,7 @@
       "title": "source-of-truth",
       "type": "concept",
       "summary": "Concept collected from Karpathy LLM Wiki Gist.",
+      "markdown": "---\ntitle: \"source-of-truth\"\ntype: \"concept\"\nupdated: \"2026-04-07\"\nsources: []\n---\n\n# source-of-truth\n\n## Summary\nConcept collected from Karpathy LLM Wiki Gist.\n\n## References\n- None yet.\n\n## Related concepts\n- [[concepts/raw-sources]]\n- [[concepts/knowledge-base]]\n- [[concepts/compounding-artifact]]\n\n## Sources\n- None yet.\n",
       "headings": [
         "source-of-truth",
         "Summary",
@@ -580,6 +594,7 @@
       "title": "synthesis",
       "type": "concept",
       "summary": "Concept collected from Karpathy LLM Wiki Gist.",
+      "markdown": "---\ntitle: \"synthesis\"\ntype: \"concept\"\nupdated: \"2026-04-07\"\nsources: []\n---\n\n# synthesis\n\n## Summary\nConcept collected from Karpathy LLM Wiki Gist.\n\n## References\n- None yet.\n\n## Related concepts\n- [[concepts/knowledge-base]]\n- [[concepts/workflow]]\n- [[concepts/cross-references]]\n\n## Sources\n- None yet.\n",
       "headings": [
         "synthesis",
         "Summary",
@@ -608,6 +623,7 @@
       "title": "workflow",
       "type": "concept",
       "summary": "Concept collected from LLM Wiki Automation Update.",
+      "markdown": "---\ntitle: \"workflow\"\ntype: \"concept\"\nupdated: \"2026-04-06\"\nsources: [\"[[sources/2026-04-06-llm-wiki-automation-update]]\", \"[[sources/2026-04-06-llm-wiki-readme]]\"]\n---\n\n# workflow\n\n## Summary\nConcept collected from LLM Wiki Automation Update.\n\n## References\n- Discussed in [[sources/2026-04-06-llm-wiki-automation-update]]\n- Discussed in [[sources/2026-04-06-llm-wiki-readme]]\n\n## Related concepts\n- [[concepts/ingest]]\n- [[concepts/knowledge]]\n- [[concepts/knowledge-base]]\n- [[concepts/markdown]]\n- [[concepts/openai]]\n- [[concepts/persistent-wiki]]\n- [[concepts/raw-sources]]\n\n## Sources\n- [[sources/2026-04-06-llm-wiki-automation-update]]\n- [[sources/2026-04-06-llm-wiki-readme]]\n",
       "headings": [
         "workflow",
         "Summary",
@@ -650,6 +666,7 @@
       "title": "append",
       "type": "entity",
       "summary": "Detected heuristically in LLM Wiki Agent Guide.",
+      "markdown": "---\ntitle: \"append\"\ntype: \"entity\"\nupdated: \"2026-04-06\"\nsources: []\n---\n\n# append\n\n## Summary\nDetected heuristically in LLM Wiki Agent Guide.\n\n## Mentions\n- None yet.\n\n## Sources\n- None yet.\n",
       "headings": [
         "append",
         "Summary",
@@ -672,6 +689,7 @@
       "title": "automate",
       "type": "entity",
       "summary": "Detected heuristically in LLM Wiki Launch Roadmap.",
+      "markdown": "---\ntitle: \"automate\"\ntype: \"entity\"\nupdated: \"2026-04-06\"\nsources: []\n---\n\n# automate\n\n## Summary\nDetected heuristically in LLM Wiki Launch Roadmap.\n\n## Mentions\n- None yet.\n\n## Sources\n- None yet.\n",
       "headings": [
         "automate",
         "Summary",
@@ -693,6 +711,7 @@
       "title": "ChatGPT",
       "type": "entity",
       "summary": "Detected heuristically in Karpathy LLM Wiki Gist.",
+      "markdown": "---\ntitle: \"ChatGPT\"\ntype: \"entity\"\nupdated: \"2026-04-06\"\nsources: []\n---\n\n# ChatGPT\n\n## Summary\nDetected heuristically in Karpathy LLM Wiki Gist.\n\n## Mentions\n- None yet.\n\n## Sources\n- None yet.\n",
       "headings": [
         "ChatGPT",
         "Summary",
@@ -714,6 +733,7 @@
       "title": "Claude Code",
       "type": "entity",
       "summary": "Detected heuristically in Karpathy LLM Wiki Gist.",
+      "markdown": "---\ntitle: \"Claude Code\"\ntype: \"entity\"\nupdated: \"2026-04-06\"\nsources: []\n---\n\n# Claude Code\n\n## Summary\nDetected heuristically in Karpathy LLM Wiki Gist.\n\n## Mentions\n- None yet.\n\n## Sources\n- None yet.\n",
       "headings": [
         "Claude Code",
         "Summary",
@@ -735,6 +755,7 @@
       "title": "CLI",
       "type": "entity",
       "summary": "Detected heuristically in LLM Wiki Graph Insights Update.",
+      "markdown": "---\ntitle: \"CLI\"\ntype: \"entity\"\nupdated: \"2026-04-06\"\nsources: []\n---\n\n# CLI\n\n## Summary\nDetected heuristically in LLM Wiki Graph Insights Update.\n\n## Mentions\n- None yet.\n\n## Sources\n- None yet.\n",
       "headings": [
         "CLI",
         "Summary",
@@ -758,6 +779,7 @@
       "title": "Codex CLI",
       "type": "entity",
       "summary": "Detected heuristically in LLM Wiki README.",
+      "markdown": "---\ntitle: \"Codex CLI\"\ntype: \"entity\"\nupdated: \"2026-04-06\"\nsources: []\n---\n\n# Codex CLI\n\n## Summary\nDetected heuristically in LLM Wiki README.\n\n## Mentions\n- None yet.\n\n## Sources\n- None yet.\n",
       "headings": [
         "Codex CLI",
         "Summary",
@@ -780,6 +802,7 @@
       "title": "Codex",
       "type": "entity",
       "summary": "Detected heuristically in LLM Wiki README.",
+      "markdown": "---\ntitle: \"Codex\"\ntype: \"entity\"\nupdated: \"2026-04-06\"\nsources: []\n---\n\n# Codex\n\n## Summary\nDetected heuristically in LLM Wiki README.\n\n## Mentions\n- None yet.\n\n## Sources\n- None yet.\n",
       "headings": [
         "Codex",
         "Summary",
@@ -802,6 +825,7 @@
       "title": "connect",
       "type": "entity",
       "summary": "Detected heuristically in LLM Wiki Launch Roadmap.",
+      "markdown": "---\ntitle: \"connect\"\ntype: \"entity\"\nupdated: \"2026-04-06\"\nsources: []\n---\n\n# connect\n\n## Summary\nDetected heuristically in LLM Wiki Launch Roadmap.\n\n## Mentions\n- None yet.\n\n## Sources\n- None yet.\n",
       "headings": [
         "connect",
         "Summary",
@@ -823,6 +847,7 @@
       "title": "if-codex",
       "type": "entity",
       "summary": "Detected heuristically in LLM Wiki README.",
+      "markdown": "---\ntitle: \"if-codex\"\ntype: \"entity\"\nupdated: \"2026-04-06\"\nsources: []\n---\n\n# if-codex\n\n## Summary\nDetected heuristically in LLM Wiki README.\n\n## Mentions\n- None yet.\n\n## Sources\n- None yet.\n",
       "headings": [
         "if-codex",
         "Summary",
@@ -844,6 +869,7 @@
       "title": "json",
       "type": "entity",
       "summary": "Detected heuristically in LLM Wiki Launch Roadmap.",
+      "markdown": "---\ntitle: \"json\"\ntype: \"entity\"\nupdated: \"2026-04-06\"\nsources: []\n---\n\n# json\n\n## Summary\nDetected heuristically in LLM Wiki Launch Roadmap.\n\n## Mentions\n- None yet.\n\n## Sources\n- None yet.\n",
       "headings": [
         "json",
         "Summary",
@@ -865,6 +891,7 @@
       "title": "llm-agent",
       "type": "entity",
       "summary": "Detected heuristically in Karpathy LLM Wiki Gist.",
+      "markdown": "---\ntitle: \"llm-agent\"\ntype: \"entity\"\nupdated: \"2026-04-06\"\nsources: []\n---\n\n# llm-agent\n\n## Summary\nDetected heuristically in Karpathy LLM Wiki Gist.\n\n## Mentions\n- None yet.\n\n## Sources\n- None yet.\n",
       "headings": [
         "llm-agent",
         "Summary",
@@ -886,6 +913,7 @@
       "title": "llm-wiki",
       "type": "entity",
       "summary": "Detected heuristically in LLM Wiki Launch Roadmap.",
+      "markdown": "---\ntitle: \"llm-wiki\"\ntype: \"entity\"\nupdated: \"2026-04-06\"\nsources: []\n---\n\n# llm-wiki\n\n## Summary\nDetected heuristically in LLM Wiki Launch Roadmap.\n\n## Mentions\n- None yet.\n\n## Sources\n- None yet.\n",
       "headings": [
         "llm-wiki",
         "Summary",
@@ -909,6 +937,7 @@
       "title": "Node CLI",
       "type": "entity",
       "summary": "Detected heuristically in LLM Wiki README.",
+      "markdown": "---\ntitle: \"Node CLI\"\ntype: \"entity\"\nupdated: \"2026-04-06\"\nsources: []\n---\n\n# Node CLI\n\n## Summary\nDetected heuristically in LLM Wiki README.\n\n## Mentions\n- None yet.\n\n## Sources\n- None yet.\n",
       "headings": [
         "Node CLI",
         "Summary",
@@ -931,6 +960,7 @@
       "title": "Node",
       "type": "entity",
       "summary": "Detected heuristically in LLM Wiki README.",
+      "markdown": "---\ntitle: \"Node\"\ntype: \"entity\"\nupdated: \"2026-04-06\"\nsources: []\n---\n\n# Node\n\n## Summary\nDetected heuristically in LLM Wiki README.\n\n## Mentions\n- None yet.\n\n## Sources\n- None yet.\n",
       "headings": [
         "Node",
         "Summary",
@@ -953,6 +983,7 @@
       "title": "NotebookLM",
       "type": "entity",
       "summary": "Detected heuristically in Karpathy LLM Wiki Gist.",
+      "markdown": "---\ntitle: \"NotebookLM\"\ntype: \"entity\"\nupdated: \"2026-04-06\"\nsources: []\n---\n\n# NotebookLM\n\n## Summary\nDetected heuristically in Karpathy LLM Wiki Gist.\n\n## Mentions\n- None yet.\n\n## Sources\n- None yet.\n",
       "headings": [
         "NotebookLM",
         "Summary",
@@ -974,6 +1005,7 @@
       "title": "Obsidian",
       "type": "entity",
       "summary": "Detected heuristically in Karpathy LLM Wiki Gist.",
+      "markdown": "---\ntitle: \"Obsidian\"\ntype: \"entity\"\nupdated: \"2026-04-06\"\nsources: []\n---\n\n# Obsidian\n\n## Summary\nDetected heuristically in Karpathy LLM Wiki Gist.\n\n## Mentions\n- None yet.\n\n## Sources\n- None yet.\n",
       "headings": [
         "Obsidian",
         "Summary",
@@ -995,6 +1027,7 @@
       "title": "OpenAI",
       "type": "entity",
       "summary": "Detected heuristically in LLM Wiki README.",
+      "markdown": "---\ntitle: \"OpenAI\"\ntype: \"entity\"\nupdated: \"2026-04-06\"\nsources: []\n---\n\n# OpenAI\n\n## Summary\nDetected heuristically in LLM Wiki README.\n\n## Mentions\n- None yet.\n\n## Sources\n- None yet.\n",
       "headings": [
         "OpenAI",
         "Summary",
@@ -1018,6 +1051,7 @@
       "title": "OpenCode",
       "type": "entity",
       "summary": "Detected heuristically in Karpathy LLM Wiki Gist.",
+      "markdown": "---\ntitle: \"OpenCode\"\ntype: \"entity\"\nupdated: \"2026-04-06\"\nsources: []\n---\n\n# OpenCode\n\n## Summary\nDetected heuristically in Karpathy LLM Wiki Gist.\n\n## Mentions\n- None yet.\n\n## Sources\n- None yet.\n",
       "headings": [
         "OpenCode",
         "Summary",
@@ -1039,6 +1073,7 @@
       "title": "optional",
       "type": "entity",
       "summary": "Detected heuristically in LLM Wiki README.",
+      "markdown": "---\ntitle: \"optional\"\ntype: \"entity\"\nupdated: \"2026-04-06\"\nsources: []\n---\n\n# optional\n\n## Summary\nDetected heuristically in LLM Wiki README.\n\n## Mentions\n- None yet.\n\n## Sources\n- None yet.\n",
       "headings": [
         "optional",
         "Summary",
@@ -1060,6 +1095,7 @@
       "title": "prefer",
       "type": "entity",
       "summary": "Detected heuristically in LLM Wiki Agent Guide.",
+      "markdown": "---\ntitle: \"prefer\"\ntype: \"entity\"\nupdated: \"2026-04-06\"\nsources: []\n---\n\n# prefer\n\n## Summary\nDetected heuristically in LLM Wiki Agent Guide.\n\n## Mentions\n- None yet.\n\n## Sources\n- None yet.\n",
       "headings": [
         "prefer",
         "Summary",
@@ -1081,6 +1117,7 @@
       "title": "primary",
       "type": "entity",
       "summary": "Detected heuristically in LLM Wiki Agent Guide.",
+      "markdown": "---\ntitle: \"primary\"\ntype: \"entity\"\nupdated: \"2026-04-06\"\nsources: []\n---\n\n# primary\n\n## Summary\nDetected heuristically in LLM Wiki Agent Guide.\n\n## Mentions\n- None yet.\n\n## Sources\n- None yet.\n",
       "headings": [
         "primary",
         "Summary",
@@ -1102,6 +1139,7 @@
       "title": "RAG",
       "type": "entity",
       "summary": "Detected heuristically in Karpathy LLM Wiki Gist.",
+      "markdown": "---\ntitle: \"RAG\"\ntype: \"entity\"\nupdated: \"2026-04-06\"\nsources: []\n---\n\n# RAG\n\n## Summary\nDetected heuristically in Karpathy LLM Wiki Gist.\n\n## Mentions\n- None yet.\n\n## Sources\n- None yet.\n",
       "headings": [
         "RAG",
         "Summary",
@@ -1123,6 +1161,7 @@
       "title": "search",
       "type": "entity",
       "summary": "Detected heuristically in LLM Wiki Launch Roadmap.",
+      "markdown": "---\ntitle: \"search\"\ntype: \"entity\"\nupdated: \"2026-04-06\"\nsources: []\n---\n\n# search\n\n## Summary\nDetected heuristically in LLM Wiki Launch Roadmap.\n\n## Mentions\n- None yet.\n\n## Sources\n- None yet.\n",
       "headings": [
         "search",
         "Summary",
@@ -1144,6 +1183,7 @@
       "title": "upgrade",
       "type": "entity",
       "summary": "Detected heuristically in LLM Wiki Launch Roadmap.",
+      "markdown": "---\ntitle: \"upgrade\"\ntype: \"entity\"\nupdated: \"2026-04-06\"\nsources: []\n---\n\n# upgrade\n\n## Summary\nDetected heuristically in LLM Wiki Launch Roadmap.\n\n## Mentions\n- None yet.\n\n## Sources\n- None yet.\n",
       "headings": [
         "upgrade",
         "Summary",
@@ -1165,6 +1205,7 @@
       "title": "Vercel Git",
       "type": "entity",
       "summary": "Detected heuristically in LLM Wiki Automation Update.",
+      "markdown": "---\ntitle: \"Vercel Git\"\ntype: \"entity\"\nupdated: \"2026-04-06\"\nsources: []\n---\n\n# Vercel Git\n\n## Summary\nDetected heuristically in LLM Wiki Automation Update.\n\n## Mentions\n- None yet.\n\n## Sources\n- None yet.\n",
       "headings": [
         "Vercel Git",
         "Summary",
@@ -1187,6 +1228,7 @@
       "title": "VERCEL ORG ID",
       "type": "entity",
       "summary": "Detected heuristically in LLM Wiki README.",
+      "markdown": "---\ntitle: \"VERCEL ORG ID\"\ntype: \"entity\"\nupdated: \"2026-04-06\"\nsources: []\n---\n\n# VERCEL ORG ID\n\n## Summary\nDetected heuristically in LLM Wiki README.\n\n## Mentions\n- None yet.\n\n## Sources\n- None yet.\n",
       "headings": [
         "VERCEL ORG ID",
         "Summary",
@@ -1209,6 +1251,7 @@
       "title": "Vercel",
       "type": "entity",
       "summary": "Detected heuristically in LLM Wiki Automation Update.",
+      "markdown": "---\ntitle: \"Vercel\"\ntype: \"entity\"\nupdated: \"2026-04-06\"\nsources: []\n---\n\n# Vercel\n\n## Summary\nDetected heuristically in LLM Wiki Automation Update.\n\n## Mentions\n- None yet.\n\n## Sources\n- None yet.\n",
       "headings": [
         "Vercel",
         "Summary",
@@ -1232,6 +1275,7 @@
       "title": "LLM Wiki Index",
       "type": "index",
       "summary": "LLM Wiki Index Sources sources/2026-04-06-karpathy-llm-wiki-gist — A pattern for building personal knowledge bases using LLMs. · 1 entities · 1 concepts · 1 topics sources/2026-04-06-llm-wiki-agent-guide — This repositor",
+      "markdown": "---\ntitle: \"LLM Wiki Index\"\ntype: \"index\"\ncreated: \"2026-04-06\"\n---\n\n# LLM Wiki Index\n\n## Sources\n- [[sources/2026-04-06-karpathy-llm-wiki-gist]] — A pattern for building personal knowledge bases using LLMs. · 1 entities · 1 concepts · 1 topics\n- [[sources/2026-04-06-llm-wiki-agent-guide]] — This repository is a scaffold for a persistent wiki maintained by an LLM. · 1 entities · 1 concepts · 1 topics\n- [[sources/2026-04-06-llm-wiki-automation-update]] — The LLM Wiki project now has a working GitHub + Vercel automation path. · 2 entities · 2 concepts · 2 topics\n- [[sources/2026-04-06-llm-wiki-graph-insights-update]] — The LLM Wiki project now includes explicit graph analysis and backlink-aware browsing. · 1 entities · 1 concepts · 2 topics\n- [[sources/2026-04-06-llm-wiki-launch-roadmap]] — The current LLM Wiki project is evolving from a scaffold into a deployable public knowledge base. · 1 entities · 1 concepts · 1 topics\n- [[sources/2026-04-06-llm-wiki-readme]] — Persistent, LLM-maintained wiki scaffold with a Codex-first workflow, modular CLI, interlinked markdown vault, and static Vercel viewer. · 8 entities · 8 concepts · 8 topics\n\n## Entities\n- [[entities/append]] — Detected heuristically in LLM Wiki Agent Guide.\n- [[entities/automate]] — Detected heuristically in LLM Wiki Launch Roadmap.\n- [[entities/chatgpt]] — Detected heuristically in Karpathy LLM Wiki Gist.\n- [[entities/claude-code]] — Detected heuristically in Karpathy LLM Wiki Gist.\n- [[entities/cli]] — Detected heuristically in LLM Wiki Graph Insights Update.\n- [[entities/codex]] — Detected heuristically in LLM Wiki README.\n- [[entities/codex-cli]] — Detected heuristically in LLM Wiki README.\n- [[entities/connect]] — Detected heuristically in LLM Wiki Launch Roadmap.\n- [[entities/if-codex]] — Detected heuristically in LLM Wiki README.\n- [[entities/json]] — Detected heuristically in LLM Wiki Launch Roadmap.\n- [[entities/llm-agent]] — Detected heuristically in Karpathy LLM Wiki Gist.\n- [[entities/llm-wiki]] — Detected heuristically in LLM Wiki Launch Roadmap.\n- [[entities/node]] — Detected heuristically in LLM Wiki README.\n- [[entities/node-cli]] — Detected heuristically in LLM Wiki README.\n- [[entities/notebooklm]] — Detected heuristically in Karpathy LLM Wiki Gist.\n- [[entities/obsidian]] — Detected heuristically in Karpathy LLM Wiki Gist.\n- [[entities/openai]] — Detected heuristically in LLM Wiki README.\n- [[entities/opencode]] — Detected heuristically in Karpathy LLM Wiki Gist.\n- [[entities/optional]] — Detected heuristically in LLM Wiki README.\n- [[entities/prefer]] — Detected heuristically in LLM Wiki Agent Guide.\n- [[entities/primary]] — Detected heuristically in LLM Wiki Agent Guide.\n- [[entities/rag]] — Detected heuristically in Karpathy LLM Wiki Gist.\n- [[entities/search]] — Detected heuristically in LLM Wiki Launch Roadmap.\n- [[entities/upgrade]] — Detected heuristically in LLM Wiki Launch Roadmap.\n- [[entities/vercel]] — Detected heuristically in LLM Wiki Automation Update.\n- [[entities/vercel-git]] — Detected heuristically in LLM Wiki Automation Update.\n- [[entities/vercel-org-id]] — Detected heuristically in LLM Wiki README.\n\n## Concepts\n- [[concepts/compounding-artifact]] — Concept collected from Karpathy LLM Wiki Gist.\n- [[concepts/cross-references]] — Concept collected from Karpathy LLM Wiki Gist.\n- [[concepts/graph-view]] — Concept collected from Karpathy LLM Wiki Gist.\n- [[concepts/ingest]] — Concept collected from LLM Wiki Automation Update.\n- [[concepts/knowledge]] — Concept collected from LLM Wiki README.\n- [[concepts/knowledge-base]] — Concept collected from LLM Wiki README.\n- [[concepts/markdown]] — Concept collected from LLM Wiki README.\n- [[concepts/obsidian]] — Concept collected from LLM Wiki Agent Guide.\n- [[concepts/openai]] — Concept collected from LLM Wiki README.\n- [[concepts/persistent-wiki]] — Concept collected from LLM Wiki Graph Insights Update.\n- [[concepts/raw-sources]] — Concept collected from LLM Wiki README.\n- [[concepts/source-of-truth]] — Concept collected from Karpathy LLM Wiki Gist.\n- [[concepts/synthesis]] — Concept collected from Karpathy LLM Wiki Gist.\n- [[concepts/workflow]] — Concept collected from LLM Wiki Automation Update.\n\n## Topics\n- [[topics/agent]] — Topic collected from Karpathy LLM Wiki Gist.\n- [[topics/codex]] — Topic collected from LLM Wiki README.\n- [[topics/index]] — Topic collected from LLM Wiki Graph Insights Update.\n- [[topics/ingest]] — Topic collected from LLM Wiki Automation Update.\n- [[topics/knowledge]] — Topic collected from LLM Wiki README.\n- [[topics/lint]] — Topic collected from LLM Wiki README.\n- [[topics/markdown]] — Topic collected from LLM Wiki README.\n- [[topics/oauth]] — Topic collected from LLM Wiki Agent Guide.\n- [[topics/obsidian]] — Topic collected from Karpathy LLM Wiki Gist.\n- [[topics/openai]] — Topic collected from LLM Wiki README.\n- [[topics/query]] — Topic collected from LLM Wiki Graph Insights Update.\n- [[topics/workflow]] — Topic collected from LLM Wiki Automation Update.\n\n## Answers\n- [[answers/2026-04-06-what-are-the-core-layers-and-workflows-of-the-llm-wiki-patte]] — 핵심 계층은 raw sources(불변 원문), the wiki(LLM이 유지하는 markdown 지식층), 그리고 schema/AGENTS.md 같은 운영 규칙 문서다.\n",
       "headings": [
         "LLM Wiki Index",
         "Sources",
@@ -1316,6 +1360,7 @@
       "title": "LLM Wiki Log",
       "type": "log",
       "summary": "LLM Wiki Log [2026-04-06] init | vault scaffold Created the initial wiki scaffold. [2026-04-06] ingest | Karpathy LLM Wiki Gist raw: ../raw/sources/2026-04-06-karpathy-llm-wiki-gist.md wiki: sources/2026-04-06-karpathy-l",
+      "markdown": "---\ntitle: \"LLM Wiki Log\"\ntype: \"log\"\ncreated: \"2026-04-06\"\n---\n# LLM Wiki Log\n\n## [2026-04-06] init | vault scaffold\n- Created the initial wiki scaffold.\n\n## [2026-04-06] ingest | Karpathy LLM Wiki Gist\n- raw: ../raw/sources/2026-04-06-karpathy-llm-wiki-gist.md\n- wiki: sources/2026-04-06-karpathy-llm-wiki-gist.md\n- backend: heuristic\n- model: gpt-4.1-mini\n\n## [2026-04-06] ingest | LLM Wiki README\n- raw: ../raw/sources/2026-04-06-llm-wiki-readme.md\n- wiki: sources/2026-04-06-llm-wiki-readme.md\n- backend: heuristic\n- model: gpt-4.1-mini\n\n## [2026-04-06] ingest | LLM Wiki Agent Guide\n- raw: ../raw/sources/2026-04-06-llm-wiki-agent-guide.md\n- wiki: sources/2026-04-06-llm-wiki-agent-guide.md\n- backend: heuristic\n- model: gpt-4.1-mini\n\n## [2026-04-06] ingest | LLM Wiki Launch Roadmap\n- raw: ../raw/sources/2026-04-06-llm-wiki-launch-roadmap.md\n- wiki: sources/2026-04-06-llm-wiki-launch-roadmap.md\n- backend: heuristic\n- model: gpt-4.1-mini\n\n## [2026-04-06] repair | vault repaired\n- sources: 4\n- entities: 30\n- concepts: 12\n- topics: 8\n- answers: 0\n\n## [2026-04-06] query | What are the core layers and workflows of the llm wiki pattern?\n- answer: answers/2026-04-06-what-are-the-core-layers-and-workflows-of-the-llm-wiki-patte.md\n- sources: 0\n\n## [2026-04-06] query | What are the core layers and workflows of the llm wiki pattern?\n- answer: answers/2026-04-06-what-are-the-core-layers-and-workflows-of-the-llm-wiki-patte.md\n- sources: 6\n\n## [2026-04-06] ingest | Karpathy LLM Wiki Gist\n- raw: ../raw/sources/2026-04-06-karpathy-llm-wiki-gist.md\n- wiki: sources/2026-04-06-karpathy-llm-wiki-gist.md\n- backend: heuristic\n- model: gpt-4.1-mini\n\n## [2026-04-06] repair | vault repaired\n- sources: 4\n- entities: 35\n- concepts: 13\n- topics: 10\n- answers: 1\n\n## [2026-04-06] query | What are the core layers and workflows of the llm wiki pattern?\n- answer: answers/2026-04-06-what-are-the-core-layers-and-workflows-of-the-llm-wiki-patte.md\n- sources: 6\n\n## [2026-04-06] repair | vault repaired\n- sources: 4\n- entities: 35\n- concepts: 13\n- topics: 10\n- answers: 1\n\n## [2026-04-06] query | What are the core layers and workflows of the llm wiki pattern?\n- answer: answers/2026-04-06-what-are-the-core-layers-and-workflows-of-the-llm-wiki-patte.md\n- sources: 5\n\n## [2026-04-06] query | What are the core layers and workflows of the llm wiki pattern?\n- answer: answers/2026-04-06-what-are-the-core-layers-and-workflows-of-the-llm-wiki-patte.md\n- sources: 5\n\n## [2026-04-06] repair | vault repaired\n- sources: 4\n- entities: 35\n- concepts: 13\n- topics: 10\n- answers: 1\n\n## [2026-04-06] ingest | Karpathy LLM Wiki Gist\n- raw: ../raw/sources/2026-04-06-karpathy-llm-wiki-gist.md\n- wiki: sources/2026-04-06-karpathy-llm-wiki-gist.md\n- backend: heuristic\n- model: gpt-4.1-mini\n\n## [2026-04-06] repair | vault repaired\n- sources: 4\n- entities: 23\n- concepts: 13\n- topics: 10\n- answers: 1\n\n## [2026-04-06] ingest | Karpathy LLM Wiki Gist\n- raw: ../raw/sources/2026-04-06-karpathy-llm-wiki-gist.md\n- wiki: sources/2026-04-06-karpathy-llm-wiki-gist.md\n- backend: heuristic\n- model: gpt-4.1-mini\n\n## [2026-04-06] repair | vault repaired\n- sources: 4\n- entities: 23\n- concepts: 13\n- topics: 10\n- answers: 1\n\n## [2026-04-06] repair | vault repaired\n- sources: 4\n- entities: 23\n- concepts: 13\n- topics: 10\n- answers: 1\n\n## [2026-04-06] repair | vault repaired\n- sources: 4\n- entities: 23\n- concepts: 13\n- topics: 10\n- answers: 1\n\n## [2026-04-06] repair | vault repaired\n- sources: 4\n- entities: 23\n- concepts: 13\n- topics: 10\n- answers: 1\n\n## [2026-04-06] query | What are the core layers and workflows of the llm wiki pattern?\n- answer: answers/2026-04-06-what-are-the-core-layers-and-workflows-of-the-llm-wiki-patte.md\n- sources: 5\n\n## [2026-04-06] repair | vault repaired\n- sources: 4\n- entities: 23\n- concepts: 13\n- topics: 10\n- answers: 1\n\n## [2026-04-06] ingest | LLM Wiki README\n- raw: ../raw/sources/2026-04-06-llm-wiki-readme.md\n- wiki: sources/2026-04-06-llm-wiki-readme.md\n- backend: heuristic\n- model: gpt-4.1-mini\n- warning: 2026-04-06T14:14:33.745695Z ERROR codex_core::auth: Failed to refresh token: 401 Unauthorized: {\n  \"error\": {\n    \"message\": \"Your refresh token has already been used to generate a new access token. Please try signing in again.\",\n    \"type\": \"invalid_request_error\",\n    \"param\": null,\n    \"code\": \"refresh_token_reused\"\n  }\n}\n2026-04-06T14:14:33.745789Z ERROR codex_core::auth: Failed to refresh token: Your access token could not be refreshed because your refresh token was already used. Please log out and sign in again.\n2026-04-06T14:14:34.041907Z ERROR codex_core::models_manager::manager: failed to refresh available models: unexpected status 401 Unauthorized: Provided authentication token is expired. Please try signing in again., url: https://chatgpt.com/backend-api/codex/models?client_version=0.107.0, cf-ray: 9e81664d9d482916-ICN, request id: 7b33a686-5d5b-481f-a8b4-ac7bd12ad8af\n2026-04-06T14:14:34.278469Z ERROR codex_core::auth: Failed to refresh token: 401 Unauthorized: {\n  \"error\": {\n    \"message\": \"Your refresh token has already been used to generate a new access token. Please try signing in again.\",\n    \"type\": \"invalid_request_error\",\n    \"param\": null,\n    \"code\": \"refresh_token_reused\"\n  }\n}\n2026-04-06T14:14:34.278554Z ERROR codex_core::auth: Failed to refresh token: Your access token could not be refreshed because your refresh token was already used. Please log out and sign in again.\nOpenAI Codex v0.107.0 (research preview)\n--------\nworkdir: /home/marsh2/Projects/llm-wiki\nmodel: gpt-5.3-codex\nprovider: openai\napproval: never\nsandbox: read-only\nreasoning effort: xhigh\nreasoning summaries: none\nsession id: 019d6325-2d3b-75a2-b51f-37ad26e3a2e9\n--------\nuser\nYou are maintaining a persistent markdown wiki.\n\nReturn ONLY JSON matching the provided output schema. No markdown fences, no commentary.\n\nTitle: LLM Wiki README\nModel hint: gpt-4.1-mini\n\nSource:\n# LLM Wiki\n\nPersistent, LLM-maintained wiki scaffold with a Codex-first workflow, modular CLI, interlinked markdown vault, and static Vercel viewer.\n\n## Links\n\n- GitHub: https://github.com/Marhs2/llm-wiki\n- Live site: https://site-mu-puce.vercel.app\n\n## What this project does\n\nThis repository implements the persistent wiki pattern described in Karpathy's LLM wiki gist:\n\n- ingest raw sources into a growing markdown knowledge base\n- maintain entity / concept / topic / answer pages\n- keep a catalog-style `index.md` and time-ordered `log.md`\n- lint and repair the wiki graph over time\n- publish the current wiki as a searchable static site\n\n## Primary backend: Codex CLI\n\nThis project prefers the local **Codex CLI** for analysis and wiki maintenance.\n\nSet a custom Codex binary if needed:\n\n```bash\nexport LLM_WIKI_CODEX_COMMAND=/path/to/codex\n```\n\nIf Codex is installed normally, no extra configuration is needed.\n\n## Optional fallback: OpenAI OAuth\n\nOpenAI OAuth support is still available, but optional.\nUse it only when you want to force the OpenAI backend.\n\n```bash\nnode scripts/llm-wiki.mjs auth login --client-id YOUR_CLIENT_ID\nnode scripts/llm-wiki.mjs auth set-token --token YOUR_TOKEN\nnode scripts/llm-wiki.mjs auth import --file ./openai-oauth.json\n```\n\n## Features\n\n- modular Node CLI split across `scripts/lib/`\n- vault layout for raw sources and generated wiki pages\n- Codex-backed ingest with heuristic fallback\n- query / search / lint / repair maintenance commands\n- auto-generated entity, concept, topic, answer, source, index, and log pages\n- static site build with manifest metadata for filters and related-page navigation\n- Vercel deployment workflow for public browsing\n- small Node test suite for shared helpers\n\n## Quick start\n\n```bash\nnpm install\nnpm run init\nnpm run ingest -- --source ./path/to/source.md --title \"Source Title\"\nnpm run status\n```\n\nTo force a backend:\n\n```bash\nnpm run ingest -- --source ./path/to/source.md --backend codex\nnpm run ingest -- --source ./path/to/source.md --backend openai\nnpm run ingest -- --source ./path/to/source.md --backend heuristic\n```\n\nUseful maintenance commands:\n\n```bash\nnode scripts/llm-wiki.mjs search --query \"persistent wiki\"\nnode scripts/llm-wiki.mjs graph --limit 10\nnode scripts/llm-wiki.mjs query --question \"What changed?\" --write\nnode scripts/llm-wiki.mjs lint\nnode scripts/llm-wiki.mjs repair\nnode scripts/llm-wiki.mjs build-site\nnode scripts/llm-wiki.mjs deploy --prod --yes\nnpm test\n```\n\n## Automation\n\nThis repo includes a GitHub Actions workflow at `.github/workflows/ci-vercel.yml` that:\n\n- runs tests on pushes and pull requests\n- lints the wiki\n- rebuilds the static wiki site\n- uploads the built site as a workflow artifact\n\nSeparately, the Vercel project is now connected directly to this GitHub repository, so pushes to `main` can trigger Vercel deployments through the Git integration.\n\nCurrent linked Vercel values for this project:\n\n- `VERCEL_ORG_ID=team_2tA7Ens8fc9xQMEDRDcPFnL7`\n- `VERCEL_PROJECT_ID=prj_vghY14zqws05fJzqZoTJofYXUbZ6`\n\n## Layout\n\n```text\nvault/\n  raw/\n    sources/\n    assets/\n  wiki/\n    index.md\n    log.md\n    entities/\n    concepts/\n    topics/\n    answers/\n    sources/\n\nsite/\n  index.html\n  app.js\n  style.css\n  data/wiki-index.json\n  wiki/\n\nscripts/\n  llm-wiki.mjs      # Thin CLI entrypoint\n  lib/\n    config.mjs\n    utils.mjs\n    markdown.mjs\n    vault.mjs\n    auth.mjs\n    analysis.mjs\n    commands.mjs\n```\n\n## Typical workflow\n\n```bash\nnpm run ingest -- --source ./notes/source.md --title \"New source\"\nnode scripts/llm-wiki.mjs repair\nnode scripts/llm-wiki.mjs lint\nnode scripts/llm-wiki.mjs build-site\n```\n\n## Deployment notes\n\n- The Vercel project is connected to `https://github.com/Marhs2/llm-wiki`\n- The static site is served from the `site/` directory\n- Local production deployment is also available with `node scripts/llm-wiki.mjs deploy --prod --yes`\n\nwarning: Under-development features enabled: child_agents_md. Under-development features are incomplete and may behave unpredictably. To suppress this warning, set `suppress_unstable_features_warning = true` in /home/marsh2/.codex/config.toml.\nmcp: omx_state starting\nmcp: omx_trace starting\nmcp: omx_code_intel starting\nmcp: omx_memory starting\nmcp: omx_team_run starting\nmcp: codex_apps starting\n2026-04-06T14:14:34.835678Z ERROR rmcp::transport::common::reqwest::streamable_http_client: unexpected content type: Some(\"text/plain\")\nmcp: codex_apps failed: MCP client for `codex_apps` failed to start: MCP startup failed: handshaking with MCP server failed: Send message error Transport [rmcp::transport::worker::WorkerTransport<rmcp::transport::streamable_http_client::StreamableHttpClientWorker<reqwest::async_impl::client::Client>>] error: Unexpected content type: Some(\"text/plain\"), when send initialize request\n2026-04-06T14:14:34.839216Z ERROR rmcp::transport::worker: worker quit with fatal: Transport channel closed, when UnexpectedContentType(Some(\"text/plain\"))\nmcp: omx_trace ready\nmcp: omx_memory ready\nmcp: omx_code_intel ready\nmcp: omx_state ready\nmcp: omx_team_run ready\nmcp startup: ready: omx_trace, omx_memory, omx_code_intel, omx_state, omx_team_run; failed: codex_apps\n2026-04-06T14:14:36.833465Z ERROR codex_core::auth: Failed to refresh token: 401 Unauthorized: {\n  \"error\": {\n    \"message\": \"Your refresh token has already been used to generate a new access token. Please try signing in again.\",\n    \"type\": \"invalid_request_error\",\n    \"param\": null,\n    \"code\": \"refresh_token_reused\"\n  }\n}\n2026-04-06T14:14:36.833544Z ERROR codex_core::auth: Failed to refresh token: Your access token could not be refreshed because your refresh token was already used. Please log out and sign in again.\n2026-04-06T14:14:37.595115Z ERROR codex_core::auth: Failed to refresh token: 401 Unauthorized: {\n  \"error\": {\n    \"message\": \"Your refresh token has already been used to generate a new access token. Please try signing in again.\",\n    \"type\": \"invalid_request_error\",\n    \"param\": null,\n    \"code\": \"refresh_token_reused\"\n  }\n}\n2026-04-06T14:14:37.595188Z ERROR codex_core::auth: Failed to refresh token: Your access token could not be refreshed because your refresh token was already used. Please log out and sign in again.\n2026-04-06T14:14:38.002134Z ERROR codex_core::auth: Failed to refresh token: 401 Unauthorized: {\n  \"error\": {\n    \"message\": \"Your refresh token has already been used to generate a new access token. Please try signing in again.\",\n    \"type\": \"invalid_request_error\",\n    \"param\": null,\n    \"code\": \"refresh_token_reused\"\n  }\n}\nERROR: Your access token could not be refreshed because your refresh token was already used. Please log out and sign in again.\nWarning: no last agent message; wrote empty content to /tmp/llm-wiki-codex-blFFGy/last-message.txt\n\n## [2026-04-06] ingest | LLM Wiki Automation Update\n- raw: ../raw/sources/2026-04-06-llm-wiki-automation-update.md\n- wiki: sources/2026-04-06-llm-wiki-automation-update.md\n- backend: heuristic\n- model: gpt-4.1-mini\n- warning: 2026-04-06T14:14:42.000070Z ERROR codex_core::auth: Failed to refresh token: 401 Unauthorized: {\n  \"error\": {\n    \"message\": \"Your refresh token has already been used to generate a new access token. Please try signing in again.\",\n    \"type\": \"invalid_request_error\",\n    \"param\": null,\n    \"code\": \"refresh_token_reused\"\n  }\n}\n2026-04-06T14:14:42.000142Z ERROR codex_core::auth: Failed to refresh token: Your access token could not be refreshed because your refresh token was already used. Please log out and sign in again.\n2026-04-06T14:14:42.172273Z ERROR codex_core::models_manager::manager: failed to refresh available models: unexpected status 401 Unauthorized: Provided authentication token is expired. Please try signing in again., url: https://chatgpt.com/backend-api/codex/models?client_version=0.107.0, cf-ray: 9e816681382b3115-ICN, request id: b4046b78-c4d1-4bb3-b8fc-598425105675\n2026-04-06T14:14:42.508502Z ERROR codex_core::auth: Failed to refresh token: 401 Unauthorized: {\n  \"error\": {\n    \"message\": \"Your refresh token has already been used to generate a new access token. Please try signing in again.\",\n    \"type\": \"invalid_request_error\",\n    \"param\": null,\n    \"code\": \"refresh_token_reused\"\n  }\n}\n2026-04-06T14:14:42.508570Z ERROR codex_core::auth: Failed to refresh token: Your access token could not be refreshed because your refresh token was already used. Please log out and sign in again.\nOpenAI Codex v0.107.0 (research preview)\n--------\nworkdir: /home/marsh2/Projects/llm-wiki\nmodel: gpt-5.3-codex\nprovider: openai\napproval: never\nsandbox: read-only\nreasoning effort: xhigh\nreasoning summaries: none\nsession id: 019d6325-4cfd-7880-ada9-fb9f18e225a1\n--------\nuser\nYou are maintaining a persistent markdown wiki.\n\nReturn ONLY JSON matching the provided output schema. No markdown fences, no commentary.\n\nTitle: LLM Wiki Automation Update\nModel hint: gpt-4.1-mini\n\nSource:\n# LLM Wiki Automation Update\n\nThe LLM Wiki project now has a working GitHub + Vercel automation path.\n\n## New state\n\n- The codebase is published at `https://github.com/Marhs2/llm-wiki`.\n- GitHub Actions now runs on pushes and pull requests.\n- CI uses `package-lock.json` and `npm ci` so installs are reproducible.\n- The Vercel project is linked to the GitHub repository and deploys from the `site/` root directory.\n- The live site is available at `https://site-mu-puce.vercel.app`.\n\n## Why this matters\n\n- The wiki is no longer just a local prototype; it now has a durable public deployment path.\n- Every push to `main` can refresh the public viewer.\n- The project has working repository metadata, topics, and a public homepage.\n\n## Implementation details\n\n- `.github/workflows/ci-vercel.yml` runs tests, lints the wiki, and builds the static site.\n- Vercel Git integration is connected directly to the GitHub repo.\n- The workflow originally failed because the project had no lockfile; adding `package-lock.json` fixed setup-node caching.\n\n## Follow-ups\n\n- Add issues and pull request templates.\n- Add scheduled ingest / repair / build automation.\n- Consider a custom production domain beyond the Vercel alias.\n\nwarning: Under-development features enabled: child_agents_md. Under-development features are incomplete and may behave unpredictably. To suppress this warning, set `suppress_unstable_features_warning = true` in /home/marsh2/.codex/config.toml.\nmcp: codex_apps starting\nmcp: omx_state starting\nmcp: omx_trace starting\nmcp: omx_code_intel starting\nmcp: omx_memory starting\nmcp: omx_team_run starting\n2026-04-06T14:14:42.880137Z ERROR rmcp::transport::common::reqwest::streamable_http_client: unexpected content type: Some(\"text/plain\")\n2026-04-06T14:14:42.880323Z ERROR rmcp::transport::worker: worker quit with fatal: Transport channel closed, when UnexpectedContentType(Some(\"text/plain\"))\nmcp: codex_apps failed: MCP client for `codex_apps` failed to start: MCP startup failed: handshaking with MCP server failed: Send message error Transport [rmcp::transport::worker::WorkerTransport<rmcp::transport::streamable_http_client::StreamableHttpClientWorker<reqwest::async_impl::client::Client>>] error: Unexpected content type: Some(\"text/plain\"), when send initialize request\nmcp: omx_memory ready\nmcp: omx_code_intel ready\nmcp: omx_team_run ready\nmcp: omx_trace ready\nmcp: omx_state ready\nmcp startup: ready: omx_memory, omx_code_intel, omx_team_run, omx_trace, omx_state; failed: codex_apps\n2026-04-06T14:14:44.790704Z ERROR codex_core::auth: Failed to refresh token: 401 Unauthorized: {\n  \"error\": {\n    \"message\": \"Your refresh token has already been used to generate a new access token. Please try signing in again.\",\n    \"type\": \"invalid_request_error\",\n    \"param\": null,\n    \"code\": \"refresh_token_reused\"\n  }\n}\n2026-04-06T14:14:44.790780Z ERROR codex_core::auth: Failed to refresh token: Your access token could not be refreshed because your refresh token was already used. Please log out and sign in again.\n2026-04-06T14:14:45.467544Z ERROR codex_core::auth: Failed to refresh token: 401 Unauthorized: {\n  \"error\": {\n    \"message\": \"Your refresh token has already been used to generate a new access token. Please try signing in again.\",\n    \"type\": \"invalid_request_error\",\n    \"param\": null,\n    \"code\": \"refresh_token_reused\"\n  }\n}\n2026-04-06T14:14:45.467623Z ERROR codex_core::auth: Failed to refresh token: Your access token could not be refreshed because your refresh token was already used. Please log out and sign in again.\n2026-04-06T14:14:45.908201Z ERROR codex_core::auth: Failed to refresh token: 401 Unauthorized: {\n  \"error\": {\n    \"message\": \"Your refresh token has already been used to generate a new access token. Please try signing in again.\",\n    \"type\": \"invalid_request_error\",\n    \"param\": null,\n    \"code\": \"refresh_token_reused\"\n  }\n}\nERROR: Your access token could not be refreshed because your refresh token was already used. Please log out and sign in again.\nWarning: no last agent message; wrote empty content to /tmp/llm-wiki-codex-N5kvy5/last-message.txt\n\n## [2026-04-06] ingest | LLM Wiki Graph Insights Update\n- raw: ../raw/sources/2026-04-06-llm-wiki-graph-insights-update.md\n- wiki: sources/2026-04-06-llm-wiki-graph-insights-update.md\n- backend: heuristic\n- model: gpt-4.1-mini\n- warning: 2026-04-06T14:14:49.566496Z ERROR codex_core::auth: Failed to refresh token: 401 Unauthorized: {\n  \"error\": {\n    \"message\": \"Your refresh token has already been used to generate a new access token. Please try signing in again.\",\n    \"type\": \"invalid_request_error\",\n    \"param\": null,\n    \"code\": \"refresh_token_reused\"\n  }\n}\n2026-04-06T14:14:49.566566Z ERROR codex_core::auth: Failed to refresh token: Your access token could not be refreshed because your refresh token was already used. Please log out and sign in again.\n2026-04-06T14:14:49.731835Z ERROR codex_core::models_manager::manager: failed to refresh available models: unexpected status 401 Unauthorized: Provided authentication token is expired. Please try signing in again., url: https://chatgpt.com/backend-api/codex/models?client_version=0.107.0, cf-ray: 9e8166b07b8dea10-ICN, request id: d6b703a6-c5d4-4544-b261-b22fa616b5b1\n2026-04-06T14:14:49.963543Z ERROR codex_core::auth: Failed to refresh token: 401 Unauthorized: {\n  \"error\": {\n    \"message\": \"Your refresh token has already been used to generate a new access token. Please try signing in again.\",\n    \"type\": \"invalid_request_error\",\n    \"param\": null,\n    \"code\": \"refresh_token_reused\"\n  }\n}\n2026-04-06T14:14:49.963617Z ERROR codex_core::auth: Failed to refresh token: Your access token could not be refreshed because your refresh token was already used. Please log out and sign in again.\nOpenAI Codex v0.107.0 (research preview)\n--------\nworkdir: /home/marsh2/Projects/llm-wiki\nmodel: gpt-5.3-codex\nprovider: openai\napproval: never\nsandbox: read-only\nreasoning effort: xhigh\nreasoning summaries: none\nsession id: 019d6325-6a84-7830-a05d-ec2574c42dd7\n--------\nuser\nYou are maintaining a persistent markdown wiki.\n\nReturn ONLY JSON matching the provided output schema. No markdown fences, no commentary.\n\nTitle: LLM Wiki Graph Insights Update\nModel hint: gpt-4.1-mini\n\nSource:\n# LLM Wiki Graph Insights Update\n\nThe LLM Wiki project now includes explicit graph analysis and backlink-aware browsing.\n\n## Added capabilities\n\n- A new CLI command: `node scripts/llm-wiki.mjs graph --limit 10`\n- Graph metrics now calculate page connectivity across the wiki.\n- Each page can now expose:\n  - `backlinks`\n  - `backlinkCount`\n  - `hubScore`\n- The static site manifest now includes graph metadata.\n- The public viewer now shows graph context, incoming links, outgoing links, and hub score.\n\n## Why this matters\n\n- A persistent wiki becomes more valuable as pages cross-reference each other.\n- Graph analysis helps identify hub pages, isolated pages, and weakly connected concepts.\n- Backlink-aware browsing makes the public site feel more like a real wiki than a flat search result list.\n\n## Current observations\n\n- `wiki/index.md` is the dominant hub page.\n- `wiki/log.md` remains comparatively isolated.\n- The graph feature gives a direct way to measure whether the wiki is compounding over time.\n\n## Follow-ups\n\n- Use hub scores and backlinks to improve query ranking.\n- Add a dedicated graph dashboard page to the static site.\n- Use graph signals in linting to find important but underdeveloped pages.\n\nwarning: Under-development features enabled: child_agents_md. Under-development features are incomplete and may behave unpredictably. To suppress this warning, set `suppress_unstable_features_warning = true` in /home/marsh2/.codex/config.toml.\nmcp: codex_apps starting\nmcp: omx_state starting\nmcp: omx_code_intel starting\nmcp: omx_memory starting\nmcp: omx_trace starting\nmcp: omx_team_run starting\n2026-04-06T14:14:50.404349Z ERROR rmcp::transport::common::reqwest::streamable_http_client: unexpected content type: Some(\"text/plain\")\n2026-04-06T14:14:50.404532Z ERROR rmcp::transport::worker: worker quit with fatal: Transport channel closed, when UnexpectedContentType(Some(\"text/plain\"))\nmcp: codex_apps failed: MCP client for `codex_apps` failed to start: MCP startup failed: handshaking with MCP server failed: Send message error Transport [rmcp::transport::worker::WorkerTransport<rmcp::transport::streamable_http_client::StreamableHttpClientWorker<reqwest::async_impl::client::Client>>] error: Unexpected content type: Some(\"text/plain\"), when send initialize request\nmcp: omx_code_intel ready\nmcp: omx_team_run ready\nmcp: omx_trace ready\nmcp: omx_memory ready\nmcp: omx_state ready\nmcp startup: ready: omx_code_intel, omx_team_run, omx_trace, omx_memory, omx_state; failed: codex_apps\n2026-04-06T14:14:52.250003Z ERROR codex_core::auth: Failed to refresh token: 401 Unauthorized: {\n  \"error\": {\n    \"message\": \"Your refresh token has already been used to generate a new access token. Please try signing in again.\",\n    \"type\": \"invalid_request_error\",\n    \"param\": null,\n    \"code\": \"refresh_token_reused\"\n  }\n}\n2026-04-06T14:14:52.250072Z ERROR codex_core::auth: Failed to refresh token: Your access token could not be refreshed because your refresh token was already used. Please log out and sign in again.\n2026-04-06T14:14:52.771149Z ERROR codex_core::auth: Failed to refresh token: 401 Unauthorized: {\n  \"error\": {\n    \"message\": \"Your refresh token has already been used to generate a new access token. Please try signing in again.\",\n    \"type\": \"invalid_request_error\",\n    \"param\": null,\n    \"code\": \"refresh_token_reused\"\n  }\n}\n2026-04-06T14:14:52.771218Z ERROR codex_core::auth: Failed to refresh token: Your access token could not be refreshed because your refresh token was already used. Please log out and sign in again.\n2026-04-06T14:14:53.173382Z ERROR codex_core::auth: Failed to refresh token: 401 Unauthorized: {\n  \"error\": {\n    \"message\": \"Your refresh token has already been used to generate a new access token. Please try signing in again.\",\n    \"type\": \"invalid_request_error\",\n    \"param\": null,\n    \"code\": \"refresh_token_reused\"\n  }\n}\nERROR: Your access token could not be refreshed because your refresh token was already used. Please log out and sign in again.\nWarning: no last agent message; wrote empty content to /tmp/llm-wiki-codex-yLvEJw/last-message.txt\n\n## [2026-04-06] repair | vault repaired\n- sources: 6\n- entities: 28\n- concepts: 14\n- topics: 12\n- answers: 1\n\n## [2026-04-06] ingest | LLM Wiki Automation Update\n- raw: ../raw/sources/2026-04-06-llm-wiki-automation-update.md\n- wiki: sources/2026-04-06-llm-wiki-automation-update.md\n- backend: heuristic\n- model: gpt-4.1-mini\n- warning: 2026-04-06T14:15:54.007084Z ERROR codex_core::auth: Failed to refresh token: 401 Unauthorized: {\n  \"error\": {\n    \"message\": \"Your refresh token has already been used to generate a new access token. Please try signing in again.\",\n    \"type\": \"invalid_request_error\",\n    \"param\": null,\n    \"code\": \"refresh_token_reused\"\n  }\n}\n2026-04-06T14:15:54.007155Z ERROR codex_core::auth: Failed to refresh token: Your access token could not be refreshed because your refresh token was already used. Please log out and sign in again.\n2026-04-06T14:15:54.174216Z ERROR codex_core::models_manager::manager: failed to refresh available models: unexpected status 401 Unauthorized: Provided authentication token is expired. Please try signing in again., url: https://chatgpt.com/backend-api/codex/models?client_version=0.107.0, cf-ray: 9e8168433842e879-ICN, request id: 3a9b9a82-71c3-450c-9c73-a48de2cdf4e0\n2026-04-06T14:15:54.426951Z ERROR codex_core::auth: Failed to refresh token: 401 Unauthorized: {\n  \"error\": {\n    \"message\": \"Your refresh token has already been used to generate a new access token. Please try signing in again.\",\n    \"type\": \"invalid_request_error\",\n    \"param\": null,\n    \"code\": \"refresh_token_reused\"\n  }\n}\n2026-04-06T14:15:54.427068Z ERROR codex_core::auth: Failed to refresh token: Your access token could not be refreshed because your refresh token was already used. Please log out and sign in again.\nOpenAI Codex v0.107.0 (research preview)\n--------\nworkdir: /home/marsh2/Projects/llm-wiki\nmodel: gpt-5.3-codex\nprovider: openai\napproval: never\nsandbox: read-only\nreasoning effort: xhigh\nreasoning summaries: none\nsession id: 019d6326-663f-75d1-8f3e-d992c19e6838\n--------\nuser\nYou are maintaining a persistent markdown wiki.\n\nReturn ONLY JSON matching the provided output schema. No markdown fences, no commentary.\n\nTitle: LLM Wiki Automation Update\nModel hint: gpt-4.1-mini\n\nSource:\n# LLM Wiki Automation Update\n\nThe LLM Wiki project now has a working GitHub + Vercel automation path.\n\n## New state\n\n- The codebase is published at `https://github.com/Marhs2/llm-wiki`.\n- GitHub Actions now runs on pushes and pull requests.\n- CI uses `package-lock.json` and `npm ci` so installs are reproducible.\n- The Vercel project is linked to the GitHub repository and deploys from the `site/` root directory.\n- The live site is available at `https://site-mu-puce.vercel.app`.\n\n## Why this matters\n\n- The wiki is no longer just a local prototype; it now has a durable public deployment path.\n- Every push to `main` can refresh the public viewer.\n- The project has working repository metadata, topics, and a public homepage.\n\n## Implementation details\n\n- `.github/workflows/ci-vercel.yml` runs tests, lints the wiki, and builds the static site.\n- Vercel Git integration is connected directly to the GitHub repo.\n- The workflow originally failed because the project had no lockfile; adding `package-lock.json` fixed setup-node caching.\n\n## Follow-ups\n\n- Create issues and pull request templates.\n- Add scheduled ingest / repair / build automation.\n- Consider a custom production domain beyond the Vercel alias.\n\nwarning: Under-development features enabled: child_agents_md. Under-development features are incomplete and may behave unpredictably. To suppress this warning, set `suppress_unstable_features_warning = true` in /home/marsh2/.codex/config.toml.\nmcp: omx_team_run starting\nmcp: codex_apps starting\nmcp: omx_code_intel starting\nmcp: omx_state starting\nmcp: omx_memory starting\nmcp: omx_trace starting\n2026-04-06T14:15:54.744151Z ERROR rmcp::transport::common::reqwest::streamable_http_client: unexpected content type: Some(\"text/plain\")\n2026-04-06T14:15:54.744358Z ERROR rmcp::transport::worker: worker quit with fatal: Transport channel closed, when UnexpectedContentType(Some(\"text/plain\"))\nmcp: codex_apps failed: MCP client for `codex_apps` failed to start: MCP startup failed: handshaking with MCP server failed: Send message error Transport [rmcp::transport::worker::WorkerTransport<rmcp::transport::streamable_http_client::StreamableHttpClientWorker<reqwest::async_impl::client::Client>>] error: Unexpected content type: Some(\"text/plain\"), when send initialize request\nmcp: omx_state ready\nmcp: omx_memory ready\nmcp: omx_trace ready\nmcp: omx_team_run ready\nmcp: omx_code_intel ready\nmcp startup: ready: omx_state, omx_memory, omx_trace, omx_team_run, omx_code_intel; failed: codex_apps\n2026-04-06T14:15:56.743829Z ERROR codex_core::auth: Failed to refresh token: 401 Unauthorized: {\n  \"error\": {\n    \"message\": \"Your refresh token has already been used to generate a new access token. Please try signing in again.\",\n    \"type\": \"invalid_request_error\",\n    \"param\": null,\n    \"code\": \"refresh_token_reused\"\n  }\n}\n2026-04-06T14:15:56.743904Z ERROR codex_core::auth: Failed to refresh token: Your access token could not be refreshed because your refresh token was already used. Please log out and sign in again.\n2026-04-06T14:15:57.257638Z ERROR codex_core::auth: Failed to refresh token: 401 Unauthorized: {\n  \"error\": {\n    \"message\": \"Your refresh token has already been used to generate a new access token. Please try signing in again.\",\n    \"type\": \"invalid_request_error\",\n    \"param\": null,\n    \"code\": \"refresh_token_reused\"\n  }\n}\n2026-04-06T14:15:57.257714Z ERROR codex_core::auth: Failed to refresh token: Your access token could not be refreshed because your refresh token was already used. Please log out and sign in again.\n2026-04-06T14:15:57.807728Z ERROR codex_core::auth: Failed to refresh token: 401 Unauthorized: {\n  \"error\": {\n    \"message\": \"Your refresh token has already been used to generate a new access token. Please try signing in again.\",\n    \"type\": \"invalid_request_error\",\n    \"param\": null,\n    \"code\": \"refresh_token_reused\"\n  }\n}\nERROR: Your access token could not be refreshed because your refresh token was already used. Please log out and sign in again.\nWarning: no last agent message; wrote empty content to /tmp/llm-wiki-codex-3MyC2g/last-message.txt\n\n## [2026-04-06] repair | vault repaired\n- sources: 6\n- entities: 28\n- concepts: 14\n- topics: 12\n- answers: 1\n\n## [2026-04-06] ingest | LLM Wiki Automation Update\n- raw: ../raw/sources/2026-04-06-llm-wiki-automation-update.md\n- wiki: sources/2026-04-06-llm-wiki-automation-update.md\n- backend: heuristic\n- model: gpt-4.1-mini\n- warning: 2026-04-06T14:17:02.375369Z ERROR codex_core::auth: Failed to refresh token: 401 Unauthorized: {\n  \"error\": {\n    \"message\": \"Your refresh token has already been used to generate a new access token. Please try signing in again.\",\n    \"type\": \"invalid_request_error\",\n    \"param\": null,\n    \"code\": \"refresh_token_reused\"\n  }\n}\n2026-04-06T14:17:02.375463Z ERROR codex_core::auth: Failed to refresh token: Your access token could not be refreshed because your refresh token was already used. Please log out and sign in again.\n2026-04-06T14:17:02.538211Z ERROR codex_core::models_manager::manager: failed to refresh available models: unexpected status 401 Unauthorized: Provided authentication token is expired. Please try signing in again., url: https://chatgpt.com/backend-api/codex/models?client_version=0.107.0, cf-ray: 9e8169ee8fd5ea13-ICN, request id: 648dbccf-f023-436b-b1c7-f7841d249454\n2026-04-06T14:17:02.806710Z ERROR codex_core::auth: Failed to refresh token: 401 Unauthorized: {\n  \"error\": {\n    \"message\": \"Your refresh token has already been used to generate a new access token. Please try signing in again.\",\n    \"type\": \"invalid_request_error\",\n    \"param\": null,\n    \"code\": \"refresh_token_reused\"\n  }\n}\n2026-04-06T14:17:02.806858Z ERROR codex_core::auth: Failed to refresh token: Your access token could not be refreshed because your refresh token was already used. Please log out and sign in again.\nOpenAI Codex v0.107.0 (research preview)\n--------\nworkdir: /home/marsh2/Projects/llm-wiki\nmodel: gpt-5.3-codex\nprovider: openai\napproval: never\nsandbox: read-only\nreasoning effort: xhigh\nreasoning summaries: none\nsession id: 019d6327-714b-7d73-9b48-1c9bfefcdde0\n--------\nuser\nYou are maintaining a persistent markdown wiki.\n\nReturn ONLY JSON matching the provided output schema. No markdown fences, no commentary.\n\nTitle: LLM Wiki Automation Update\nModel hint: gpt-4.1-mini\n\nSource:\n# LLM Wiki Automation Update\n\nThe LLM Wiki project now has a working GitHub + Vercel automation path.\n\n## New state\n\n- The codebase is published at `https://github.com/Marhs2/llm-wiki`.\n- GitHub Actions now runs on pushes and pull requests.\n- CI uses `package-lock.json` and `npm ci` so installs are reproducible.\n- The Vercel project is linked to the GitHub repository and deploys from the `site/` root directory.\n- The live site is available at `https://site-mu-puce.vercel.app`.\n\n## Why this matters\n\n- The wiki is no longer just a local prototype; it now has a durable public deployment path.\n- Every push to `main` can refresh the public viewer.\n- The project has working repository metadata, topics, and a public homepage.\n\n## Implementation details\n\n- `.github/workflows/ci-vercel.yml` runs tests, lints the wiki, and builds the static site.\n- Vercel Git integration is connected directly to the GitHub repo.\n- The workflow originally failed because the project had no lockfile; adding `package-lock.json` fixed setup-node caching.\n\n## Follow-ups\n\n- Create issues and pull request templates.\n- Schedule ingest / repair / build automation.\n- Consider a custom production domain beyond the Vercel alias.\n\nwarning: Under-development features enabled: child_agents_md. Under-development features are incomplete and may behave unpredictably. To suppress this warning, set `suppress_unstable_features_warning = true` in /home/marsh2/.codex/config.toml.\nmcp: omx_team_run starting\nmcp: omx_state starting\nmcp: omx_code_intel starting\nmcp: omx_trace starting\nmcp: codex_apps starting\nmcp: omx_memory starting\n2026-04-06T14:17:03.124097Z ERROR rmcp::transport::common::reqwest::streamable_http_client: unexpected content type: Some(\"text/plain\")\n2026-04-06T14:17:03.124328Z ERROR rmcp::transport::worker: worker quit with fatal: Transport channel closed, when UnexpectedContentType(Some(\"text/plain\"))\nmcp: codex_apps failed: MCP client for `codex_apps` failed to start: MCP startup failed: handshaking with MCP server failed: Send message error Transport [rmcp::transport::worker::WorkerTransport<rmcp::transport::streamable_http_client::StreamableHttpClientWorker<reqwest::async_impl::client::Client>>] error: Unexpected content type: Some(\"text/plain\"), when send initialize request\nmcp: omx_code_intel ready\nmcp: omx_state ready\nmcp: omx_trace ready\nmcp: omx_team_run ready\nmcp: omx_memory ready\nmcp startup: ready: omx_code_intel, omx_state, omx_trace, omx_team_run, omx_memory; failed: codex_apps\n2026-04-06T14:17:05.138597Z ERROR codex_core::auth: Failed to refresh token: 401 Unauthorized: {\n  \"error\": {\n    \"message\": \"Your refresh token has already been used to generate a new access token. Please try signing in again.\",\n    \"type\": \"invalid_request_error\",\n    \"param\": null,\n    \"code\": \"refresh_token_reused\"\n  }\n}\n2026-04-06T14:17:05.138720Z ERROR codex_core::auth: Failed to refresh token: Your access token could not be refreshed because your refresh token was already used. Please log out and sign in again.\n2026-04-06T14:17:05.662423Z ERROR codex_core::auth: Failed to refresh token: 401 Unauthorized: {\n  \"error\": {\n    \"message\": \"Your refresh token has already been used to generate a new access token. Please try signing in again.\",\n    \"type\": \"invalid_request_error\",\n    \"param\": null,\n    \"code\": \"refresh_token_reused\"\n  }\n}\n2026-04-06T14:17:05.662499Z ERROR codex_core::auth: Failed to refresh token: Your access token could not be refreshed because your refresh token was already used. Please log out and sign in again.\n2026-04-06T14:17:06.098808Z ERROR codex_core::auth: Failed to refresh token: 401 Unauthorized: {\n  \"error\": {\n    \"message\": \"Your refresh token has already been used to generate a new access token. Please try signing in again.\",\n    \"type\": \"invalid_request_error\",\n    \"param\": null,\n    \"code\": \"refresh_token_reused\"\n  }\n}\nERROR: Your access token could not be refreshed because your refresh token was already used. Please log out and sign in again.\nWarning: no last agent message; wrote empty content to /tmp/llm-wiki-codex-ZRigq9/last-message.txt\n\n## [2026-04-06] repair | vault repaired\n- sources: 6\n- entities: 28\n- concepts: 14\n- topics: 12\n- answers: 1\n## [2026-04-07] update | strengthen underlinked concept pages\n- Updated concept pages with related concept links to improve wiki graph connectivity.\n- Files: concepts/compounding-artifact.md, concepts/cross-references.md, concepts/graph-view.md, concepts/obsidian.md, concepts/source-of-truth.md, concepts/synthesis.md\n",
       "headings": [
         "LLM Wiki Log",
         "[2026-04-06] init | vault scaffold",
@@ -1398,6 +1443,7 @@
       "title": "Karpathy LLM Wiki Gist",
       "type": "source",
       "summary": "A pattern for building personal knowledge bases using LLMs.",
+      "markdown": "---\ntitle: \"Karpathy LLM Wiki Gist\"\ntype: \"source\"\nkind: \"gist\"\ncreated: \"2026-04-06\"\nmodel: \"gpt-4.1-mini\"\nbackend: \"heuristic\"\nsource: \"../../raw/sources/2026-04-06-karpathy-llm-wiki-gist.md\"\n---\n\n# Karpathy LLM Wiki Gist\n\n## Summary\nA pattern for building personal knowledge bases using LLMs.\n\n## Key claims\n- A pattern for building personal knowledge bases using LLMs.\n\n## Entities\n- [[entities/openai]] (entity) — Detected heuristically in Karpathy LLM Wiki Gist.\n\n## Concepts\n- [[concepts/persistent-wiki]]\n\n## Topics\n- [[topics/knowledge]]\n\n## Contradictions\n- None noted.\n\n## Source extract\n\n> Karpathy LLM Wiki Gist Summary A pattern for building personal knowledge bases using LLMs. Key claims A pattern for building personal knowledge bases using LLMs. Entities entities/openai (entity) — Detected heuristically in Karpathy LLM Wiki Gist. Concepts concepts/persistent-wiki concepts/source-of-truth Topics topics/knowledge Contradictions None noted. Source extract Karpathy LLM Wiki Gist Summary A pattern for building personal knowledge bases using LLMs. Key claims A pattern for building personal knowledge bases using LLMs. This is an idea file, it is designed to be copy pasted to your own LLM Agent e.g. OpenAI Codex, Claude Code, OpenCode / Pi, or etc. Its goal is to communicate the high level idea, but your agent will build out the specifics in collaboration with you. Entities entities/openai (entity) — Detected heuristically in Karpathy LLM Wiki Gist. entities/codex (entity) — Detected heuristically in Karpathy LLM Wiki Gist. entities/claude-code (entity) — Detected heuristically in Karpathy LLM Wiki Gist. entities/opencode (entity) — Detected heuristically in Karpathy LLM Wiki Gist. entities/rag (entity) — Detected heuristically in Karpathy LLM Wiki Gist. entities/notebooklm (entity) — Detected heuristically in Karpathy LLM Wiki Gist. entities/chatgpt (entity) — Detected heuristically in Karpathy LLM Wiki Gist. entities/obsidian (entity) — Detected heuristically in Karpathy LLM Wiki Gist. Concepts concepts/persistent-wiki concepts/raw-sources concepts/synthesis concepts/compounding-artifact concepts/cross-references concepts/knowledge-base concepts/graph-view concepts/raw-sources Topics topics/knowledge topics/agent topics/openai topics/codex topics/query topics/markdown topics/index topics/obsidian Contradictions None noted. Source extract LLM Wiki A pattern for building personal knowledge bases using LLMs. This is an idea file, it is designed to be copy pasted to your own LLM Agent (e.g. OpenAI Codex, Claude Code, OpenCode / Pi, or etc.). Its goal is to communicate the high level idea, but your agent will build out the specifics in collaboration with you. The core idea Most people's experience with LLMs and documents looks like RAG: you upload a collection of files, the LLM retrieves relevant chunks at query time, and generates an answer. This works, but the LLM is rediscovering knowledge from scratch on every question. There's no accumulation. Ask a subtle question that requires synthesizing five documents, and the LLM has to find and piece together the relevant fragments every time. Nothing is built up. NotebookLM, ChatGPT file uploads, and most RAG systems work this way. The idea here is different. Instead of just retrieving from raw documents at query time, the LLM **incrementally builds and maintains a persistent wiki** — a structured, interlinked collection of markdown files that sits between you and the raw sources. When you add a new source, the LLM doesn't just index it for later retrieval. It reads it, extracts the key information, and integrates it into the existing wiki — updating entity pages, revising topic summaries, noting where new data contradicts old claims, strengthening or challenging the evolving synthesis. The knowledge is compiled once and then *kept current*, not re-derived on every query. This is the key difference: **the wiki is a persistent, compounding artifact.** The cross-references are already there. The contradictions have already been flagged. The synthesis already reflects everything you've read. The wiki keeps getting richer with every source you add and every question you ask. You never (or rarely) write the wiki yourself — the LLM writes and maintains all of it. You're in charge of sourcing, exploration, and asking the right questions. The LLM does all the grunt work — the summarizing, cross-referencing, filing, and bookkeeping that makes a knowledge base actually useful over time. In practice, I have the LLM agent open on one side and Obsidian open on the other. The LLM makes edits based on our conversation, and I browse the results in real time — following links, checking the graph view, reading the updated pages. Obsidian is the IDE; the LLM is the programmer; the wiki is the codebase. This can apply to a lot of different contexts. A few examples: **Personal**: tracking your own goals, health, psychology, self-improvement — filing journal entries, articles, podcast notes, and building up a structured picture of yourself over time. Links Related pages: Links entity: entities/openai (entity) — Detected heuristically in Karpathy LLM Wiki Gist. concept: concepts/persistent-wiki topic: topics/knowledge\n\n## Links\n- entity: [[entities/openai]] (entity) — Detected heuristically in Karpathy LLM Wiki Gist.\n- concept: [[concepts/persistent-wiki]]\n- topic: [[topics/knowledge]]\n",
       "headings": [
         "Karpathy LLM Wiki Gist",
         "Summary",
@@ -1431,6 +1477,7 @@
       "title": "LLM Wiki Agent Guide",
       "type": "source",
       "summary": "This repository is a scaffold for a persistent wiki maintained by an LLM.",
+      "markdown": "---\ntitle: \"LLM Wiki Agent Guide\"\ntype: \"source\"\nkind: \"repo-doc\"\ncreated: \"2026-04-06\"\nmodel: \"gpt-4.1-mini\"\nbackend: \"heuristic\"\nsource: \"../../raw/sources/2026-04-06-llm-wiki-agent-guide.md\"\n---\n\n# LLM Wiki Agent Guide\n\n## Summary\nThis repository is a scaffold for a persistent wiki maintained by an LLM.\n\n## Key claims\n- This repository is a scaffold for a persistent wiki maintained by an LLM.\n\n## Entities\n- [[entities/append]] (entity) — Detected heuristically in LLM Wiki Agent Guide.\n\n## Concepts\n- [[concepts/persistent-wiki]]\n\n## Topics\n- [[topics/markdown]]\n\n## Contradictions\n- None noted.\n\n## Source extract\n\n> LLM Wiki Agent Guide Summary This repository is a scaffold for a persistent wiki maintained by an LLM. Key claims This repository is a scaffold for a persistent wiki maintained by an LLM. Entities entities/append (entity) — Detected heuristically in LLM Wiki Agent Guide. Concepts concepts/persistent-wiki Topics topics/markdown Contradictions None noted. Source extract LLM Wiki Agent Guide Summary This repository is a scaffold for a persistent wiki maintained by an LLM. Key claims This repository is a scaffold for a persistent wiki maintained by an LLM. 1. Treat vault/raw/ as immutable source material. 2. Write generated content only into vault/wiki/. Entities entities/append (entity) — Detected heuristically in LLM Wiki Agent Guide. entities/prefer (entity) — Detected heuristically in LLM Wiki Agent Guide. entities/primary (entity) — Detected heuristically in LLM Wiki Agent Guide. entities/codex-cli (entity) — Detected heuristically in LLM Wiki Agent Guide. Concepts concepts/persistent-wiki concepts/cross-references concepts/markdown concepts/openai concepts/obsidian Topics topics/markdown topics/codex topics/openai topics/oauth topics/obsidian Contradictions None noted. Source extract Agent Guide for LLM Wiki This repository is a scaffold for a persistent wiki maintained by an LLM. Core rules 1. Treat vault/raw/ as immutable source material. 2. Write generated content only into vault/wiki/. 3. Update vault/wiki/index.md when new pages are added. 4. Append every meaningful action to vault/wiki/log.md. 5. Prefer small, interlinked markdown pages over large monolith notes. 6. Primary backend: Codex CLI. Keep OpenAI OAuth as an optional fallback only. 7. Read Codex availability from the local environment; allow LLM_WIKI_CODEX_COMMAND to override the binary path. Links Related pages: Links entity: entities/append (entity) — Detected heuristically in LLM Wiki Agent Guide. concept: concepts/persistent-wiki topic: topics/markdown\n\n## Links\n- entity: [[entities/append]] (entity) — Detected heuristically in LLM Wiki Agent Guide.\n- concept: [[concepts/persistent-wiki]]\n- topic: [[topics/markdown]]\n",
       "headings": [
         "LLM Wiki Agent Guide",
         "Summary",
@@ -1464,6 +1511,7 @@
       "title": "LLM Wiki Automation Update",
       "type": "source",
       "summary": "The LLM Wiki project now has a working GitHub + Vercel automation path.",
+      "markdown": "---\ntitle: \"LLM Wiki Automation Update\"\ntype: \"source\"\nkind: \"source\"\ncreated: \"2026-04-06\"\nmodel: \"gpt-4.1-mini\"\nbackend: \"heuristic\"\nsource: \"../../raw/sources/2026-04-06-llm-wiki-automation-update.md\"\n---\n\n# LLM Wiki Automation Update\n\n## Summary\nThe LLM Wiki project now has a working GitHub + Vercel automation path.\n\n## Key claims\n- The LLM Wiki project now has a working GitHub + Vercel automation path.\n- - The codebase is published at  https://github.com/Marhs2/llm-wiki .\n- - GitHub Actions now runs on pushes and pull requests.\n- - CI uses  package-lock.json  and  npm ci  so installs are reproducible.\n\n## Entities\n- [[entities/vercel]] (entity) — Detected heuristically in LLM Wiki Automation Update.\n- [[entities/vercel-git]] (entity) — Detected heuristically in LLM Wiki Automation Update.\n\n## Concepts\n- [[concepts/workflow]]\n- [[concepts/ingest]]\n\n## Topics\n- [[topics/workflow]]\n- [[topics/ingest]]\n\n## Contradictions\n- None noted.\n\n## Source extract\n\n> # LLM Wiki Automation Update\n> The LLM Wiki project now has a working GitHub + Vercel automation path.\n> ## New state\n> - The codebase is published at `https://github.com/Marhs2/llm-wiki`.\n> - GitHub Actions now runs on pushes and pull requests.\n> - CI uses `package-lock.json` and `npm ci` so installs are reproducible.\n> - The Vercel project is linked to the GitHub repository and deploys from the `site/` root directory.\n> - The live site is available at `https://site-mu-puce.vercel.app`.\n> ## Why this matters\n> - The wiki is no longer just a local prototype; it now has a durable public deployment path.\n\n## Links\n- entity: [[entities/vercel]]\n- entity: [[entities/vercel-git]]\n- concept: [[concepts/workflow]]\n- concept: [[concepts/ingest]]\n- topic: [[topics/workflow]]\n- topic: [[topics/ingest]]\n",
       "headings": [
         "LLM Wiki Automation Update",
         "Summary",
@@ -1501,6 +1549,7 @@
       "title": "LLM Wiki Graph Insights Update",
       "type": "source",
       "summary": "The LLM Wiki project now includes explicit graph analysis and backlink-aware browsing.",
+      "markdown": "---\ntitle: \"LLM Wiki Graph Insights Update\"\ntype: \"source\"\nkind: \"source\"\ncreated: \"2026-04-06\"\nmodel: \"gpt-4.1-mini\"\nbackend: \"heuristic\"\nsource: \"../../raw/sources/2026-04-06-llm-wiki-graph-insights-update.md\"\n---\n\n# LLM Wiki Graph Insights Update\n\n## Summary\nThe LLM Wiki project now includes explicit graph analysis and backlink-aware browsing.\n\n## Key claims\n- The LLM Wiki project now includes explicit graph analysis and backlink-aware browsing.\n- - A new CLI command:  node scripts/llm-wiki.mjs graph --limit 10  - Graph metrics now calculate page connectivity across the wiki.\n- - Each page can now expose: -  backlinks  -  backlinkCount  -  hubScore  - The static site manifest now includes graph metadata.\n- - The public viewer now shows graph context, incoming links, outgoing links, and hub score.\n\n## Entities\n- [[entities/cli]] (entity) — Detected heuristically in LLM Wiki Graph Insights Update.\n\n## Concepts\n- [[concepts/persistent-wiki]]\n\n## Topics\n- [[topics/index]]\n- [[topics/query]]\n\n## Contradictions\n- None noted.\n\n## Source extract\n\n> # LLM Wiki Graph Insights Update\n> The LLM Wiki project now includes explicit graph analysis and backlink-aware browsing.\n> ## Added capabilities\n> - A new CLI command: `node scripts/llm-wiki.mjs graph --limit 10`\n> - Graph metrics now calculate page connectivity across the wiki.\n> - Each page can now expose:\n> - `backlinks`\n> - `backlinkCount`\n> - `hubScore`\n> - The static site manifest now includes graph metadata.\n\n## Links\n- entity: [[entities/cli]]\n- concept: [[concepts/persistent-wiki]]\n- topic: [[topics/index]]\n- topic: [[topics/query]]\n",
       "headings": [
         "LLM Wiki Graph Insights Update",
         "Summary",
@@ -1535,6 +1584,7 @@
       "title": "LLM Wiki Launch Roadmap",
       "type": "source",
       "summary": "The current LLM Wiki project is evolving from a scaffold into a deployable public knowledge base.",
+      "markdown": "---\ntitle: \"LLM Wiki Launch Roadmap\"\ntype: \"source\"\nkind: \"roadmap\"\ncreated: \"2026-04-06\"\nmodel: \"gpt-4.1-mini\"\nbackend: \"heuristic\"\nsource: \"../../raw/sources/2026-04-06-llm-wiki-launch-roadmap.md\"\n---\n\n# LLM Wiki Launch Roadmap\n\n## Summary\nThe current LLM Wiki project is evolving from a scaffold into a deployable public knowledge base.\n\n## Key claims\n- The current LLM Wiki project is evolving from a scaffold into a deployable public knowledge base.\n\n## Entities\n- [[entities/llm-wiki]] (entity) — Detected heuristically in LLM Wiki Launch Roadmap.\n\n## Concepts\n- [[concepts/knowledge-base]]\n\n## Topics\n- [[topics/knowledge]]\n\n## Contradictions\n- None noted.\n\n## Source extract\n\n> LLM Wiki Launch Roadmap Summary The current LLM Wiki project is evolving from a scaffold into a deployable public knowledge base. Key claims The current LLM Wiki project is evolving from a scaffold into a deployable public knowledge base. Entities entities/llm-wiki (entity) — Detected heuristically in LLM Wiki Launch Roadmap. Concepts concepts/knowledge-base Topics topics/knowledge Contradictions None noted. Source extract LLM Wiki Launch Roadmap Summary The current LLM Wiki project is evolving from a scaffold into a deployable public knowledge base. Key claims The current LLM Wiki project is evolving from a scaffold into a deployable public knowledge base. - Connect the wiki to a stable production domain. - Fill the wiki with real source, entity, and topic pages rather than placeholder notes. Entities entities/llm-wiki (entity) — Detected heuristically in LLM Wiki Launch Roadmap. entities/connect (entity) — Detected heuristically in LLM Wiki Launch Roadmap. entities/upgrade (entity) — Detected heuristically in LLM Wiki Launch Roadmap. entities/automate (entity) — Detected heuristically in LLM Wiki Launch Roadmap. entities/vercel (entity) — Detected heuristically in LLM Wiki Launch Roadmap. entities/search (entity) — Detected heuristically in LLM Wiki Launch Roadmap. entities/json (entity) — Detected heuristically in LLM Wiki Launch Roadmap. Concepts concepts/knowledge-base concepts/knowledge concepts/markdown concepts/workflow Topics topics/knowledge topics/markdown topics/workflow Contradictions None noted. Source extract LLM Wiki Launch Roadmap The current LLM Wiki project is evolving from a scaffold into a deployable public knowledge base. Goals Connect the wiki to a stable production domain. Fill the wiki with real source, entity, and topic pages rather than placeholder notes. Upgrade the public search UI so users can filter and preview results quickly. Automate static site generation and Vercel deployment. Implementation decisions The public site should be generated directly from vault/wiki so that the viewer always reflects the latest maintained markdown pages. Search should use a prebuilt JSON manifest containing path, title, summary, headings, page type, and full text. Links Related pages: Links entity: entities/llm-wiki (entity) — Detected heuristically in LLM Wiki Launch Roadmap. concept: concepts/knowledge-base topic: topics/knowledge\n\n## Links\n- entity: [[entities/llm-wiki]] (entity) — Detected heuristically in LLM Wiki Launch Roadmap.\n- concept: [[concepts/knowledge-base]]\n- topic: [[topics/knowledge]]\n",
       "headings": [
         "LLM Wiki Launch Roadmap",
         "Summary",
@@ -1568,6 +1618,7 @@
       "title": "LLM Wiki README",
       "type": "source",
       "summary": "Persistent, LLM-maintained wiki scaffold with a Codex-first workflow, modular CLI, interlinked markdown vault, and static Vercel viewer.",
+      "markdown": "---\ntitle: \"LLM Wiki README\"\ntype: \"source\"\nkind: \"source\"\ncreated: \"2026-04-06\"\nmodel: \"gpt-4.1-mini\"\nbackend: \"heuristic\"\nsource: \"../../raw/sources/2026-04-06-llm-wiki-readme.md\"\n---\n\n# LLM Wiki README\n\n## Summary\nPersistent, LLM-maintained wiki scaffold with a Codex-first workflow, modular CLI, interlinked markdown vault, and static Vercel viewer.\n\n## Key claims\n- Persistent, LLM-maintained wiki scaffold with a Codex-first workflow, modular CLI, interlinked markdown vault, and static Vercel viewer.\n- - GitHub: https://github.com/Marhs2/llm-wiki - Live site: https://site-mu-puce.vercel.app This repository implements the persistent wiki pattern described in Karpathy's LLM wiki gist: - ingest raw sources into a growing markdown knowledge base - maintain entity / concept / topic / answer pages - keep a catalog-style  index.md  and time-ordered  log.md  - lint and repair the wiki graph over time - publish the current wiki as a searchable static site This project prefers the local   Codex CLI   for analysis and wiki maintenance.\n- Set a custom Codex binary if needed:   If Codex is installed normally, no extra configuration is needed.\n- OpenAI OAuth support is still available, but optional.\n\n## Entities\n- [[entities/codex]] (entity) — Detected heuristically in LLM Wiki README.\n- [[entities/codex-cli]] (entity) — Detected heuristically in LLM Wiki README.\n- [[entities/openai]] (entity) — Detected heuristically in LLM Wiki README.\n- [[entities/cli]] (entity) — Detected heuristically in LLM Wiki README.\n- [[entities/vercel]] (entity) — Detected heuristically in LLM Wiki README.\n- [[entities/node-cli]] (entity) — Detected heuristically in LLM Wiki README.\n- [[entities/node]] (entity) — Detected heuristically in LLM Wiki README.\n- [[entities/vercel-org-id]] (entity) — Detected heuristically in LLM Wiki README.\n\n## Concepts\n- [[concepts/persistent-wiki]]\n- [[concepts/raw-sources]]\n- [[concepts/knowledge-base]]\n- [[concepts/workflow]]\n- [[concepts/markdown]]\n- [[concepts/ingest]]\n- [[concepts/knowledge]]\n- [[concepts/openai]]\n\n## Topics\n- [[topics/codex]]\n- [[topics/workflow]]\n- [[topics/markdown]]\n- [[topics/ingest]]\n- [[topics/knowledge]]\n- [[topics/index]]\n- [[topics/lint]]\n- [[topics/openai]]\n\n## Contradictions\n- None noted.\n\n## Source extract\n\n> # LLM Wiki\n> Persistent, LLM-maintained wiki scaffold with a Codex-first workflow, modular CLI, interlinked markdown vault, and static Vercel viewer.\n> ## Links\n> - GitHub: https://github.com/Marhs2/llm-wiki\n> - Live site: https://site-mu-puce.vercel.app\n> ## What this project does\n> This repository implements the persistent wiki pattern described in Karpathy's LLM wiki gist:\n> - ingest raw sources into a growing markdown knowledge base\n> - maintain entity / concept / topic / answer pages\n> - keep a catalog-style `index.md` and time-ordered `log.md`\n\n## Links\n- entity: [[entities/codex]]\n- entity: [[entities/codex-cli]]\n- entity: [[entities/openai]]\n- entity: [[entities/cli]]\n- entity: [[entities/vercel]]\n- concept: [[concepts/persistent-wiki]]\n- concept: [[concepts/raw-sources]]\n- concept: [[concepts/knowledge-base]]\n- concept: [[concepts/workflow]]\n- concept: [[concepts/markdown]]\n- topic: [[topics/codex]]\n- topic: [[topics/workflow]]\n- topic: [[topics/markdown]]\n- topic: [[topics/ingest]]\n- topic: [[topics/knowledge]]\n",
       "headings": [
         "LLM Wiki README",
         "Summary",
@@ -1636,6 +1687,7 @@
       "title": "agent",
       "type": "topic",
       "summary": "Topic collected from Karpathy LLM Wiki Gist.",
+      "markdown": "---\ntitle: \"agent\"\ntype: \"topic\"\nupdated: \"2026-04-06\"\nsources: []\n---\n\n# agent\n\n## Summary\nTopic collected from Karpathy LLM Wiki Gist.\n\n## References\n- None yet.\n\n## Sources\n- None yet.\n",
       "headings": [
         "agent",
         "Summary",
@@ -1657,6 +1709,7 @@
       "title": "codex",
       "type": "topic",
       "summary": "Topic collected from LLM Wiki README.",
+      "markdown": "---\ntitle: \"codex\"\ntype: \"topic\"\nupdated: \"2026-04-06\"\nsources: [\"[[sources/2026-04-06-llm-wiki-readme]]\"]\n---\n\n# codex\n\n## Summary\nTopic collected from LLM Wiki README.\n\n## References\n- Appears in [[sources/2026-04-06-llm-wiki-readme]]\n\n## Sources\n- [[sources/2026-04-06-llm-wiki-readme]]\n",
       "headings": [
         "codex",
         "Summary",
@@ -1681,6 +1734,7 @@
       "title": "index",
       "type": "topic",
       "summary": "Topic collected from LLM Wiki Graph Insights Update.",
+      "markdown": "---\ntitle: \"index\"\ntype: \"topic\"\nupdated: \"2026-04-06\"\nsources: [\"[[sources/2026-04-06-llm-wiki-graph-insights-update]]\", \"[[sources/2026-04-06-llm-wiki-readme]]\"]\n---\n\n# index\n\n## Summary\nTopic collected from LLM Wiki Graph Insights Update.\n\n## References\n- Appears in [[sources/2026-04-06-llm-wiki-graph-insights-update]]\n- Appears in [[sources/2026-04-06-llm-wiki-readme]]\n\n## Sources\n- [[sources/2026-04-06-llm-wiki-graph-insights-update]]\n- [[sources/2026-04-06-llm-wiki-readme]]\n",
       "headings": [
         "index",
         "Summary",
@@ -1707,6 +1761,7 @@
       "title": "ingest",
       "type": "topic",
       "summary": "Topic collected from LLM Wiki Automation Update.",
+      "markdown": "---\ntitle: \"ingest\"\ntype: \"topic\"\nupdated: \"2026-04-06\"\nsources: [\"[[sources/2026-04-06-llm-wiki-automation-update]]\", \"[[sources/2026-04-06-llm-wiki-readme]]\"]\n---\n\n# ingest\n\n## Summary\nTopic collected from LLM Wiki Automation Update.\n\n## References\n- Appears in [[sources/2026-04-06-llm-wiki-automation-update]]\n- Appears in [[sources/2026-04-06-llm-wiki-readme]]\n\n## Sources\n- [[sources/2026-04-06-llm-wiki-automation-update]]\n- [[sources/2026-04-06-llm-wiki-readme]]\n",
       "headings": [
         "ingest",
         "Summary",
@@ -1733,6 +1788,7 @@
       "title": "knowledge",
       "type": "topic",
       "summary": "Topic collected from LLM Wiki README.",
+      "markdown": "---\ntitle: \"knowledge\"\ntype: \"topic\"\nupdated: \"2026-04-06\"\nsources: [\"[[sources/2026-04-06-karpathy-llm-wiki-gist]]\", \"[[sources/2026-04-06-llm-wiki-launch-roadmap]]\", \"[[sources/2026-04-06-llm-wiki-readme]]\"]\n---\n\n# knowledge\n\n## Summary\nTopic collected from LLM Wiki README.\n\n## References\n- Appears in [[sources/2026-04-06-karpathy-llm-wiki-gist]]\n- Appears in [[sources/2026-04-06-llm-wiki-launch-roadmap]]\n- Appears in [[sources/2026-04-06-llm-wiki-readme]]\n\n## Sources\n- [[sources/2026-04-06-karpathy-llm-wiki-gist]]\n- [[sources/2026-04-06-llm-wiki-launch-roadmap]]\n- [[sources/2026-04-06-llm-wiki-readme]]\n",
       "headings": [
         "knowledge",
         "Summary",
@@ -1761,6 +1817,7 @@
       "title": "lint",
       "type": "topic",
       "summary": "Topic collected from LLM Wiki README.",
+      "markdown": "---\ntitle: \"lint\"\ntype: \"topic\"\nupdated: \"2026-04-06\"\nsources: [\"[[sources/2026-04-06-llm-wiki-readme]]\"]\n---\n\n# lint\n\n## Summary\nTopic collected from LLM Wiki README.\n\n## References\n- Appears in [[sources/2026-04-06-llm-wiki-readme]]\n\n## Sources\n- [[sources/2026-04-06-llm-wiki-readme]]\n",
       "headings": [
         "lint",
         "Summary",
@@ -1785,6 +1842,7 @@
       "title": "markdown",
       "type": "topic",
       "summary": "Topic collected from LLM Wiki README.",
+      "markdown": "---\ntitle: \"markdown\"\ntype: \"topic\"\nupdated: \"2026-04-06\"\nsources: [\"[[sources/2026-04-06-llm-wiki-agent-guide]]\", \"[[sources/2026-04-06-llm-wiki-readme]]\"]\n---\n\n# markdown\n\n## Summary\nTopic collected from LLM Wiki README.\n\n## References\n- Appears in [[sources/2026-04-06-llm-wiki-agent-guide]]\n- Appears in [[sources/2026-04-06-llm-wiki-readme]]\n\n## Sources\n- [[sources/2026-04-06-llm-wiki-agent-guide]]\n- [[sources/2026-04-06-llm-wiki-readme]]\n",
       "headings": [
         "markdown",
         "Summary",
@@ -1811,6 +1869,7 @@
       "title": "oauth",
       "type": "topic",
       "summary": "Topic collected from LLM Wiki Agent Guide.",
+      "markdown": "---\ntitle: \"oauth\"\ntype: \"topic\"\nupdated: \"2026-04-06\"\nsources: []\n---\n\n# oauth\n\n## Summary\nTopic collected from LLM Wiki Agent Guide.\n\n## References\n- None yet.\n\n## Sources\n- None yet.\n",
       "headings": [
         "oauth",
         "Summary",
@@ -1832,6 +1891,7 @@
       "title": "obsidian",
       "type": "topic",
       "summary": "Topic collected from Karpathy LLM Wiki Gist.",
+      "markdown": "---\ntitle: \"obsidian\"\ntype: \"topic\"\nupdated: \"2026-04-06\"\nsources: []\n---\n\n# obsidian\n\n## Summary\nTopic collected from Karpathy LLM Wiki Gist.\n\n## References\n- None yet.\n\n## Sources\n- None yet.\n",
       "headings": [
         "obsidian",
         "Summary",
@@ -1853,6 +1913,7 @@
       "title": "openai",
       "type": "topic",
       "summary": "Topic collected from LLM Wiki README.",
+      "markdown": "---\ntitle: \"openai\"\ntype: \"topic\"\nupdated: \"2026-04-06\"\nsources: [\"[[sources/2026-04-06-llm-wiki-readme]]\"]\n---\n\n# openai\n\n## Summary\nTopic collected from LLM Wiki README.\n\n## References\n- Appears in [[sources/2026-04-06-llm-wiki-readme]]\n\n## Sources\n- [[sources/2026-04-06-llm-wiki-readme]]\n",
       "headings": [
         "openai",
         "Summary",
@@ -1877,6 +1938,7 @@
       "title": "query",
       "type": "topic",
       "summary": "Topic collected from LLM Wiki Graph Insights Update.",
+      "markdown": "---\ntitle: \"query\"\ntype: \"topic\"\nupdated: \"2026-04-06\"\nsources: [\"[[sources/2026-04-06-llm-wiki-graph-insights-update]]\"]\n---\n\n# query\n\n## Summary\nTopic collected from LLM Wiki Graph Insights Update.\n\n## References\n- Appears in [[sources/2026-04-06-llm-wiki-graph-insights-update]]\n\n## Sources\n- [[sources/2026-04-06-llm-wiki-graph-insights-update]]\n",
       "headings": [
         "query",
         "Summary",
@@ -1901,6 +1963,7 @@
       "title": "workflow",
       "type": "topic",
       "summary": "Topic collected from LLM Wiki Automation Update.",
+      "markdown": "---\ntitle: \"workflow\"\ntype: \"topic\"\nupdated: \"2026-04-06\"\nsources: [\"[[sources/2026-04-06-llm-wiki-automation-update]]\", \"[[sources/2026-04-06-llm-wiki-readme]]\"]\n---\n\n# workflow\n\n## Summary\nTopic collected from LLM Wiki Automation Update.\n\n## References\n- Appears in [[sources/2026-04-06-llm-wiki-automation-update]]\n- Appears in [[sources/2026-04-06-llm-wiki-readme]]\n\n## Sources\n- [[sources/2026-04-06-llm-wiki-automation-update]]\n- [[sources/2026-04-06-llm-wiki-readme]]\n",
       "headings": [
         "workflow",
         "Summary",

@@ -4,6 +4,7 @@
   "type": "entity",
   "summary": "Detected heuristically in LLM Wiki README.",
   "text": "OpenAI Summary Detected heuristically in LLM Wiki README. Mentions None yet. Sources None yet.",
+  "markdown": "---\ntitle: \"OpenAI\"\ntype: \"entity\"\nupdated: \"2026-04-06\"\nsources: []\n---\n\n# OpenAI\n\n## Summary\nDetected heuristically in LLM Wiki README.\n\n## Mentions\n- None yet.\n\n## Sources\n- None yet.\n",
   "headings": [
     "OpenAI",
     "Summary",

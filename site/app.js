@@ -47,6 +47,18 @@ function pagePathFromLink(target) {
   return `wiki/${cleaned}.md`;
 }
 
+function pagePathToApiPath(pagePath) {
+  const cleaned = String(pagePath || '').replace(/^\/?/, '').replace(/\.md$/, '');
+  if (!cleaned) return './api/pages/about.json';
+  const normalized = cleaned.replace(/^wiki\//, '');
+  if (normalized === 'index' || normalized === 'log' || normalized === 'about') return `./api/pages/${normalized}.json`;
+  return `./api/pages/${normalized.replace(/[\/]+/g, '--')}.json`;
+}
+
+function pageApiPathFromLink(target) {
+  return pagePathToApiPath(pagePathFromLink(target));
+}
+
 function renderInline(text) {
   return escapeHtml(text)
     .replace(/\[\[([^\]|#]+)(?:#[^\]|]+)?(?:\|([^\]]+))?\]\]/g, (_, target, label) => {
@@ -179,6 +191,7 @@ function normalizePage(page) {
     type: page.type || 'page',
     summary: page.summary || '',
     text: page.text || '',
+    markdown: page.markdown || '',
     headings: Array.isArray(page.headings) ? page.headings : [],
     updated: page.updated || '',
     links: Array.isArray(page.links) ? page.links : [],
@@ -370,8 +383,14 @@ function renderToc() {
 }
 
 async function loadManifest() {
-  const response = await fetch('./data/wiki-index.json', { cache: 'no-store' });
-  if (!response.ok) throw new Error('Could not load ./data/wiki-index.json');
+  const attempts = ['./api/index.json', './data/wiki-index.json'];
+  let response = null;
+  for (const url of attempts) {
+    // eslint-disable-next-line no-await-in-loop
+    response = await fetch(url, { cache: 'no-store' });
+    if (response.ok) break;
+  }
+  if (!response || !response.ok) throw new Error('Could not load wiki index from API or local data');
   const payload = await response.json();
   state.pages = (payload.pages || []).map(normalizePage);
   renderFilters();
@@ -387,8 +406,21 @@ async function loadPage(pagePath) {
   const path = pagePath.replace(/^\/?/, '');
   state.current = path;
 
-  const response = await fetch(`./${path}`, { cache: 'no-store' });
-  if (!response.ok) {
+  const page = state.pages.find((entry) => entry.path === path) || normalizePage({ path, title: inferTitle(path, path) });
+  const apiPath = page.apiPath || pageApiPathFromLink(path);
+  let markdown = page.markdown || '';
+  let hydratedPage = page;
+
+  if (!markdown) {
+    const response = await fetch(apiPath, { cache: 'no-store' });
+    if (response.ok) {
+      const payload = await response.json();
+      markdown = payload.markdown || payload.text || '';
+      hydratedPage = normalizePage({ ...page, ...payload, markdown, text: payload.text || page.text || '' });
+    }
+  }
+
+  if (!markdown) {
     pageTitle.textContent = 'Not found';
     pageMeta.textContent = path;
     content.innerHTML = `<div class="empty-state">Could not load <code>${escapeHtml(path)}</code>.</div>`;
@@ -397,12 +429,10 @@ async function loadPage(pagePath) {
     return;
   }
 
-  const markdown = await response.text();
-  const page = state.pages.find((entry) => entry.path === path) || normalizePage({ path, title: inferTitle(markdown, path), text: stripFrontmatter(markdown) });
-  pageTitle.textContent = inferTitle(markdown, path);
-  pageMeta.textContent = [page.type, page.updated, page.path].filter(Boolean).join(' · ');
+  pageTitle.textContent = hydratedPage.title || inferTitle(markdown, path);
+  pageMeta.textContent = [hydratedPage.type, hydratedPage.updated, hydratedPage.path].filter(Boolean).join(' · ');
   content.innerHTML = renderMarkdown(markdown);
-  renderDetails(page);
+  renderDetails(hydratedPage);
   renderToc();
 }
 

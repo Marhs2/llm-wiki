@@ -22,6 +22,7 @@ test('buildApiArtifacts prepares index, graph, and page payloads', () => {
       title: 'Index',
       type: 'index',
       summary: 'Catalog',
+      markdown: '# Index\n\n## Summary\nCatalog\n',
       text: 'Index text',
       headings: ['Sources'],
       updated: '2026-04-06',
@@ -97,6 +98,11 @@ test('startLiveApiServer supports port 0 and serves live JSON endpoints', async 
     const indexPayload = await indexResponse.json();
     assert.equal(indexPayload.pageCount, 2);
     assert.equal(indexPayload.pages[0].apiPath, 'api/pages/index.json');
+
+    const pageResponse = await fetch(`http://127.0.0.1:${port}/api/pages/index.json`);
+    assert.equal(pageResponse.status, 200);
+    const pagePayload = await pageResponse.json();
+    assert.ok(pagePayload.markdown.includes('## Summary\nCatalog page'));
   } finally {
     await new Promise((resolve) => server.close(resolve));
     await fs.rm(vault, { recursive: true, force: true });

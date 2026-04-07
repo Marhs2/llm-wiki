@@ -4,6 +4,7 @@
   "type": "concept",
   "summary": "Concept collected from Karpathy LLM Wiki Gist.",
   "text": "source-of-truth Summary Concept collected from Karpathy LLM Wiki Gist. References None yet. Related concepts concepts/raw-sources concepts/knowledge-base concepts/compounding-artifact Sources None yet.",
+  "markdown": "---\ntitle: \"source-of-truth\"\ntype: \"concept\"\nupdated: \"2026-04-07\"\nsources: []\n---\n\n# source-of-truth\n\n## Summary\nConcept collected from Karpathy LLM Wiki Gist.\n\n## References\n- None yet.\n\n## Related concepts\n- [[concepts/raw-sources]]\n- [[concepts/knowledge-base]]\n- [[concepts/compounding-artifact]]\n\n## Sources\n- None yet.\n",
   "headings": [
     "source-of-truth",
     "Summary",

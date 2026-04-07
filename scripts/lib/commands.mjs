@@ -701,6 +701,7 @@ export async function buildSite(vault, { siteDir = DEFAULT_SITE_DIR } = {}) {
       title: parseFrontmatterTitle(text) || path.basename(file, '.md'),
       type: inferPageType(rel, text),
       summary: summary.replace(/\s+/g, ' ').trim(),
+      markdown: text,
       headings: extractHeadings(text),
       updated: parseFrontmatterValue(text, 'updated') || parseFrontmatterValue(text, 'created') || '',
       text: markdownToPlainText(text),

@@ -4,6 +4,7 @@
   "type": "entity",
   "summary": "Detected heuristically in Karpathy LLM Wiki Gist.",
   "text": "llm-agent Summary Detected heuristically in Karpathy LLM Wiki Gist. Mentions None yet. Sources None yet.",
+  "markdown": "---\ntitle: \"llm-agent\"\ntype: \"entity\"\nupdated: \"2026-04-06\"\nsources: []\n---\n\n# llm-agent\n\n## Summary\nDetected heuristically in Karpathy LLM Wiki Gist.\n\n## Mentions\n- None yet.\n\n## Sources\n- None yet.\n",
   "headings": [
     "llm-agent",
     "Summary",
